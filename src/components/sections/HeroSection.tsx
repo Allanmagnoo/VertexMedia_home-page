@@ -23,7 +23,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   };
 
   return (
-    <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-20 md:py-28">
+    <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 md:py-20">
       <div className="absolute inset-0 bg-card/70 z-0"></div>
 
       <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -46,13 +46,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <>
               {t.mainHeadline && (
                 <h1
-                  className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-foreground" // Adjusted font size, mb
+                  className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-foreground" 
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainHeadline) }}
                 />
               )}
               {t.subHeadline && (
                 <p
-                  className="text-lg md:text-xl lg:text-2xl font-medium mb-10 text-foreground/80 leading-relaxed" // Adjusted font size, mb
+                  className="text-lg md:text-xl lg:text-2xl font-medium mb-10 text-foreground/80 leading-relaxed" 
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subHeadline) }}
                 />
               )}
