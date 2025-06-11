@@ -36,11 +36,10 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     const SolutionIcon = service.solution.icon ? iconComponents[service.solution.icon] : Film;
     const BenefitIcon = service.benefit.icon ? iconComponents[service.benefit.icon] : Lightbulb;
 
-    // Cycle through primary, secondary, accent based on referencia.html visual hierarchy for cards
     const cardColorClasses = [
-      { main: 'text-primary', bg: 'bg-primary/10', link: 'text-primary hover:text-primary/80' }, // Blue
-      { main: 'text-secondary', bg: 'bg-secondary/10', link: 'text-secondary hover:text-secondary/80' }, // Purple
-      { main: 'text-accent', bg: 'bg-accent/10', link: 'text-accent hover:text-accent/80' } // Teal
+      { main: 'text-primary', bg: 'bg-primary/10', link: 'text-primary hover:text-primary/80' }, 
+      { main: 'text-secondary', bg: 'bg-secondary/10', link: 'text-secondary hover:text-secondary/80' }, 
+      { main: 'text-accent', bg: 'bg-accent/10', link: 'text-accent hover:text-accent/80' } 
     ];
     const colorTheme = cardColorClasses[index % cardColorClasses.length];
 
@@ -48,50 +47,47 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     return (
       <Card
         key={service.title}
-        // Matching card styles from referencia.html: bg-gray-700 p-8 rounded-xl shadow-xl card-hover-dark
-        // Theme: bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1.5
         className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group"
       >
-        <CardHeader className="items-start p-0 mb-5"> {/* Increased mb */}
-          {/* Icon style from referencia.html: h-16 w-16 rounded-full bg-blue-500 etc. */}
+        <CardHeader className="flex flex-col items-center p-0 mb-5"> 
           <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
             <SolutionIcon className={`h-8 w-8 ${colorTheme.main}`} />
           </div>
-          <CardTitle className="text-2xl font-semibold text-foreground mb-3">{service.title}</CardTitle>
+          <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
         </CardHeader>
 
         <CardContent className="p-0 flex-grow space-y-5">
-          <div>
-            <h4 className="flex items-center text-lg font-semibold text-foreground/90 mb-2">
+          <div className="text-center">
+            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2`}>
               <ProblemIcon className={`w-5 h-5 mr-2.5 ${colorTheme.main}`} /> {service.problem.title}
             </h4>
-            <p className="text-foreground/80 text-sm leading-relaxed ml-[34px]">{service.problem.description}</p>
+            <p className="text-foreground/80 text-sm leading-relaxed">{service.problem.description}</p>
           </div>
-          <div>
-            <h4 className="flex items-center text-lg font-semibold text-foreground/90 mb-2">
+          <div className="text-center">
+            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2`}>
               <SolutionIcon className={`w-5 h-5 mr-2.5 ${colorTheme.main}`} /> {service.solution.title}
             </h4>
-            <p className="text-foreground/70 text-sm leading-relaxed mb-2 ml-[34px]">{service.solution.description}</p>
+            <p className="text-foreground/70 text-sm leading-relaxed mb-2">{service.solution.description}</p>
             {service.solution.listItems && (
-              <ul className="text-foreground/70 text-sm space-y-1.5 list-disc list-outside pl-5 ml-[34px]">
+              <ul className="text-foreground/70 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-md mx-auto">
                 {service.solution.listItems.map((item, idx) => <li key={idx}>{item}</li>)}
               </ul>
             )}
           </div>
-           <div>
-            <h4 className="flex items-center text-lg font-semibold text-foreground/90 mb-2">
+           <div className="text-center">
+            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2`}>
                <BenefitIcon className={`w-5 h-5 mr-2.5 ${colorTheme.main}`} /> {service.benefit.title}
             </h4>
-            <p className="text-foreground/70 text-sm leading-relaxed ml-[34px]">{service.benefit.description}</p>
+            <p className="text-foreground/70 text-sm leading-relaxed">{service.benefit.description}</p>
           </div>
         </CardContent>
 
         {service.cta && service.ctaLink && (
-           <div className="mt-auto pt-8"> {/* Ensure CTA is at the bottom */}
+           <div className="mt-auto pt-8 flex justify-center"> 
               <Button
                   asChild
                   variant="link"
-                  className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`} // Ensure underline on hover
+                  className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`} 
               >
                   <Link href={service.ctaLink}>
                   {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
@@ -117,18 +113,18 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
         key={service.title}
         className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group"
       >
-        <CardHeader className="items-start p-0 mb-5">
+        <CardHeader className="flex flex-col items-center p-0 mb-5">
           {IconComponent && (
             <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
               <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
             </div>
           )}
-          <CardTitle className="text-2xl font-semibold text-foreground mb-3">{service.title}</CardTitle>
+          <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
         </CardHeader>
-        <CardContent className="p-0 flex-grow">
-          {service.description && <CardDescription className="text-foreground/70 mb-4 text-sm leading-relaxed">{service.description}</CardDescription>}
+        <CardContent className="p-0 flex-grow text-center">
+          {service.description && <CardDescription className="text-foreground/70 mb-4 text-sm leading-relaxed text-center">{service.description}</CardDescription>}
           {service.listItems && (
-            <ul className="text-foreground/70 text-sm space-y-2 list-disc list-outside pl-5"> {/* Increased space-y */}
+            <ul className="text-foreground/70 text-sm space-y-2 list-disc list-outside pl-5 text-left max-w-md mx-auto"> 
               {service.listItems.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
@@ -136,7 +132,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
           )}
         </CardContent>
         {service.cta && service.ctaLink && (
-           <div className="mt-auto pt-8">
+           <div className="mt-auto pt-8 flex justify-center">
               <Button
                   asChild
                   variant="link"
@@ -153,12 +149,12 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
   };
 
   return (
-    // section py-16 md:py-24 bg-gray-800 (ref) -> Theme: section py-16 md:py-24 bg-card
+    // section py-16 md:py-24 bg-card -> bg-gray-800 in ref (bg-card is fine from theme)
     <section id="solutions" className="bg-card">
-      <div className="container px-6"> {/* Ensure container has padding */}
+      <div className="container px-6"> 
         <div className="text-center mb-12 md:mb-16">
           <h2
-            className="text-3xl md:text-4xl font-bold text-foreground" // Consistent with ref
+            className="text-3xl md:text-4xl font-bold text-foreground" 
             dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle) }}
           />
            {(locale === 'pt' && t.problemStatement) ? (
@@ -186,3 +182,4 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     </section>
   );
 }
+
