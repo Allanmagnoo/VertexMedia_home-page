@@ -180,9 +180,9 @@ export const translations: Record<Locale, Translations> = {
     hero: {
       mainImageUrl: "https://placehold.co/500x250.png/1F2937/9CA3AF",
       mainImageHint: "vertexmedia audiovisual estrategico",
-      title: 'VertexMedia: Seu Braço Audiovisual <gradient>Inovador</gradient>',
-      subtitle: 'Vídeos que <gradient>Elevam sua Marca</gradient>.',
-      description: 'Suporte audiovisual criativo e técnico para agências, produtores e empresas. Transformamos <gradient>ideias em vídeos</gradient> de alto impacto.',
+      title: 'VertexMedia: Seu <gradient>Braço Audiovisual</gradient> Estratégico',
+      subtitle: 'Vídeos de Alta Performance que <gradient>Elevam sua Marca</gradient>.',
+      description: 'Parceiros de confiança para agências, produtoras e empresas que buscam transformar <gradient>ideias em vídeos</gradient> de alto impacto, com criatividade, excelência técnica e foco em resultados.',
       ctaPrimary: 'Fale com um Especialista',
       ctaSecondary: 'Nossas Soluções',
     },
@@ -190,7 +190,7 @@ export const translations: Record<Locale, Translations> = {
       mainTitle: 'Soluções em Vídeo Sob Medida para Seus <gradient>Objetivos</gradient>',
       problemStatement: {
         title: 'Necessita de um Parceiro Audiovisual que Entenda Seus <highlight class="text-primary">Desafios Criativos e Técnicos</highlight>?',
-        description: 'Produzir vídeos de qualidade, em múltiplos formatos e volumes, mantendo a criatividade e a eficiência, é nosso foco. A VertexMedia está aqui para ser seu suporte audiovisual completo, desde a concepção até a entrega final.',
+        description: 'Produzir vídeos de qualidade, em volume e com criatividade, é um desafio. A VertexMedia oferece suporte audiovisual completo, da concepção à entrega.',
         cta: 'Descubra Nossas Capacidades'
       },
       servicesPt: [
@@ -301,7 +301,7 @@ export const translations: Record<Locale, Translations> = {
         linkedin: 'LinkedIn',
       },
       rights: '© {year} VertexMedia. Todos os direitos reservados.',
-      credits: 'Design por Firebase Studio. Imagens de Placehold.co.',
+      credits: 'Firebase Studio Build. Imagens via Placehold.co.',
     },
   },
   en: {
@@ -313,17 +313,17 @@ export const translations: Record<Locale, Translations> = {
       contactCta: 'Book a Call', 
     },
     hero: {
-      problemTitle: "Struggling with video creative that <highlight>fails to convert</highlight> and <highlight>drains your ad spend</highlight>?",
-      problemDescription: "You're not alone. Many businesses find it challenging to consistently produce video content that not only looks great but actually drives measurable results like lower CPAs and higher ROAS, especially when trying to scale.",
-      solutionTitle: "VertexMedia: Your Dedicated Remote Post-Production Partner for <gradient>Data-Driven Video Assets</gradient>.",
-      solutionDescription: "We specialize in creating high-performance video content tailored for performance marketing agencies, SaaS companies, and B2B marketing departments. Our seamless workflow and deep understanding of business metrics mean you get video that works.",
-      benefitTitle: "The Bottom Line? Better Videos, <highlight>Better Metrics</highlight>, and a <highlight>Higher ROI</highlight> for Your Marketing Budget.",
-      benefitDescription: "Stop guessing and start converting. Partner with VertexMedia to transform your video strategy into a revenue-generating machine.",
+      problemTitle: "Struggling with video creative that <highlight>fails to convert</highlight> and <highlight>drains ad spend</highlight>?",
+      problemDescription: "Many businesses find it hard to consistently produce video content that drives results like lower CPAs and higher ROAS, especially at scale.",
+      solutionTitle: "VertexMedia: Your Remote Post-Production Partner for <gradient>Data-Driven Video Assets</gradient>.",
+      solutionDescription: "We create high-performance video content for performance marketing agencies, SaaS companies, and B2B marketers. Our seamless workflow and metric-driven approach mean you get video that works.",
+      benefitTitle: "The Bottom Line? Better Videos, <highlight>Better Metrics</highlight>, <highlight>Higher ROI</highlight>.",
+      benefitDescription: "Stop guessing, start converting. Partner with VertexMedia to turn your video strategy into a revenue engine.",
       ctaPrimary: 'Book a Discovery Call',
     },
     solutions: {
       mainTitle: 'Video Solutions That <gradient>Drive Business Growth</gradient>',
-      description: "We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage.",
+      description: "Expert video post-production to solve marketing challenges and drive business outcomes. We boost ad performance and clarify complex products.",
       servicesEn: [
         {
           icon: 'TrendingUp',
@@ -331,14 +331,14 @@ export const translations: Record<Locale, Translations> = {
           problem: {
             icon: 'AlertTriangle',
             title: "Problem: Sky-High CPAs & Stagnant ROAS?",
-            description: "Your ad campaigns are underperforming. Creative fatigue sets in quickly, and generic videos aren't cutting it. You need a pipeline of fresh, conversion-focused video ads to test and optimize, but your current setup can't keep up.",
+            description: "Underperforming ads? Creative fatigue hindering growth? We provide a pipeline of fresh, conversion-focused video ads for continuous optimization.",
           },
           solution: {
             icon: 'Film',
             title: "Solution: Data-Driven Video Ad Production.",
-            description: "We deliver a high volume of A/B test-ready video creatives, meticulously crafted with dynamic motion graphics and optimized for social formats. Our process includes rapid iteration on hooks, CTAs, visuals, and messaging to find what truly resonates.",
+            description: "High-volume, A/B test-ready video creatives with dynamic motion graphics for all social formats. Rapid iteration on hooks, CTAs, and visuals to maximize resonance.",
             listItems: [
-              "High-volume video ad variations for Meta, TikTok, YouTube",
+              "Video ad variations for Meta, TikTok, YouTube",
               "Direct response & UGC-style ad creation",
               "Engaging motion graphics & animation",
               "Localization & adaptation for diverse audiences",
@@ -346,8 +346,8 @@ export const translations: Record<Locale, Translations> = {
           },
           benefit: {
             icon: 'Lightbulb',
-            title: "Benefit: Lower CPAs, Higher ROAS, and Scalable Campaigns.",
-            description: "Consistently feed your ad platforms with optimized video creatives that convert viewers into customers, maximizing your return on ad spend and enabling sustainable campaign growth.",
+            title: "Benefit: Lower CPAs, Higher ROAS, Scalable Campaigns.",
+            description: "Fuel your ad platforms with optimized video creatives that convert, maximizing ROAS and ensuring sustainable campaign growth.",
           },
           cta: 'Boost Your Ad Performance',
           ctaLink: '#contact',
@@ -358,12 +358,12 @@ export const translations: Record<Locale, Translations> = {
           problem: {
             icon: 'AlertTriangle',
             title: "Problem: Complex Product & Low Engagement?",
-            description: "Your SaaS product is powerful, but users drop off during onboarding. Your B2B solution is industry-leading, but prospects don't grasp its full value quickly. Your company culture is amazing, but you struggle to attract top talent.",
+            description: "Complex SaaS product causing user drop-off? B2B solution value unclear? Struggling to convey company culture to attract talent?",
           },
           solution: {
             icon: 'Film',
             title: "Solution: Clear, Compelling Video Narratives.",
-            description: "We craft engaging brand films that build trust and connection, and crystal-clear explainer videos that simplify complex concepts with polished editing and professional color correction. Our videos articulate your value proposition effectively.",
+            description: "Engaging brand films and clear explainer videos that simplify complexity and articulate your value. Features polished editing and professional color correction.",
              listItems: [
               "Animated & live-action explainer videos",
               "SaaS product demo & tutorial videos",
@@ -373,8 +373,8 @@ export const translations: Record<Locale, Translations> = {
           },
           benefit: {
             icon: 'Lightbulb',
-            title: "Benefit: Increased Conversions, Better User Retention, Stronger Brand.",
-            description: "Drive higher trial-to-paid conversion rates with effective explainers. Attract and retain top talent with compelling brand stories. Close larger enterprise deals by clearly showcasing your unique value.",
+            title: "Benefit: Increased Conversions, Better Retention, Stronger Brand.",
+            description: "Boost trial-to-paid conversions, attract top talent, and close more deals by clearly showcasing your value.",
           },
           cta: 'Tell Your Story Effectively',
           ctaLink: '#contact',
@@ -384,24 +384,24 @@ export const translations: Record<Locale, Translations> = {
           title: 'White-Label Post-Production for Agencies',
           problem: {
             icon: 'AlertTriangle',
-            title: "Problem: Post-Production Bottlenecks & Scaling Pains?",
-            description: "Your agency is growing, but your in-house video team is stretched thin. You're turning down projects or sacrificing quality in motion graphics, color correction, and finalization to meet deadlines.",
+            title: "Problem: Post-Production Bottlenecks?",
+            description: "Agency growing but post-production is a bottleneck? Team stretched thin, risking quality or turning down projects?",
           },
           solution: {
             icon: 'Film',
             title: "Solution: Your Trusted, Invisible Post-Production Arm.",
-            description: "VertexMedia acts as your dedicated white-label partner. We seamlessly integrate with your team, handling everything from editing and motion graphics to color correction and final delivery, all under your brand. You manage the client, we manage the pixels with expertise in all social formats.",
+            description: "Your dedicated white-label post-production partner. Seamless integration, handling editing, motion graphics, color, and delivery under your brand.",
             listItems: [
               "Full-service video editing & assembly",
               "Advanced motion graphics, VFX & 2D/3D animation",
               "Professional color grading & sound design",
-              "Version control & asset management for social media campaigns",
+              "Version control & asset management for social campaigns",
             ],
           },
           benefit: {
             icon: 'Lightbulb',
-            title: "Benefit: Scale Your Operations, Maintain Quality, Focus on Growth.",
-            description: "Expand your agency's video capabilities without the overhead of hiring. Deliver consistently high-quality work to your clients, on time, every time. Free up your core team to focus on strategy and client relationships.",
+            title: "Benefit: Scale Operations, Maintain Quality, Focus on Growth.",
+            description: "Scale video capabilities without overhead. Deliver high-quality work consistently, freeing your team for strategy and client relations.",
           },
           cta: 'Scale Your Agency with Us',
           ctaLink: '#contact',
@@ -444,19 +444,19 @@ export const translations: Record<Locale, Translations> = {
     },
     about: {
       mainTitle: 'Your Strategic Partner for <highlight class="text-primary">Global Video Production Excellence</highlight>',
-      description: 'VertexMedia isn\'t just another video production house. We are a team of creative strategists and technical wizards in motion graphics, color correction, and video finalization, dedicated to helping US-based businesses achieve their marketing and communication goals. We understand the speed of business and the need for content that performs.',
+      description: 'VertexMedia is your team of creative strategists and technical wizards in motion graphics, color correction, and video finalization. We help US businesses achieve marketing goals with content that performs, understanding the speed and demands of your market.',
       imageUrl: 'https://placehold.co/600x400.png/1A1A2E/FFFFFF',
       imageHint: 'global collaboration video production',
       ourEdge: {
         title: 'Our Edge: <gradient>Seamless Remote Collaboration & Timezone Power</gradient>',
         remoteCollaboration: {
-          title: 'Expertise in Remote Workflows',
-          description: 'We are built for remote collaboration. Our processes are streamlined using industry-standard tools (Frame.io, Slack, Asana/Notion) to ensure smooth communication, efficient feedback loops, and on-time delivery for all your video projects, no matter where you are.',
-          tools: ["Frame.io for Reviews", "Slack for Comms", "Asana/Notion for PM"],
+          title: 'Expert Remote Workflows',
+          description: 'Built for remote collaboration with streamlined processes (Frame.io, Slack, Asana/Notion) for smooth communication, efficient feedback, and on-time delivery.',
+          tools: ["Frame.io Reviews", "Slack Comms", "Asana/Notion PM"],
         },
         timezoneAdvantage: {
-          title: 'The "Overnight" Advantage: Your 24/7 Production Cycle',
-          description: "Leverage our unique timezone advantage. As your strategic partner based in Brazil, we operate while you sleep. Send us your footage or brief at the end of your US business day (EST/PST), and wake up to a first draft or significant progress in your inbox. We turn global timezones into your competitive edge, accelerating your production cycle and keeping your projects moving around the clock.",
+          title: 'The "Overnight" Advantage',
+          description: "Leverage our Brazilian timezone. Send briefs EOD (US time), wake up to progress. We accelerate your production cycle, keeping projects moving 24/7.",
         },
       },
     },
@@ -513,3 +513,4 @@ export const renderHighlightedText = (text: string | undefined, defaultHighlight
 
   return processedText;
 };
+
