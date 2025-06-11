@@ -4,36 +4,41 @@
 
 @layer base {
   :root {
-    /* Material 3 Dark Theme Inspired Palette */
-    --background: 222 20% 13%; /* Darker surface */
-    --foreground: 220 16% 93%; /* On-surface */
+    /* PRD-based Dark Theme */
+    --background: 222 20% 10%; /* Darker than M3, closer to referencia.html bg-gray-900 */
+    --foreground: 220 16% 93%; 
 
-    --card: 222 18% 18%; /* Surface container */
-    --card-foreground: 220 16% 93%; /* On-surface */
+    --card: 222 18% 15%; /* Slightly darker than M3 card, closer to referencia.html bg-gray-800 */
+    --card-foreground: 220 16% 93%;
 
-    --popover: 222 18% 18%; /* Surface container */
-    --popover-foreground: 220 16% 93%; /* On-surface */
+    --popover: 222 18% 15%;
+    --popover-foreground: 220 16% 93%;
 
-    --primary: 231 80% 75%; /* Primary (lighter for dark theme) */
-    --primary-foreground: 231 40% 20%; /* On-primary */
+    /* PRD Primary: Deep Blue #3F51B5 -> HSL(231, 48%, 54%) */
+    /* For dark theme, we might want it a bit lighter for better contrast */
+    --primary: 231 55% 65%; 
+    --primary-foreground: 231 40% 15%; /* Darker text on light primary button */
 
-    --secondary: 271 70% 80%; /* Secondary (lighter for dark theme) */
-    --secondary-foreground: 271 40% 20%; /* On-secondary */
+    /* Reference uses Purple as secondary accent, let's define one */
+    --secondary: 271 70% 75%; 
+    --secondary-foreground: 271 40% 18%;
 
-    --muted: 222 15% 25%; /* Surface container high */
-    --muted-foreground: 220 15% 70%; /* Medium emphasis text */
+    --muted: 222 15% 25%; 
+    --muted-foreground: 220 15% 70%; 
 
-    --accent: 40 90% 75%; /* Tertiary (lighter for dark theme) */
-    --accent-foreground: 40 50% 15%; /* On-tertiary */
+    /* PRD Accent: Soft Amber #FFB300 -> HSL(41, 100%, 50%) */
+    /* For dark theme, might need slight adjustment if too bright */
+    --accent: 41 100% 60%; 
+    --accent-foreground: 41 50% 15%; 
 
-    --destructive: 0 70% 65%; /* Error (lighter for dark theme) */
-    --destructive-foreground: 0 0% 10%; /* On-error */
+    --destructive: 0 70% 65%; 
+    --destructive-foreground: 0 0% 10%; 
 
-    --border: 222 14% 30%; /* Outline */
-    --input: 222 16% 22%; /* Surface container highest (for inputs) */
-    --ring: 231 80% 75%; /* Primary (for focus rings) */
+    --border: 222 14% 28%; /* Darker border */
+    --input: 222 16% 22%; 
+    --ring: 231 55% 65%; /* Use primary for rings */
     
-    --radius: 0.75rem; /* Default M3-like radius */
+    --radius: 0.5rem; /* Slightly less than M3, closer to referencia.html */
 
     /* Chart colors can be adapted or kept if specific */
     --chart-1: 220 70% 50%;
@@ -43,59 +48,56 @@
     --chart-5: 340 75% 55%;
 
     /* Sidebar colors - M3 inspired */
-    --sidebar-background: 222 18% 16%; /* Slightly different surface for sidebar */
+    --sidebar-background: 222 18% 13%; 
     --sidebar-foreground: 220 16% 90%;
-    --sidebar-primary: 231 80% 78%; /* Primary variant for sidebar */
+    --sidebar-primary: 231 55% 70%; 
     --sidebar-primary-foreground: 231 40% 18%;
-    --sidebar-accent: 222 15% 28%; /* Selected item background */
+    --sidebar-accent: 222 15% 25%; 
     --sidebar-accent-foreground: 220 16% 95%;
-    --sidebar-border: 222 14% 25%;
-    --sidebar-ring: 231 80% 78%;
+    --sidebar-border: 222 14% 22%;
+    --sidebar-ring: 231 55% 70%;
   }
 
   .light {
-    /* Material 3 Light Theme Inspired Palette */
-    --background: 0 0% 98%; /* Surface */
-    --foreground: 222 20% 13%; /* On-surface */
+    /* PRD-based Light Theme */
+    /* PRD Background: Very light gray (#F0F2F5) -> HSL(220, 20%, 95%) */
+    --background: 220 20% 95%; 
+    --foreground: 222 20% 13%; 
 
-    --card: 0 0% 100%; /* Surface Container (was white) */
-    --card-foreground: 222 20% 13%; /* On-surface */
+    --card: 0 0% 100%; 
+    --card-foreground: 222 20% 13%;
 
-    --popover: 0 0% 100%; /* Surface Container */
-    --popover-foreground: 222 20% 13%; /* On-surface */
+    --popover: 0 0% 100%; 
+    --popover-foreground: 222 20% 13%; 
 
-    --primary: 231 55% 50%; /* Primary */
-    --primary-foreground: 0 0% 100%; /* On-primary */
+    /* PRD Primary: Deep Blue #3F51B5 -> HSL(231, 48%, 54%) */
+    --primary: 231 48% 54%; 
+    --primary-foreground: 0 0% 100%; 
 
-    --secondary: 271 50% 55%; /* Secondary */
-    --secondary-foreground: 0 0% 100%; /* On-secondary */
+    /* Reference Purple, adapted for light theme secondary */
+    --secondary: 271 50% 60%; 
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 20% 94%; /* Surface Container High */
-    --muted-foreground: 222 15% 40%; /* Medium emphasis text */
+    --muted: 220 20% 90%; 
+    --muted-foreground: 222 15% 40%; 
 
-    --accent: 40 75% 50%; /* Tertiary */
-    --accent-foreground: 40 50% 10%; /* On-tertiary */
+    /* PRD Accent: Soft Amber #FFB300 -> HSL(41, 100%, 50%) */
+    --accent: 41 100% 50%; 
+    --accent-foreground: 41 50% 10%; 
 
-    --destructive: 0 80% 55%; /* Error */
-    --destructive-foreground: 0 0% 100%; /* On-error */
+    --destructive: 0 80% 55%; 
+    --destructive-foreground: 0 0% 100%; 
 
-    --border: 222 15% 85%; /* Outline */
-    --input: 220 25% 96%; /* Surface Container Highest (for inputs) */
-    --ring: 231 55% 50%; /* Primary (for focus rings) */
-
-    /* Chart colors can be adapted or kept if specific */
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --border: 222 15% 85%; 
+    --input: 220 25% 92%; 
+    --ring: 231 48% 54%;
 
     /* Sidebar colors - M3 inspired for light theme */
-    --sidebar-background: 220 15% 97%; /* Slightly different surface for sidebar */
+    --sidebar-background: 220 15% 97%; 
     --sidebar-foreground: 222 18% 20%;
-    --sidebar-primary: 231 50% 45%; /* Primary variant for sidebar */
+    --sidebar-primary: 231 50% 45%; 
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 20% 90%; /* Selected item background */
+    --sidebar-accent: 220 20% 90%; 
     --sidebar-accent-foreground: 231 50% 40%;
     --sidebar-border: 220 15% 88%;
     --sidebar-ring: 231 50% 45%;
@@ -111,10 +113,17 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
   section {
-    @apply py-16 md:py-20 lg:py-28; /* Slightly increased padding for M3 spaciousness */
+     /* Padding from referencia.html: py-16 md:py-24 */
+    @apply py-16 md:py-20 lg:py-24;
   }
   .container {
-    @apply px-4 md:px-6 lg:px-8;
+    @apply px-6; /* Match referencia.html */
+  }
+  .gradient-text { /* From referencia.html */
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
   }
 }
