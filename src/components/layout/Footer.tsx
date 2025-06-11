@@ -17,23 +17,22 @@ export default function Footer({ locale }: FooterProps) {
 
   const AppLogo = () => (
      <span className="text-3xl font-bold mb-4 inline-block">
-       <span className="text-primary">{appNameT.includes('#') ? appNameT.split('#')[0] : appNameT}</span>
-       {appNameT.includes('#') && <span className="text-secondary">{appNameT.split('#')[1]}</span>}
+       <span className="text-primary">{appNameT.split('#')[0]}</span>
+       <span className="text-secondary">{appNameT.split('#')[1]}</span>
      </span>
   );
   
-  // Footer nav links based on locale and available translations
   const navLinks = [];
   if (locale === 'pt' && t.footer.navLinks.home) {
     navLinks.push({ href: "#hero", label: t.footer.navLinks.home });
   }
   navLinks.push({ href: "#solutions", label: t.footer.navLinks.solutions });
-  if (t.footer.navLinks.work) { // Covers both PT Portfolio and EN Work
+  if (t.footer.navLinks.work) { 
     navLinks.push({ href: "#cases", label: t.footer.navLinks.work });
   }
-  // if (locale === 'en' && t.footer.navLinks.aboutUs) {
-  //   navLinks.push({ href: "#about", label: t.footer.navLinks.aboutUs });
-  // }
+  if (locale === 'en' && t.footer.navLinks.aboutUs) { // Add About Us for EN footer
+     navLinks.push({ href: "#about", label: t.footer.navLinks.aboutUs });
+  }
   navLinks.push({ href: "#contact", label: t.footer.navLinks.contact });
 
 
@@ -45,8 +44,10 @@ export default function Footer({ locale }: FooterProps) {
     }
   };
 
+  // Styles from referencia.html: bg-gray-800 text-gray-400 py-12
+  // Theme translation: bg-card text-muted-foreground py-12
   return (
-    <footer className="border-t bg-card text-muted-foreground">
+    <footer className="bg-card text-muted-foreground border-t border-border/50">
       <div className="container py-12 text-center">
         <Link href="#hero" onClick={(e) => scrollToSection(e, "#hero")}>
           <AppLogo />
@@ -77,12 +78,10 @@ export default function Footer({ locale }: FooterProps) {
         <p className="text-sm">
           {t.footer.rights.replace('{year}', currentYear.toString())}
         </p>
-        <p className="text-xs mt-1">
+        <p className="text-xs mt-2"> {/* Increased margin a bit */}
           {t.footer.credits}
         </p>
       </div>
     </footer>
   );
 }
-
-    

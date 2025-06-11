@@ -24,41 +24,44 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-20 md:py-32">
-      <div className="absolute inset-0 bg-card opacity-50 z-0"></div> 
+      {/* Inspired by referencia.html hero-bg-dark and bg-opacity for the content box */}
+      <div className="absolute inset-0 bg-card/70 z-0"></div> 
       
       <div className="container relative z-10 text-center max-w-4xl mx-auto">
-        <div className="bg-background/80 p-8 md:p-12 rounded-xl shadow-2xl animate-fade-in animation-delay-200">
+        <div className="bg-background/70 backdrop-blur-sm p-8 md:p-12 rounded-xl shadow-2xl animate-fade-in animation-delay-200">
           {locale === 'pt' && t.mainImageUrl && (
-            <Image
-              src={t.mainImageUrl}
-              alt={t.mainImageHint || "VertexMedia Hero Image"}
-              data-ai-hint={t.mainImageHint || "equipe colaborando video"}
-              width={500}
-              height={250}
-              className="mx-auto mb-8 rounded-lg w-full max-w-md object-contain"
-              priority
-            />
+            <div className="mx-auto mb-8 w-full max-w-md">
+              <Image
+                src={t.mainImageUrl}
+                alt={t.mainImageHint || "VertexMedia Hero Image"}
+                data-ai-hint={t.mainImageHint || "equipe colaborando video"}
+                width={500}
+                height={250}
+                className="rounded-lg object-contain"
+                priority
+              />
+            </div>
           )}
 
           {locale === 'en' ? (
             <>
               {t.problemTitle && (
-                <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-foreground/80"
-                    dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.problemTitle) }} />
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground/80 leading-snug"
+                    dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.problemTitle, 'text-secondary') }} />
               )}
-              {t.problemDescription && <p className="text-md md:text-lg mb-6 text-foreground/70">{t.problemDescription}</p>}
+              {t.problemDescription && <p className="text-md md:text-lg mb-8 text-foreground/70 leading-relaxed">{t.problemDescription}</p>}
               
               {t.solutionTitle && (
                 <h1 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground"
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.solutionTitle) }} />
               )}
-              {t.solutionDescription && <p className="text-lg md:text-xl mb-6 text-foreground/80">{t.solutionDescription}</p>}
+              {t.solutionDescription && <p className="text-lg md:text-xl mb-8 text-foreground/80 leading-relaxed">{t.solutionDescription}</p>}
 
               {t.benefitTitle && (
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground/90"
-                    dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.benefitTitle) }} />
+                <h3 className="text-xl md:text-2xl font-bold mb-6 text-foreground/90 leading-snug"
+                    dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.benefitTitle, 'text-primary') }} />
               )}
-              {t.benefitDescription && <p className="text-md md:text-lg mb-8 text-foreground/70">{t.benefitDescription}</p>}
+              {t.benefitDescription && <p className="text-md md:text-lg mb-10 text-foreground/70 leading-relaxed">{t.benefitDescription}</p>}
             </>
           ) : ( // PT version
             <>
@@ -69,19 +72,19 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 />
               )}
               {t.subtitle && (
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground/90">
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground/90 leading-snug">
                   {t.subtitle}
                 </h2>
               )}
               {t.description && (
-                <p className="text-lg md:text-xl mb-8 text-foreground/80">
+                <p className="text-lg md:text-xl mb-10 text-foreground/80 leading-relaxed">
                   {t.description}
                 </p>
               )}
             </>
           )}
           
-          <div className="space-y-4 md:space-y-0 md:space-x-4">
+          <div className="space-y-4 md:space-y-0 md:space-x-6">
             <Button 
               asChild
               size="lg" 
@@ -93,10 +96,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               <Button 
                 asChild
                 size="lg" 
-                variant="secondary"
+                variant="secondary" // This will now use the purple color
                 className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 px-8 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 inline-block"
               >
-                <Link href="#cases" onClick={(e) => scrollToSection(e, '#cases')}>{t.ctaSecondary}</Link>
+                <Link href="#cases" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
               </Button>
             )}
           </div>
@@ -105,5 +108,3 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
-
-    
