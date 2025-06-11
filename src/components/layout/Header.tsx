@@ -3,12 +3,13 @@
 
 import type { Dispatch, SetStateAction } from 'react';
 import Link from 'next/link';
-import { Menu } from 'lucide-react'; // Mountain icon removed as it's not in referencia
+import { Menu } from 'lucide-react';
 import LanguageToggle from '@/components/LanguageToggle';
 import type { Locale } from '@/lib/translations';
 import { getLang } from '@/lib/translations';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'; // Added SheetClose
+
 
 interface HeaderProps {
   locale: Locale;
@@ -17,15 +18,24 @@ interface HeaderProps {
 
 export default function Header({ locale, setLocale }: HeaderProps) {
   const t = getLang(locale);
-  const appNameT = t.appName; // Using appName from translations
+  const appNameT = t.appName;
 
-  const navItems = [
-    { href: '#hero', label: t.nav.home },
+  // PT: Início, Soluções, Portfólio, Contato.
+  // EN: Solutions, Work, About Us, Book a Call.
+  const navItems = locale === 'pt' ? [
+    { href: '#hero', label: t.nav.home! },
     { href: '#solutions', label: t.nav.solutions },
-    { href: '#for-whom', label: t.nav.forWhom },
-    { href: '#cases', label: t.nav.cases },
-    // About is not a primary nav item in referencia.html
+    { href: '#cases', label: t.nav.portfolio! },
+    // { href: '#about', label: t.nav.about! }, // About could be integrated elsewhere or a smaller link
+  ] : [
+    { href: '#solutions', label: t.nav.solutions },
+    { href: '#cases', label: t.nav.work! },
+    { href: '#about', label: t.nav.aboutUs! },
   ];
+
+  const contactCtaLabel = locale === 'pt' ? t.nav.contactCta : t.nav.bookCall!;
+  const contactCtaLink = "#contact";
+
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
@@ -37,8 +47,8 @@ export default function Header({ locale, setLocale }: HeaderProps) {
 
   const AppLogo = () => (
     <span className="text-2xl font-bold">
-      <span className="text-primary">{appNameT.split('#')[0]}#</span>
-      <span className="text-secondary">{appNameT.split('#')[1]}</span>
+      <span className="text-primary">{appNameT.includes('#') ? appNameT.split('#')[0] : appNameT}</span>
+      {appNameT.includes('#') && <span className="text-secondary">{appNameT.split('#')[1]}</span>}
     </span>
   );
 
@@ -65,19 +75,12 @@ export default function Header({ locale, setLocale }: HeaderProps) {
             asChild 
             size="sm"
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-md transition duration-300 transform hover:scale-105"
-            onClick={(e) => {
-              const contactElement = document.getElementById('contact');
-              if (contactElement) {
-                e.preventDefault();
-                contactElement.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
           >
-            <Link href="#contact">{t.nav.contactCta}</Link>
+            <Link href={contactCtaLink} onClick={(e) => scrollToSection(e, contactCtaLink)}>{contactCtaLabel}</Link>
           </Button>
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden"> {/* Show only on mobile */}
+        <div className="flex items-center gap-2 md:hidden">
           <LanguageToggle locale={locale} setLocale={setLocale} />
           <Sheet>
             <SheetTrigger asChild>
@@ -88,11 +91,13 @@ export default function Header({ locale, setLocale }: HeaderProps) {
             </SheetTrigger>
             <SheetContent side="right" className="bg-card">
               <div className="grid gap-4 p-4">
-                <Link href="#hero" className="flex items-center gap-2 mb-4" onClick={(e) => { scrollToSection(e, '#hero'); /* Close sheet */ }}>
-                   <AppLogo />
-                </Link>
+                <SheetClose asChild>
+                  <Link href="#hero" className="flex items-center gap-2 mb-4" onClick={(e) => scrollToSection(e, '#hero')}>
+                    <AppLogo />
+                  </Link>
+                </SheetClose>
                 {navItems.map((item) => (
-                  <SheetTrigger asChild key={item.label}>
+                  <SheetClose asChild key={item.label}>
                     <Link
                       href={item.href}
                       onClick={(e) => scrollToSection(e, item.href)}
@@ -100,31 +105,26 @@ export default function Header({ locale, setLocale }: HeaderProps) {
                     >
                       {item.label}
                     </Link>
-                  </SheetTrigger>
+                  </SheetClose>
                 ))}
-                <SheetTrigger asChild>
+                <SheetClose asChild>
                   <Button 
                     asChild 
                     className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-                    onClick={(e) => {
-                        const contactElement = document.getElementById('contact');
-                        if (contactElement) {
-                            e.preventDefault();
-                            contactElement.scrollIntoView({ behavior: 'smooth' });
-                        }
-                        }}
-                    >
-                    <Link href="#contact">{t.nav.contactCta}</Link>
+                  >
+                    <Link href={contactCtaLink} onClick={(e) => scrollToSection(e, contactCtaLink)}>{contactCtaLabel}</Link>
                   </Button>
-                </SheetTrigger>
+                </SheetClose>
               </div>
             </SheetContent>
           </Sheet>
         </div>
-         <div className="hidden md:flex items-center"> {/* Show only on desktop */}
+         <div className="hidden md:flex items-center">
           <LanguageToggle locale={locale} setLocale={setLocale} />
         </div>
       </div>
     </header>
   );
 }
+
+    

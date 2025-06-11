@@ -1,10 +1,11 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'VertexMedia', // Will be 1#mensband from referencia? PRD is VertexMedia. Keep VertexMedia.
-  description: 'Performance content for agencies and production companies.', // Updated later from translations
+  title: 'VertexMedia', 
+  description: 'High-Performance Video That Drives Revenue & Results.', // EN focused
 };
 
 export default function RootLayout({
@@ -13,7 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark"> {/* Defaulting to dark theme as per referencia.html and previous user req */}
+    // Defaulting to dark theme as per PRD and new brief's "dark mode"
+    <html lang="en" className="dark"> 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -27,3 +29,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

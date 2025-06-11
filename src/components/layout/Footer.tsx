@@ -13,20 +13,29 @@ interface FooterProps {
 export default function Footer({ locale }: FooterProps) {
   const t = getLang(locale);
   const currentYear = new Date().getFullYear();
+  const appNameT = t.appName;
 
   const AppLogo = () => (
-    <span className="text-3xl font-bold mb-4 inline-block">
-      <span className="text-primary">{t.appName.split('#')[0]}#</span>
-      <span className="text-secondary">{t.appName.split('#')[1]}</span>
-    </span>
+     <span className="text-3xl font-bold mb-4 inline-block">
+       <span className="text-primary">{appNameT.includes('#') ? appNameT.split('#')[0] : appNameT}</span>
+       {appNameT.includes('#') && <span className="text-secondary">{appNameT.split('#')[1]}</span>}
+     </span>
   );
+  
+  // Footer nav links based on locale and available translations
+  const navLinks = [];
+  if (locale === 'pt' && t.footer.navLinks.home) {
+    navLinks.push({ href: "#hero", label: t.footer.navLinks.home });
+  }
+  navLinks.push({ href: "#solutions", label: t.footer.navLinks.solutions });
+  if (t.footer.navLinks.work) { // Covers both PT Portfolio and EN Work
+    navLinks.push({ href: "#cases", label: t.footer.navLinks.work });
+  }
+  // if (locale === 'en' && t.footer.navLinks.aboutUs) {
+  //   navLinks.push({ href: "#about", label: t.footer.navLinks.aboutUs });
+  // }
+  navLinks.push({ href: "#contact", label: t.footer.navLinks.contact });
 
-  const navLinks = [
-    { href: "#hero", label: t.footer.navLinks.home },
-    { href: "#solutions", label: t.footer.navLinks.solutions },
-    { href: "#cases", label: t.footer.navLinks.cases },
-    { href: "#contact", label: t.footer.navLinks.contact },
-  ];
 
    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
@@ -37,7 +46,7 @@ export default function Footer({ locale }: FooterProps) {
   };
 
   return (
-    <footer className="border-t bg-card text-muted-foreground"> {/* Matched bg-gray-800 from ref */}
+    <footer className="border-t bg-card text-muted-foreground">
       <div className="container py-12 text-center">
         <Link href="#hero" onClick={(e) => scrollToSection(e, "#hero")}>
           <AppLogo />
@@ -75,3 +84,5 @@ export default function Footer({ locale }: FooterProps) {
     </footer>
   );
 }
+
+    
