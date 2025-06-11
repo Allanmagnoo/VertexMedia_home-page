@@ -44,25 +44,20 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
           {locale === 'en' ? (
             <>
-              {t.problemTitle && (
-                <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-foreground/80 leading-snug" // mb reduced
-                    dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.problemTitle, 'text-secondary') }} />
+              {t.mainHeadline && (
+                <h1
+                  className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-foreground" // Adjusted font size, mb
+                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainHeadline) }}
+                />
               )}
-              {t.problemDescription && <p className="text-md md:text-lg mb-6 text-foreground/70 leading-relaxed">{t.problemDescription}</p>} {/* mb reduced */}
-
-              {t.solutionTitle && (
-                <h1 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground" // mb reduced
-                    dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.solutionTitle) }} />
+              {t.subHeadline && (
+                <p
+                  className="text-lg md:text-xl lg:text-2xl font-medium mb-10 text-foreground/80 leading-relaxed" // Adjusted font size, mb
+                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subHeadline) }}
+                />
               )}
-              {t.solutionDescription && <p className="text-lg md:text-xl mb-6 text-foreground/80 leading-relaxed">{t.solutionDescription}</p>} {/* mb reduced */}
-
-              {t.benefitTitle && (
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground/90 leading-snug" // mb reduced
-                    dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.benefitTitle, 'text-primary') }} />
-              )}
-              {t.benefitDescription && <p className="text-md md:text-lg mb-10 text-foreground/70 leading-relaxed">{t.benefitDescription}</p>} {/* mb reduced */}
             </>
-          ) : ( 
+          ) : (
             <>
               {t.title && (
                 <h1
@@ -73,7 +68,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               {t.subtitle && (
                 <h2
                   className="text-3xl md:text-5xl font-bold mb-6 text-foreground/90 leading-snug"
-                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subtitle) }}
+                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subtitle, 'text-primary', 'gradient-text') }}
                 />
               )}
               {t.description && (
@@ -97,7 +92,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               <Button
                 asChild
                 size="lg"
-                variant="secondary" 
+                variant="secondary"
                 className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 px-8 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 inline-block"
               >
                 <Link href="#solutions" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
@@ -109,4 +104,3 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
-

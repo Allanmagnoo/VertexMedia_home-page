@@ -2,25 +2,24 @@
 export type Locale = 'en' | 'pt';
 
 // EN specific types for more structured content
-export interface ServiceCardEn { // Renamed from ServiceDetailEn and simplified
+export interface ServiceCardEn {
   icon?: string;
   title: string;
-  shortDescription: string; // New: concise description of the service
-  keyFeatures: string[]; // Replaces solution.listItems
-  // problem, solution.description, benefit are removed from individual card structure
+  shortDescription: string;
+  keyFeatures: string[];
   cta?: string;
   ctaLink?: string;
 }
 
 export interface CaseStudyEn {
   title: string;
-  client?: string; 
+  client?: string;
   challenge: string;
   ourSolution: string;
-  result: string; 
+  result: string;
   imageUrl: string;
   imageHint: string;
-  tags?: string[]; 
+  tags?: string[];
 }
 
 export interface CaseStudyCategoryEn {
@@ -68,26 +67,27 @@ export type Translations = {
     contactCta: string;
   };
   hero: {
+    // PT specific (current structure)
     mainImageUrl?: string;
     mainImageHint?: string;
-    problemTitle?: string;
-    problemDescription?: string;
-    solutionTitle?: string;
-    solutionDescription?: string;
-    benefitTitle?: string;
-    benefitDescription?: string;
-    title?: string;
-    subtitle?: string;
-    description?: string;
+    title?: string; // PT main title
+    subtitle?: string; // PT subtitle
+    description?: string; // PT description
+
+    // EN specific (new structure)
+    mainHeadline?: string; // EN H1
+    subHeadline?: string; // EN supporting text/H2
+
+    // Common
     ctaPrimary: string;
-    ctaSecondary?: string;
+    ctaSecondary?: string; // Only for PT currently
   };
   solutions: {
     mainTitle: string;
-    description?: string; // For EN main intro - General Problem/Context
-    servicesEn?: ServiceCardEn[]; // Updated type
+    description?: string;
+    servicesEn?: ServiceCardEn[];
     servicesPt?: DetailCardContentPt[];
-    problemStatement?: { // For PT main intro
+    problemStatement?: {
         title: string;
         description: string;
         cta: string;
@@ -140,7 +140,7 @@ export type Translations = {
     navLinks: {
       home?: string;
       solutions: string;
-      work?: string; 
+      work?: string;
       aboutUs?: string;
       contact: string;
     };
@@ -175,7 +175,7 @@ export const translations: Record<Locale, Translations> = {
     },
     solutions: {
       mainTitle: 'Soluções em Vídeo Sob Medida para Seus <gradient>Objetivos</gradient>',
-      problemStatement: { // This is the general intro for PT
+      problemStatement: {
         title: 'Necessita de um Parceiro Audiovisual que Entenda Seus <highlight class="text-primary">Desafios Criativos e Técnicos</highlight>?',
         description: 'Produzir vídeos de qualidade, em volume e com criatividade, é um desafio. A VertexMedia oferece suporte audiovisual completo, da concepção à entrega, garantindo que suas campanhas atinjam o máximo potencial.',
         cta: 'Descubra Nossas Capacidades'
@@ -218,7 +218,7 @@ export const translations: Record<Locale, Translations> = {
             'Flexibilidade e Atendimento Personalizado',
           ],
           cta: 'Para Quem Servimos',
-          ctaLink: '#about', 
+          ctaLink: '#about',
         },
       ],
     },
@@ -253,7 +253,7 @@ export const translations: Record<Locale, Translations> = {
       ],
       portfolioCta: 'Ver Portfólio Completo',
     },
-    about: { 
+    about: {
       mainTitle: 'VertexMedia: Criatividade e Técnica <highlight class="text-primary">a Serviço da Sua Marca</highlight>',
       description: 'Somos mais que uma produtora: somos parceiros estratégicos que unem paixão por audiovisual com expertise técnica para entregar soluções que realmente fazem a diferença. Nossa equipe dedicada está pronta para transformar suas ideias em realidade visual.',
       imageUrl: 'https://placehold.co/600x400.png/111827/9CA3AF',
@@ -298,27 +298,23 @@ export const translations: Record<Locale, Translations> = {
     appName: "VertexMedia",
     nav: {
       solutions: 'Solutions',
-      work: 'Work', 
+      work: 'Work',
       aboutUs: 'About Us',
-      contactCta: 'Book a Call', 
+      contactCta: 'Book a Call',
     },
     hero: {
-      problemTitle: "Struggling with video creative that <highlight>fails to convert</highlight> and <highlight>drains ad spend</highlight>?",
-      problemDescription: "Many businesses find it hard to consistently produce video content that drives results like lower CPAs and higher ROAS, especially at scale.",
-      solutionTitle: "VertexMedia: Your Remote Post-Production Partner for <gradient>Data-Driven Video Assets</gradient>.",
-      solutionDescription: "We create high-performance video content for performance marketing agencies, SaaS companies, and B2B marketers. Our seamless workflow and metric-driven approach mean you get video that works.",
-      benefitTitle: "The Bottom Line? Better Videos, <highlight>Better Metrics</highlight>, <highlight>Higher ROI</highlight>.",
-      benefitDescription: "Stop guessing, start converting. Partner with VertexMedia to turn your video strategy into a revenue engine.",
+      mainHeadline: "High-Performance Video That Drives <gradient>Revenue & Results</gradient>.",
+      subHeadline: "VertexMedia: Expert remote post-production for marketing agencies, SaaS, and B2B. We deliver video that <highlight>converts</highlight>.",
       ctaPrimary: 'Book a Discovery Call',
     },
     solutions: {
       mainTitle: 'Video Solutions That <gradient>Drive Business Growth</gradient>',
-      description: "Tired of video that doesn't perform? We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage.", // General intro/problem statement for EN
-      servicesEn: [ // Uses new ServiceCardEn structure
+      description: "Tired of video that doesn't perform? We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage.",
+      servicesEn: [
         {
           icon: 'TrendingUp',
           title: 'Performance Creative at Scale',
-          shortDescription: "Skyrocket your campaign results with a continuous flow of conversion-focused video ads, built for A/B testing and peak performance.",
+          shortDescription: "Skyrocket campaign results with a continuous flow of conversion-focused video ads, built for A/B testing and peak performance.",
           keyFeatures: [
             "High-volume video ad variations (Meta, TikTok, YouTube)",
             "Direct response & UGC-style ad creation",
@@ -330,26 +326,26 @@ export const translations: Record<Locale, Translations> = {
         },
         {
           icon: 'Video',
-          title: 'Brand Storytelling & Explainer Videos',
+          title: 'Brand Storytelling & Explainers',
           shortDescription: "Simplify complex ideas and build strong brand connections with clear, compelling video narratives that engage and convert.",
           keyFeatures: [
             "Animated & live-action explainer videos",
             "SaaS product demo & tutorial videos",
             "Corporate brand films & company stories",
-            "Testimonial & case study videos with expert finalization",
+            "Testimonial & case study videos (expert finalization)",
           ],
           cta: 'Tell Your Story Effectively',
           ctaLink: '#contact',
         },
         {
-          icon: 'Users', // Consider Briefcase or PackageCheck for "White-Label"
-          title: 'White-Label Post-Production for Agencies',
+          icon: 'Users',
+          title: 'White-Label for Agencies',
           shortDescription: "Expand your agency's video capabilities seamlessly. We act as your invisible, expert post-production team, delivering quality under your brand.",
           keyFeatures: [
             "Full-service video editing & assembly",
             "Advanced motion graphics, VFX & 2D/3D animation",
             "Professional color grading & sound design",
-            "Version control & asset management for social campaigns",
+            "Version control & asset management for campaigns",
           ],
           cta: 'Scale Your Agency with Us',
           ctaLink: '#contact',
@@ -364,25 +360,25 @@ export const translations: Record<Locale, Translations> = {
             {
               title: 'SaaS Co. Onboarding Video Series',
               client: 'B2B SaaS Platform',
-              challenge: "Experienced a 40% user drop-off within the first week of trial, primarily due to product complexity during onboarding.",
-              ourSolution: "We produced a series of 7 short, engaging tutorial videos (average 90 seconds) integrated directly into their platform's onboarding flow, guiding users through key features with clear visuals and motion graphics.",
-              result: "+30% user retention after the first week; -25% support tickets related to onboarding; 15% increase in trial-to-paid conversion.",
+              challenge: "High user drop-off (40%) in the first trial week due to product complexity during onboarding.",
+              ourSolution: "Produced 7 short, engaging tutorial videos (avg. 90s) integrated into the onboarding flow, guiding users through key features with clear visuals.",
+              result: "+30% user retention (Wk1); -25% onboarding support tickets; +15% trial-to-paid conversion.",
               imageUrl: 'https://placehold.co/600x338.png/3F51B5/FFFFFF', imageHint: 'saas onboarding video', tags: ["SaaS", "Explainer Video", "User Retention"]
             },
             {
-              title: 'Performance Marketing Agency Ad Creative Overhaul',
-              client: 'D2C E-commerce Brand (via Agency)',
-              challenge: "Client in the D2C space was seeing CPA increase by 15% month-over-month due to creative fatigue on Meta and TikTok.",
-              ourSolution: "VertexMedia delivered 20+ unique video ad variations (UGC-style, animated, direct response) within a 2-week sprint for A/B testing, focusing on new hooks and benefit-driven messaging, optimized for each platform.",
-              result: "Average CPA reduced by 18% across campaigns; ROAS increased by 1.2x; Client scaled ad spend by 40% while maintaining profitability.",
+              title: 'D2C Ad Creative Overhaul',
+              client: 'E-commerce Brand (via Agency)',
+              challenge: "Client's CPA increased 15% MoM due to creative fatigue on Meta & TikTok.",
+              ourSolution: "Delivered 20+ unique video ad variations (UGC-style, animated, direct response) in a 2-week sprint for A/B testing, focusing on new hooks and benefit-driven messaging.",
+              result: "Average CPA -18%; ROAS +1.2x; Ad spend scaled by 40% while maintaining profitability.",
               imageUrl: 'https://placehold.co/600x338.png/FFB300/333333', imageHint: 'ad creative performance', tags: ["Performance Marketing", "A/B Testing", "Social Ads"]
             },
              {
               title: 'Tech Startup Employer Branding Film',
               client: 'Fast-Growing Tech Innovator',
-              challenge: "Needed to attract senior engineering talent in a competitive market but struggled to convey its unique culture and mission.",
-              ourSolution: "We created a compelling 3-minute brand film showcasing employee stories, the company's innovative work environment, and its impactful vision, used across their careers page and LinkedIn. The film featured high-quality cinematography and color correction.",
-              result: "200% increase in qualified applications for senior roles; Positive feedback on company culture from candidates; Used as a sales tool for B2B enterprise deals.",
+              challenge: "Needed to attract senior engineering talent in a competitive market but struggled to convey its unique culture.",
+              ourSolution: "Created a compelling 3-min brand film showcasing employee stories, company's innovative work, and vision. Used on careers page & LinkedIn. Featured quality cinematography & color correction.",
+              result: "+200% qualified applications (sr. roles); Positive feedback on culture; Used as a sales tool for B2B deals.",
               imageUrl: 'https://placehold.co/600x338.png/1A1A2E/EEEEEE', imageHint: 'employer branding film', tags: ["Brand Storytelling", "Recruitment", "Tech"]
             }
           ],
@@ -450,7 +446,7 @@ export const renderHighlightedText = (text: string | undefined, defaultHighlight
   let processedText = text;
 
   processedText = processedText.replace(highlightPattern, (match, customClass, content) => {
-    const highlightClass = customClass || defaultHighlightClass || 'text-primary font-semibold'; 
+    const highlightClass = customClass || defaultHighlightClass || 'text-primary font-semibold';
     return `<span class="${highlightClass}">${content}</span>`;
   });
 
@@ -461,4 +457,3 @@ export const renderHighlightedText = (text: string | undefined, defaultHighlight
 
   return processedText;
 };
-
