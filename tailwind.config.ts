@@ -96,7 +96,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards', /* Adjusted easing and duration */
+        'fade-in': 'fade-in 0.6s cubic-bezier(0.05, 0.7, 0.1, 1.0) forwards', /* M3 Emphasized Decelerate easing */
       },
     },
   },
