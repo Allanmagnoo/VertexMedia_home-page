@@ -47,27 +47,27 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     return (
       <Card
         key={service.title}
-        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group w-full max-w-md" // Adicionado w-full max-w-md
+        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group w-full max-w-md text-center" 
       >
         <CardHeader className="flex flex-col items-center p-0 mb-5 text-center"> 
           <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
             <SolutionIcon className={`h-8 w-8 ${colorTheme.main}`} />
           </div>
-          <CardTitle className="text-2xl font-semibold text-foreground mb-3">{service.title}</CardTitle>
+          <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
         </CardHeader>
 
         <CardContent className="p-0 flex-grow space-y-5 text-center">
           <div>
-            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2`}>
+            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2 text-center`}>
               <ProblemIcon className={`w-5 h-5 mr-2.5 ${colorTheme.main}`} /> {service.problem.title}
             </h4>
-            <p className="text-foreground/80 text-sm leading-relaxed">{service.problem.description}</p>
+            <p className="text-foreground/80 text-sm leading-relaxed text-center">{service.problem.description}</p>
           </div>
           <div>
-            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2`}>
+            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2 text-center`}>
               <SolutionIcon className={`w-5 h-5 mr-2.5 ${colorTheme.main}`} /> {service.solution.title}
             </h4>
-            <p className="text-foreground/70 text-sm leading-relaxed mb-2">{service.solution.description}</p>
+            <p className="text-foreground/70 text-sm leading-relaxed mb-2 text-center">{service.solution.description}</p>
             {service.solution.listItems && (
               <ul className="text-foreground/70 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-xs mx-auto">
                 {service.solution.listItems.map((item, idx) => <li key={idx}>{item}</li>)}
@@ -75,10 +75,10 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
             )}
           </div>
            <div>
-            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2`}>
+            <h4 className={`flex items-center justify-center text-lg font-semibold text-foreground/90 mb-2 text-center`}>
                <BenefitIcon className={`w-5 h-5 mr-2.5 ${colorTheme.main}`} /> {service.benefit.title}
             </h4>
-            <p className="text-foreground/70 text-sm leading-relaxed">{service.benefit.description}</p>
+            <p className="text-foreground/70 text-sm leading-relaxed text-center">{service.benefit.description}</p>
           </div>
         </CardContent>
 
@@ -111,7 +111,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     return (
       <Card
         key={service.title}
-        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group w-full max-w-md" // Adicionado w-full max-w-md
+        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group w-full max-w-md text-center" 
       >
         <CardHeader className="flex flex-col items-center p-0 mb-5 text-center">
           {IconComponent && (
@@ -119,10 +119,10 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
               <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
             </div>
           )}
-          <CardTitle className="text-2xl font-semibold text-foreground mb-3">{service.title}</CardTitle>
+          <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
         </CardHeader>
         <CardContent className="p-0 flex-grow text-center">
-          {service.description && <CardDescription className="text-foreground/70 mb-4 text-sm leading-relaxed">{service.description}</CardDescription>}
+          {service.description && <CardDescription className="text-foreground/70 mb-4 text-sm leading-relaxed text-center">{service.description}</CardDescription>}
           {service.listItems && (
             <ul className="text-foreground/70 text-sm space-y-2 list-disc list-outside pl-5 text-left max-w-xs mx-auto"> 
               {service.listItems.map((item, idx) => (
@@ -148,8 +148,8 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     );
   };
 
+  // section py-16 md:py-24 bg-card -> bg-gray-800 in ref (bg-card is fine from theme)
   return (
-    // section py-16 md:py-24 bg-card -> bg-gray-800 in ref (bg-card is fine from theme)
     <section id="solutions" className="bg-card">
       <div className="container px-6"> 
         <div className="text-center mb-12 md:mb-16">
@@ -174,7 +174,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
              </p>
            ) : null}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center max-w-screen-xl mx-auto">
           {locale === 'en' && t.servicesEn?.map((service, index) => renderServiceCardEn(service, index))}
           {locale === 'pt' && t.servicesPt?.map((service, index) => renderServiceCardPt(service, index))}
         </div>
@@ -182,3 +182,5 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     </section>
   );
 }
+
+    
