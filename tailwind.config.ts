@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'], // Using Inter for headlines as well, relying on font weight for distinction
+        headline: ['Inter', 'sans-serif'], 
         code: ['monospace'],
       },
       colors: {
@@ -67,9 +67,9 @@ export default {
         },
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        lg: 'var(--radius)', // M3 often uses larger radii for "large" components
+        md: 'calc(var(--radius) - 0.25rem)', // Medium radius
+        sm: 'calc(var(--radius) - 0.375rem)', // Small radius
       },
       keyframes: {
         'accordion-down': {
@@ -88,15 +88,15 @@ export default {
             height: '0',
           },
         },
-        'fade-in': {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        'fade-in': { /* Updated fade-in for M3 feel */
+          '0%': { opacity: '0', transform: 'translateY(16px) scale(0.98)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'fade-in': 'fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards', /* Adjusted easing and duration */
       },
     },
   },
