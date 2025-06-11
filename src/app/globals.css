@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'PT Sans', sans-serif;
-}
+/* Removed redundant body font-family rule as Tailwind's base layer handles it via font-body */
 
 @layer base {
   :root {
