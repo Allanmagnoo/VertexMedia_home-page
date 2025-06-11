@@ -13,7 +13,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ locale }: HeroSectionProps) {
   const t = getLang(locale).hero;
-  
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, sectionId: string) => {
     e.preventDefault();
     const element = document.getElementById(sectionId.substring(1));
@@ -22,19 +22,20 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     }
   };
 
+  // Styles from referencia.html: hero-bg-dark, bg-opacity, p-8 md:p-16
+  // Theme: bg-card/70 for overlay, bg-background/70 for content box
   return (
-    <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-20 md:py-32">
-      {/* Inspired by referencia.html hero-bg-dark and bg-opacity for the content box */}
-      <div className="absolute inset-0 bg-card/70 z-0"></div> 
-      
-      <div className="container relative z-10 text-center max-w-4xl mx-auto">
-        <div className="bg-background/70 backdrop-blur-sm p-8 md:p-12 rounded-xl shadow-2xl animate-fade-in animation-delay-200">
+    <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-20 md:py-28"> {/* Adjusted padding */}
+      <div className="absolute inset-0 bg-card/70 z-0"></div>
+
+      <div className="container relative z-10 text-center max-w-4xl mx-auto px-6"> {/* Added px-6 to container */}
+        <div className="bg-background/70 backdrop-blur-sm p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl animate-fade-in animation-delay-200"> {/* Adjusted padding */}
           {locale === 'pt' && t.mainImageUrl && (
             <div className="mx-auto mb-8 w-full max-w-md">
               <Image
                 src={t.mainImageUrl}
                 alt={t.mainImageHint || "VertexMedia Hero Image"}
-                data-ai-hint={t.mainImageHint || "equipe colaborando video"}
+                data-ai-hint={t.mainImageHint || "vertexmedia audiovisual estrategico"}
                 width={500}
                 height={250}
                 className="rounded-lg object-contain"
@@ -50,56 +51,59 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.problemTitle, 'text-secondary') }} />
               )}
               {t.problemDescription && <p className="text-md md:text-lg mb-8 text-foreground/70 leading-relaxed">{t.problemDescription}</p>}
-              
+
               {t.solutionTitle && (
-                <h1 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground"
+                <h1 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-foreground" // Increased mb
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.solutionTitle) }} />
               )}
               {t.solutionDescription && <p className="text-lg md:text-xl mb-8 text-foreground/80 leading-relaxed">{t.solutionDescription}</p>}
 
               {t.benefitTitle && (
-                <h3 className="text-xl md:text-2xl font-bold mb-6 text-foreground/90 leading-snug"
+                <h3 className="text-xl md:text-2xl font-bold mb-6 text-foreground/90 leading-snug" // was font-bold, consistent with PT h2
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.benefitTitle, 'text-primary') }} />
               )}
-              {t.benefitDescription && <p className="text-md md:text-lg mb-10 text-foreground/70 leading-relaxed">{t.benefitDescription}</p>}
+              {t.benefitDescription && <p className="text-md md:text-lg mb-12 text-foreground/70 leading-relaxed">{t.benefitDescription}</p>} {/* Increased mb */}
             </>
-          ) : ( // PT version
+          ) : ( // PT version - matching referencia.html structure and classes
             <>
               {t.title && (
-                <h1 
+                <h1
                   className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight text-foreground"
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.title) }}
                 />
               )}
               {t.subtitle && (
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground/90 leading-snug">
-                  {t.subtitle}
-                </h2>
+                <h2
+                  className="text-3xl md:text-5xl font-bold mb-6 text-foreground/90 leading-snug"
+                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subtitle) }}
+                />
               )}
               {t.description && (
-                <p className="text-lg md:text-xl mb-10 text-foreground/80 leading-relaxed">
-                  {t.description}
-                </p>
+                <p
+                  className="text-lg md:text-xl mb-10 text-foreground/80 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.description) }}
+                />
               )}
             </>
           )}
-          
+
           <div className="space-y-4 md:space-y-0 md:space-x-6">
-            <Button 
+            <Button
               asChild
-              size="lg" 
+              size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-8 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 inline-block"
             >
               <Link href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>{t.ctaPrimary}</Link>
             </Button>
+            {/* Secondary CTA for PT, matching referencia.html */}
             {locale === 'pt' && t.ctaSecondary && (
-              <Button 
+              <Button
                 asChild
-                size="lg" 
-                variant="secondary" // This will now use the purple color
+                size="lg"
+                variant="secondary" // Uses purple
                 className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 px-8 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 inline-block"
               >
-                <Link href="#cases" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
+                <Link href="#solutions" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
               </Button>
             )}
           </div>

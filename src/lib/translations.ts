@@ -37,7 +37,7 @@ export interface CaseStudyEn {
 }
 
 export interface CaseStudyCategoryEn {
-  categoryTitle?: string; 
+  categoryTitle?: string;
   cases: CaseStudyEn[];
 }
 
@@ -46,7 +46,7 @@ export interface CaseStudyCategoryEn {
 export type DetailCardContentPt = {
   icon?: string;
   title: string;
-  description?: string; 
+  description?: string;
   listItems?: string[];
   cta?: string;
   ctaLink?: string;
@@ -55,7 +55,7 @@ export type DetailCardContentPt = {
 };
 
 export type CaseStudyPt = {
-  title: string;
+  title:string;
   description: string;
   imageUrl: string;
   imageHint: string;
@@ -71,17 +71,17 @@ export type CaseStudyCategoryPt = {
 export type Translations = {
   appName: string;
   nav: {
-    home?: string; 
+    home?: string;
     solutions: string;
-    portfolio?: string; 
-    work?: string; 
-    aboutUs?: string; 
-    contact?: string; 
-    bookCall?: string; 
-    contactCta: string; 
+    portfolio?: string;
+    work?: string;
+    aboutUs?: string;
+    contact?: string;
+    bookCall?: string;
+    contactCta: string;
   };
   hero: {
-    mainImageUrl?: string; 
+    mainImageUrl?: string;
     mainImageHint?: string;
     problemTitle?: string;
     problemDescription?: string;
@@ -93,14 +93,14 @@ export type Translations = {
     subtitle?: string;
     description?: string;
     ctaPrimary: string;
-    ctaSecondary?: string; 
+    ctaSecondary?: string;
   };
   solutions: {
     mainTitle: string;
     description?: string; // For EN main intro
-    servicesEn?: ServiceDetailEn[]; 
-    servicesPt?: DetailCardContentPt[]; 
-    problemStatement?: { 
+    servicesEn?: ServiceDetailEn[];
+    servicesPt?: DetailCardContentPt[];
+    problemStatement?: {
         title: string;
         description: string;
         cta: string;
@@ -108,13 +108,13 @@ export type Translations = {
   };
   caseStudies: {
     mainTitle: string;
-    categoriesEn?: CaseStudyCategoryEn[]; 
-    categoriesPt?: CaseStudyCategoryPt[]; 
-    portfolioCta: string; 
+    categoriesEn?: CaseStudyCategoryEn[];
+    categoriesPt?: CaseStudyCategoryPt[];
+    portfolioCta: string;
   };
   about: {
     mainTitle: string;
-    description: string; 
+    description: string;
     imageUrl?: string;
     imageHint?: string;
     ourEdge?: {
@@ -142,15 +142,15 @@ export type Translations = {
     formEmail: string;
     formCompany?: string;
     formMessage: string;
-    formSubmit: string; 
+    formSubmit: string;
     successMessage: string;
     errorMessage: string;
-    contactDirectly?: string; 
+    contactDirectly?: string;
     phone?: string;
     email?: string;
   };
   footer: {
-    navLinks: { 
+    navLinks: {
       home?: string;
       solutions: string;
       work?: string; // or portfolio
@@ -169,34 +169,34 @@ export type Translations = {
 
 export const translations: Record<Locale, Translations> = {
   pt: {
-    appName: "VertexMedia",
+    appName: "VertexMedia", // Corrected name from referencia
     nav: {
       home: 'Início',
       solutions: 'Nossas Soluções',
-      portfolio: 'Cases',
-      contact: 'Contato',
+      portfolio: 'Cases', // 'Portfólio' from PRD, 'Cases' from referencia
+      contact: 'Contato', // 'Contato' from PRD, 'Fale Conosco' from referencia
       contactCta: 'Fale Conosco',
     },
     hero: {
-      mainImageUrl: "https://placehold.co/500x250/1F2937/9CA3AF", // Placeholder from referencia, matches dark theme
+      mainImageUrl: "https://placehold.co/500x250/1F2937/9CA3AF",
       mainImageHint: "vertexmedia audiovisual estrategico",
-      title: 'VertexMedia: Seu <gradient>Braço Audiovisual Inovador</gradient>',
-      subtitle: 'Vídeos de Alta Performance que <gradient>Elevam sua Marca</gradient>.',
-      description: 'Suporte audiovisual criativo e técnico para agências, produtores e empresas. Transformamos ideias em vídeos de alto impacto.',
+      title: 'VertexMedia: Seu Braço Audiovisual <gradient>Inovador</gradient>',
+      subtitle: 'Vídeos que <gradient>Elevam sua Marca</gradient>.',
+      description: 'Suporte audiovisual criativo e técnico para agências, produtores e empresas. Transformamos <gradient>ideias em vídeos</gradient> de alto impacto.',
       ctaPrimary: 'Fale com um Especialista',
       ctaSecondary: 'Nossas Soluções',
     },
     solutions: {
-      mainTitle: 'Soluções em Vídeo <gradient>Sob Medida para Seus Objetivos</gradient>',
-      problemStatement: {
-        title: 'Necessita de um Parceiro Audiovisual que Entenda Seus <highlight>Desafios Criativos e Técnicos</highlight>?',
+      mainTitle: 'Soluções em Vídeo Sob Medida para Seus <gradient>Objetivos</gradient>',
+      problemStatement: { // This block is specific to PT, based on referencia
+        title: 'Necessita de um Parceiro Audiovisual que Entenda Seus <highlight class="text-primary">Desafios Criativos e Técnicos</highlight>?', // Using highlight with specific class for blue
         description: 'Produzir vídeos de qualidade, em múltiplos formatos e volumes, mantendo a criatividade e a eficiência, é nosso foco. A VertexMedia está aqui para ser seu suporte audiovisual completo, desde a concepção até a entrega final.',
         cta: 'Descubra Nossas Capacidades'
       },
       servicesPt: [
         {
-          icon: 'Sparkles', // Matches 'Criatividade' icon in ref (similar to lightbulb/idea)
-          title: 'Criação e Produção de Alto Impacto',
+          icon: 'Sparkles',
+          title: 'Criação e Produção', // Simplified from 'Criação e Produção de Alto Impacto' for brevity
           listItems: [
             'Vídeos Institucionais e Corporativos',
             'Criativos para Redes Sociais (alto volume)',
@@ -207,8 +207,8 @@ export const translations: Record<Locale, Translations> = {
           ctaLink: '#contact',
         },
         {
-          icon: 'Settings2', // Matches 'Engrenagem' icon in ref (technical/pós-produção)
-          title: 'Pós-Produção e Finalização de Excelência',
+          icon: 'Settings2',
+          title: 'Pós-Produção e Finalização', // Simplified from 'Pós-Produção e Finalização de Excelência'
            listItems: [
             'Edição Profissional (Entrevistas, VSLs)',
             'Correção de Cor e Tratamento de Imagem',
@@ -216,11 +216,11 @@ export const translations: Record<Locale, Translations> = {
             'Finalização e Otimização Multiplataforma',
           ],
           cta: 'Ver Detalhes',
-          ctaLink: '#contact',
+          ctaLink: '#contact', // Assuming details lead to contact or a specific service page later
         },
         {
-          icon: 'Users2', // Matches 'Pessoas/Consultoria' icon in ref
-          title: 'Seu Braço Audiovisual Estratégico',
+          icon: 'Users2',
+          title: 'Seu Braço Audiovisual', // Simplified from 'Seu Braço Audiovisual Estratégico'
           listItems: [
             'Parceria Estratégica com Agências',
             'Suporte Técnico para Produtores',
@@ -228,7 +228,7 @@ export const translations: Record<Locale, Translations> = {
             'Flexibilidade e Atendimento Personalizado',
           ],
           cta: 'Para Quem Servimos',
-          ctaLink: '#about', // was #para-quem which doesn't exist
+          ctaLink: '#about',
         },
       ],
     },
@@ -263,19 +263,19 @@ export const translations: Record<Locale, Translations> = {
       ],
       portfolioCta: 'Ver Portfólio Completo',
     },
-    about: {
-      mainTitle: 'VertexMedia: Criatividade e Técnica <highlight>a Serviço da Sua Marca</highlight>',
-      description: 'Somos mais que uma produtora: somos parceiros estratégicos que unem paixão por audiovisual com expertise técnica para entregar soluções que realmente fazem a diferença. Nosso compromisso é com a sua visão e o seu sucesso.',
-      imageUrl: 'https://placehold.co/600x400/111827/9CA3AF', // from referencia.html
+    about: { // "Sobre Nós" from referencia.html
+      mainTitle: 'VertexMedia: Criatividade e Técnica <highlight class="text-primary">a Serviço da Sua Marca</highlight>', // text-blue-400 in ref
+      description: 'Somos mais que uma produtora: somos parceiros estratégicos que unem paixão por audiovisual com expertise técnica para entregar soluções que realmente fazem a diferença.', // Simplified from ref
+      imageUrl: 'https://placehold.co/600x400/111827/9CA3AF',
       imageHint: 'sobre vertexmedia equipe',
-      keyPointsPt: [
+      keyPointsPt: [ // From referencia.html structure
         { icon: 'Briefcase', title: 'Expertise Completa', text: 'Da concepção à finalização, cobrimos todas as etapas do seu projeto audiovisual.' },
         { icon: 'Cpu', title: 'Processos Inteligentes', text: 'Fluxos de trabalho otimizados para entregas ágeis e com a máxima qualidade.' },
         { icon: 'Waypoints', title: 'Colaboração Transparente', text: 'Trabalhamos lado a lado com você, com comunicação clara e foco nos seus objetivos.' },
       ],
     },
     contact: {
-      mainTitle: 'Pronto para Dar o Próximo Passo com a <highlight>VertexMedia</highlight>?',
+      mainTitle: 'Pronto para Dar o Próximo Passo com a <highlight class="text-secondary">VertexMedia</highlight>?', // text-purple-300 (secondary) in ref
       description: 'Vamos transformar suas ideias em vídeos memoráveis. Entre em contato e descubra como podemos colaborar.',
       formName: 'Nome Completo',
       formEmail: 'E-mail',
@@ -285,14 +285,14 @@ export const translations: Record<Locale, Translations> = {
       successMessage: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
       errorMessage: 'Falha ao enviar mensagem. Tente novamente ou contate-nos diretamente.',
       contactDirectly: 'Ou entre em contato por:',
-      phone: '(XX) XXXXX-XXXX', // Placeholder, to be filled
-      email: 'contato@vertexmedia.com.br',
+      phone: '(XX) XXXXX-XXXX',
+      email: 'contato@vertexmedia.com.br', // Updated to .com.br for PT
     },
     footer: {
       navLinks: {
         home: 'Início',
         solutions: 'Soluções',
-        work: 'Cases', 
+        work: 'Cases',
         contact: 'Contato',
       },
       socialMedia: {
@@ -300,19 +300,22 @@ export const translations: Record<Locale, Translations> = {
         instagram: 'Instagram',
         linkedin: 'LinkedIn',
       },
-      rights: '© {year} VertexMedia. Todos os direitos reservados.',
-      credits: 'Design por Firebase Studio. Imagens de Placehold.co.',
+      rights: '© {year} VertexMedia. Todos os direitos reservados.', // Updated appName
+      credits: 'Design por Firebase Studio. Imagens de Placehold.co.', // Simplified from ref
     },
   },
   en: {
     appName: "VertexMedia",
     nav: {
+      // No 'Home' for EN as per brief
       solutions: 'Solutions',
-      work: 'Work',
+      work: 'Work', // Or 'Case Studies' - 'Work' is shorter
       aboutUs: 'About Us',
-      contactCta: 'Book a Call',
+      // No 'Contact' text link for EN, direct to 'Book a Call' CTA
+      contactCta: 'Book a Call', // Main CTA in header
     },
     hero: {
+      // No main image for EN hero based on P-S-B text structure
       problemTitle: "Struggling with video creative that <highlight>fails to convert</highlight> and <highlight>drains your ad spend</highlight>?",
       problemDescription: "You're not alone. Many businesses find it challenging to consistently produce video content that not only looks great but actually drives measurable results like lower CPAs and higher ROAS, especially when trying to scale.",
       solutionTitle: "VertexMedia: Your Dedicated Remote Post-Production Partner for <gradient>Data-Driven Video Assets</gradient>.",
@@ -320,13 +323,14 @@ export const translations: Record<Locale, Translations> = {
       benefitTitle: "The Bottom Line? Better Videos, <highlight>Better Metrics</highlight>, and a <highlight>Higher ROI</highlight> for Your Marketing Budget.",
       benefitDescription: "Stop guessing and start converting. Partner with VertexMedia to transform your video strategy into a revenue-generating machine.",
       ctaPrimary: 'Book a Discovery Call',
+      // No secondary CTA in EN Hero
     },
     solutions: {
       mainTitle: 'Video Solutions That <gradient>Drive Business Growth</gradient>',
       description: "We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage.",
       servicesEn: [
         {
-          icon: 'TrendingUp', 
+          icon: 'TrendingUp',
           title: 'Performance Creative at Scale',
           problem: {
             icon: 'AlertTriangle',
@@ -353,7 +357,7 @@ export const translations: Record<Locale, Translations> = {
           ctaLink: '#contact',
         },
         {
-          icon: 'Video', 
+          icon: 'Video',
           title: 'Brand Storytelling & Explainer Videos',
           problem: {
             icon: 'AlertTriangle',
@@ -380,7 +384,7 @@ export const translations: Record<Locale, Translations> = {
           ctaLink: '#contact',
         },
         {
-          icon: 'Users', 
+          icon: 'Users',
           title: 'White-Label Post-Production for Agencies',
           problem: {
             icon: 'AlertTriangle',
@@ -412,7 +416,7 @@ export const translations: Record<Locale, Translations> = {
       mainTitle: 'Our Work: Driving <gradient>Measurable Results</gradient>',
       categoriesEn: [
         {
-          // categoryTitle: 'Featured Projects', // Can be a single list for EN
+          // categoryTitle: 'Featured Projects', // Not using sub-categories for EN as per brief's examples
           cases: [
             {
               title: 'SaaS Co. Onboarding Video Series',
@@ -438,17 +442,18 @@ export const translations: Record<Locale, Translations> = {
               result: "200% increase in qualified applications for senior roles; Positive feedback on company culture from candidates; Used as a sales tool for B2B enterprise deals.",
               imageUrl: 'https://placehold.co/600x338/1A1A2E/EEEEEE', imageHint: 'employer branding film', tags: ["Brand Storytelling", "Recruitment", "Tech"]
             }
+            // Can add one more EN case study if needed, or keep it at 3 for a clean row.
           ],
         },
       ],
-      portfolioCta: 'Discuss Your Project',
+      portfolioCta: 'Discuss Your Project', // CTA more aligned with "Book a Call"
     },
     about: {
-      mainTitle: 'Your Strategic Partner for <highlight>Global Video Production Excellence</highlight>',
+      mainTitle: 'Your Strategic Partner for <highlight class="text-primary">Global Video Production Excellence</highlight>', // Using Primary color for highlight
       description: 'VertexMedia isn\'t just another video production house. We are a team of creative strategists and technical wizards in motion graphics, color correction, and video finalization, dedicated to helping US-based businesses achieve their marketing and communication goals. We understand the speed of business and the need for content that performs.',
-      imageUrl: 'https://placehold.co/600x400/1A1A2E/FFFFFF', 
+      imageUrl: 'https://placehold.co/600x400/1A1A2E/FFFFFF', // Darker, tech-focused image
       imageHint: 'global collaboration video production',
-      ourEdge: {
+      ourEdge: { // "Our Edge" section for EN
         title: 'Our Edge: <gradient>Seamless Remote Collaboration & Timezone Power</gradient>',
         remoteCollaboration: {
           title: 'Expertise in Remote Workflows',
@@ -468,19 +473,20 @@ export const translations: Record<Locale, Translations> = {
       formEmail: 'Work Email',
       formCompany: 'Company Name (Optional)',
       formMessage: 'Tell us about your video needs or project goals',
-      formSubmit: 'Book Your Free Discovery Call',
+      formSubmit: 'Book Your Free Discovery Call', // CTA from brief
       successMessage: 'Thanks! Your call request is confirmed. We\'ll be in touch shortly with details.',
       errorMessage: 'Booking failed. Please try again or email us directly.',
-      contactDirectly: 'Or email us at:',
-      email: 'hello@vertexmedia.io', 
-      phone: '+1 (XXX) XXX-XXXX', // Placeholder for US phone
+      contactDirectly: 'Or email us at:', // Simpler for EN
+      email: 'hello@vertexmedia.io', // .io more common for tech/US
+      // Phone might be less relevant if pushing for calls via form
     },
     footer: {
       navLinks: {
+        // No 'Home'
         solutions: 'Solutions',
-        work: 'Work', 
+        work: 'Work',
         aboutUs: 'About Us',
-        contact: 'Book a Call', 
+        contact: 'Book a Call', // Consistent with header CTA
       },
       socialMedia: {
         facebook: 'Facebook',
@@ -488,34 +494,34 @@ export const translations: Record<Locale, Translations> = {
         linkedin: 'LinkedIn',
       },
       rights: '© {year} VertexMedia. All Rights Reserved.',
-      credits: 'Firebase Studio Build. Images via Placehold.co.',
+      credits: 'Firebase Studio Build. Images via Placehold.co.', // Simplified
     },
   },
 };
 
 export const getLang = (locale: Locale): Translations => translations[locale];
 
-// Helper function to render text with <highlight> and <gradient> tags
-export const renderHighlightedText = (text: string | undefined, highlightClassParam?: string, gradientClassParam?: string) => {
+// Helper function to render text with <highlight class="..."></highlight> and <gradient></gradient> tags
+export const renderHighlightedText = (text: string | undefined, defaultHighlightClass?: string, gradientClassParam?: string) => {
   if (!text) return '';
 
-  const highlightPattern = /<highlight>(.*?)<\/highlight>/g;
+  // Regex to find <highlight class="custom-class">content</highlight> or <highlight>content</highlight>
+  const highlightPattern = /<highlight(?: class="([^"]+)")?>(.*?)<\/highlight>/g;
   const gradientPattern = /<gradient>(.*?)<\/gradient>/g;
 
   let processedText = text;
-  
-  const defaultHighlightClass = 'text-primary font-semibold'; 
-  processedText = processedText.replace(highlightPattern, (match, p1) => {
-    const highlightClass = highlightClassParam || defaultHighlightClass;
-    // If multiple highlight classes are needed, a more complex logic or specific tags would be required.
-    // For now, a single highlightClassParam is supported, or it defaults.
-    return `<span class="${highlightClass}">$1</span>`;
+
+  // Process highlights first
+  processedText = processedText.replace(highlightPattern, (match, customClass, content) => {
+    const highlightClass = customClass || defaultHighlightClass || 'text-primary font-semibold'; // Default if no class in tag and no param
+    return `<span class="${highlightClass}">${content}</span>`;
   });
-  
-  const defaultGradientClass = 'gradient-text'; 
-  processedText = processedText.replace(gradientPattern, `<span class="${gradientClassParam || defaultGradientClass}">$1</span>`);
+
+  // Process gradients
+  const defaultGradientClass = gradientClassParam || 'gradient-text'; // Use param if provided, else default
+  processedText = processedText.replace(gradientPattern, (match, content) => {
+    return `<span class="${defaultGradientClass}">${content}</span>`;
+  });
 
   return processedText;
 };
-
-    
