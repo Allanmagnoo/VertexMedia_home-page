@@ -22,14 +22,12 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     }
   };
 
-  // Styles from referencia.html: hero-bg-dark, bg-opacity, p-8 md:p-16
-  // Theme: bg-card/70 for overlay, bg-background/70 for content box
   return (
-    <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-20 md:py-28"> {/* Adjusted padding */}
+    <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-20 md:py-28">
       <div className="absolute inset-0 bg-card/70 z-0"></div>
 
-      <div className="container relative z-10 text-center max-w-4xl mx-auto px-6"> {/* Added px-6 to container */}
-        <div className="bg-background/70 backdrop-blur-sm p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl animate-fade-in animation-delay-200"> {/* Adjusted padding */}
+      <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
+        <div className="bg-background/70 backdrop-blur-sm p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl animate-fade-in animation-delay-200">
           {locale === 'pt' && t.mainImageUrl && (
             <div className="mx-auto mb-8 w-full max-w-md">
               <Image
@@ -47,24 +45,24 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           {locale === 'en' ? (
             <>
               {t.problemTitle && (
-                <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground/80 leading-snug"
+                <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-foreground/80 leading-snug" // mb reduced
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.problemTitle, 'text-secondary') }} />
               )}
-              {t.problemDescription && <p className="text-md md:text-lg mb-8 text-foreground/70 leading-relaxed">{t.problemDescription}</p>}
+              {t.problemDescription && <p className="text-md md:text-lg mb-6 text-foreground/70 leading-relaxed">{t.problemDescription}</p>} {/* mb reduced */}
 
               {t.solutionTitle && (
-                <h1 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-foreground" // Increased mb
+                <h1 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground" // mb reduced
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.solutionTitle) }} />
               )}
-              {t.solutionDescription && <p className="text-lg md:text-xl mb-8 text-foreground/80 leading-relaxed">{t.solutionDescription}</p>}
+              {t.solutionDescription && <p className="text-lg md:text-xl mb-6 text-foreground/80 leading-relaxed">{t.solutionDescription}</p>} {/* mb reduced */}
 
               {t.benefitTitle && (
-                <h3 className="text-xl md:text-2xl font-bold mb-6 text-foreground/90 leading-snug" // was font-bold, consistent with PT h2
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground/90 leading-snug" // mb reduced
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.benefitTitle, 'text-primary') }} />
               )}
-              {t.benefitDescription && <p className="text-md md:text-lg mb-12 text-foreground/70 leading-relaxed">{t.benefitDescription}</p>} {/* Increased mb */}
+              {t.benefitDescription && <p className="text-md md:text-lg mb-10 text-foreground/70 leading-relaxed">{t.benefitDescription}</p>} {/* mb reduced */}
             </>
-          ) : ( // PT version - matching referencia.html structure and classes
+          ) : ( 
             <>
               {t.title && (
                 <h1
@@ -95,12 +93,11 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             >
               <Link href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>{t.ctaPrimary}</Link>
             </Button>
-            {/* Secondary CTA for PT, matching referencia.html */}
             {locale === 'pt' && t.ctaSecondary && (
               <Button
                 asChild
                 size="lg"
-                variant="secondary" // Uses purple
+                variant="secondary" 
                 className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 px-8 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 inline-block"
               >
                 <Link href="#solutions" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
@@ -112,3 +109,4 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
+

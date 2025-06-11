@@ -47,7 +47,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     return (
       <Card
         key={service.title}
-        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group w-full max-w-md text-center" 
+        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center" 
       >
         <CardHeader className="flex flex-col items-center p-0 mb-5 text-center"> 
           <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
@@ -111,7 +111,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     return (
       <Card
         key={service.title}
-        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 flex flex-col group w-full max-w-md text-center" 
+        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center" 
       >
         <CardHeader className="flex flex-col items-center p-0 mb-5 text-center">
           {IconComponent && (
@@ -148,18 +148,17 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     );
   };
 
-  // section py-16 md:py-24 bg-card -> bg-gray-800 in ref (bg-card is fine from theme)
   return (
     <section id="solutions" className="bg-card">
       <div className="container px-6"> 
         <div className="text-center mb-12 md:mb-16">
           <h2
-            className="text-3xl md:text-4xl font-bold text-foreground" 
+            className="text-3xl md:text-4xl font-bold text-foreground text-center" 
             dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle) }}
           />
            {(locale === 'pt' && t.problemStatement) ? (
              <>
-                <h3 className="text-2xl md:text-3xl font-semibold text-foreground/90 mt-8 mb-4 max-w-3xl mx-auto"
+                <h3 className="text-2xl md:text-3xl font-semibold text-foreground/90 mt-8 mb-4 max-w-3xl mx-auto text-center"
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.problemStatement.title, 'text-primary')}} />
                 <p className="text-lg text-foreground/80 max-w-3xl mx-auto mb-8 leading-relaxed">
                 {t.problemStatement.description}
