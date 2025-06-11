@@ -5,95 +5,88 @@
 @layer base {
   :root {
     /* Dark Theme based on referencia.html and M3 adaptations */
-    --background: 222 39% 11%; /* #111827 from referencia.html */
-    --foreground: 218 15% 83%; /* #D1D5DB from referencia.html */
+    /* Values from referencia.html as HSL */
+    --background: 222 39% 11%; /* bg-gray-900 #111827 */
+    --foreground: 218 15% 83%; /* text-gray-300 #D1D5DB */
 
-    --card: 215 28% 17%; /* #1F2937 from referencia.html (bg-gray-800) */
-    --card-foreground: 218 15% 83%;
+    --card: 215 28% 17%; /* bg-gray-800 #1F2937 */
+    --card-foreground: 220 13% 91%; /* text-gray-100 #E5E7EB (for cards, slightly lighter) */
 
     --popover: 215 28% 17%;
-    --popover-foreground: 218 15% 83%;
+    --popover-foreground: 220 13% 91%;
 
     /* Primary: Blue from referencia.html text-blue-400 (#60A5FA) */
-    --primary: 217 91% 68%; 
-    --primary-foreground: 217 40% 15%; /* Darker text for contrast on primary button */
+    --primary: 217 91% 68%;
+    --primary-foreground: 222 47% 11%; /* Darker text for contrast on primary button */
 
     /* Secondary: Purple from referencia.html text-purple-400 (#C084FC) */
-    --secondary: 276 95% 76%; 
+    --secondary: 276 95% 76%;
     --secondary-foreground: 276 40% 18%; /* Darker text for contrast on secondary button */
-    
-    --muted: 215 20% 25%; /* bg-gray-700 is #374151 hsl(215,14%,22%) - adjusted for more range */
-    --muted-foreground: 218 15% 70%; /* text-gray-400 is #9CA3AF hsl(215,9%,65%) */
 
-    /* Accent: Teal from referencia.html text-teal-400 (#2DD4BF) */
-    --accent: 168 65% 52%; 
-    --accent-foreground: 168 50% 15%; 
+    --muted: 215 20% 25%; /* bg-gray-700 is #374151 */
+    --muted-foreground: 215 9% 65%; /* text-gray-400 is #9CA3AF */
 
-    --destructive: 0 70% 65%; 
-    --destructive-foreground: 0 0% 10%; 
+    /* Accent: Teal from referencia.html text-teal-400 (#2DD4BF) - kept for other accents if needed */
+    --accent: 168 65% 52%;
+    --accent-foreground: 168 50% 15%;
 
-    --border: 215 20% 30%; /* Slightly lighter than card for subtle borders */
-    --input: 215 14% 22%; /* Corresponds to bg-gray-700 border-gray-600 in form */
+    --destructive: 0 70% 65%;
+    --destructive-foreground: 0 0% 10%;
+
+    --border: 215 14% 34%; /* border-gray-700 is #374151, or border-gray-600 #4B5563 */
+    --input: 215 20% 25%; /* Corresponds to bg-gray-700 in form, can be same as muted */
     --ring: 217 91% 68%; /* Use primary for rings */
-    
+
     --radius: 0.75rem; /* referencia.html uses rounded-xl extensively (0.75rem) */
 
     --chart-1: 217 70% 60%;
     --chart-2: 168 60% 50%;
     --chart-3: 276 70% 70%;
-    --chart-4: 41 100% 60%; /* Amber, if needed for charts */
+    --chart-4: 41 100% 60%; /* Amber, from PRD if needed #FFB300 */
     --chart-5: 340 75% 55%;
 
     /* Sidebar colors - adapted from main theme */
-    --sidebar-background: 215 28% 15%; 
+    --sidebar-background: 215 28% 15%;
     --sidebar-foreground: 218 15% 80%;
-    --sidebar-primary: 217 91% 72%; 
+    --sidebar-primary: 217 91% 72%;
     --sidebar-primary-foreground: 217 40% 18%;
-    --sidebar-accent: 215 20% 28%; 
+    --sidebar-accent: 215 20% 28%;
     --sidebar-accent-foreground: 218 15% 90%;
     --sidebar-border: 215 20% 25%;
     --sidebar-ring: 217 91% 72%;
   }
 
   .light {
-    /* Light Theme (Placeholder - Not primary focus of referencia.html, but good to have) */
-    --background: 220 20% 95%; 
-    --foreground: 222 20% 13%; 
+    /* Light Theme (Placeholder - Based on M3 principles if needed) */
+    --background: 220 20% 97%; /* Lighter gray */
+    --foreground: 222 20% 13%; /* Dark text */
 
-    --card: 0 0% 100%; 
+    --card: 0 0% 100%; /* White cards */
     --card-foreground: 222 20% 13%;
 
-    --popover: 0 0% 100%; 
-    --popover-foreground: 222 20% 13%; 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 20% 13%;
 
-    --primary: 217 80% 60%; 
-    --primary-foreground: 0 0% 100%; 
+    --primary: 217 80% 55%; /* A slightly more saturated blue for light mode */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
 
-    --secondary: 276 80% 65%; 
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 276 80% 60%; /* A slightly more saturated purple */
+    --secondary-foreground: 0 0% 100%; /* White text on secondary */
 
-    --muted: 220 20% 90%; 
-    --muted-foreground: 222 15% 40%; 
+    --muted: 220 20% 91%; /* Light gray for muted backgrounds */
+    --muted-foreground: 222 15% 45%; /* Darker muted text */
 
-    --accent: 168 55% 45%; 
-    --accent-foreground: 0 0% 100%; 
+    --accent: 168 55% 48%; /* Teal for accent */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 80% 55%; 
-    --destructive-foreground: 0 0% 100%; 
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 222 15% 85%; 
-    --input: 220 25% 92%; 
-    --ring: 217 80% 60%;
+    --border: 222 15% 88%; /* Light border */
+    --input: 220 25% 94%; /* Slightly off-white for inputs */
+    --ring: 217 80% 55%;
 
-    /* Sidebar colors - M3 inspired for light theme */
-    --sidebar-background: 220 15% 97%; 
-    --sidebar-foreground: 222 18% 20%;
-    --sidebar-primary: 217 70% 50%; 
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 20% 90%; 
-    --sidebar-accent-foreground: 217 70% 45%;
-    --sidebar-border: 220 15% 88%;
-    --sidebar-ring: 217 70% 50%;
+    --radius: 0.75rem;
   }
 }
 
@@ -102,22 +95,23 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body leading-relaxed; /* Added leading-relaxed */
+    @apply bg-background text-foreground font-sans leading-relaxed; /* Changed to font-sans */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline font-bold; /* Ensure headline font and boldness */
+    @apply font-sans font-bold; /* Changed to font-sans, weight applied directly or by Tailwind classes */
   }
   section {
-    /* Padding from referencia.html: py-16 md:py-24 */
     @apply py-16 md:py-24;
   }
   .container {
-    @apply px-6; /* Match referencia.html */
+    @apply px-6;
   }
   /* Gradient from referencia.html: Azul claro para Roxo claro */
-  .gradient-text { 
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  .gradient-text {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
