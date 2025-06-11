@@ -68,21 +68,21 @@ export const translations: Record<Locale, Translations> = {
       cta: 'Discover Our Work',
     },
     services: {
-      mainTitle: "Your Challenges, Our Solutions, Your Growth",
+      mainTitle: "Your Audiovisual Challenges, Our Expert Solutions, Your Growth",
       problemCard: {
         icon: "AlertTriangle",
-        title: "Recognizing Your Hurdles",
-        desc: "Scaling quality content, managing fluctuating demand, and resource constraints can <highlight>stall your growth</highlight>. We understand the pressure your agency or production house faces.",
+        title: "The Modern Content Bottleneck",
+        desc: "Struggling to scale high-quality <highlight>motion graphics</highlight> and <highlight>video post-production</highlight>? Facing tight deadlines, fluctuating demand, and the complexity of optimizing for diverse <highlight>social media formats</highlight>? We get it.",
       },
       solutionCard: {
-        icon: "Zap",
-        title: "Our Performance-Driven Partnership",
-        desc: "VertexMedia acts as your dedicated audiovisual arm. We combine <highlight>technical expertise</highlight> with creative solutions to seamlessly scale your production and deliver <highlight>impactful content</highlight>.",
+        icon: "Film",
+        title: "Your Dedicated Audiovisual Powerhouse",
+        desc: "VertexMedia is your expert partner for all things post-production. We offer <highlight>dynamic motion graphics</highlight>, precise video editing, cinematic <highlight>color correction</highlight>, subtle VFX, and immersive sound design, all tailored for <highlight>maximum impact</highlight> across all platforms.",
       },
       benefitCard: {
-        icon: "TrendingUp",
-        title: "Unlock Efficiency & Results",
-        desc: "Partner with us to <highlight>scale confidently</highlight>, free up your core team, and deliver audiovisual work that <highlight>boosts your bottom line</highlight> and enhances your reputation.",
+        icon: "Lightbulb",
+        title: "Unlock Creative Freedom & Scalable Quality",
+        desc: "Partner with us to deliver <highlight>polished, performance-ready audiovisuals</highlight> consistently. Free your team to focus on strategy and creativity, while we handle the <highlight>flawless technical execution</highlight> and help you scale confidently.",
       }
     },
     caseStudies: {
@@ -123,21 +123,21 @@ export const translations: Record<Locale, Translations> = {
       cta: 'Descubra Nosso Trabalho',
     },
     services: {
-      mainTitle: "Seus Desafios, Nossas Soluções Audiovisuais, Seu Crescimento",
+      mainTitle: "Seus Desafios Audiovisuais, Nossas Soluções Especializadas, Seu Crescimento",
       problemCard: {
         icon: "AlertTriangle",
-        title: "Reconhecendo Seus Obstáculos",
-        desc: "Escalar conteúdo de qualidade, gerenciar demandas flutuantes e restrições de recursos podem <highlight>frear seu crescimento</highlight>. Entendemos a pressão que sua agência ou produtora enfrenta.",
+        title: "O Gargalo do Conteúdo Moderno",
+        desc: "Lutando para escalar <highlight>motion graphics</highlight> e <highlight>pós-produção de vídeo</highlight> de alta qualidade? Enfrentando prazos apertados, demanda flutuante e a complexidade de otimizar para diversos <highlight>formatos de mídias sociais</highlight>? Nós entendemos.",
       },
       solutionCard: {
-        icon: "Zap",
-        title: "Nossa Parceria Focada em Performance",
-        desc: "A VertexMedia atua como seu braço audiovisual dedicado. Combinamos <highlight>expertise técnica</highlight> com soluções criativas para escalar sua produção de forma transparente e entregar <highlight>conteúdo impactante</highlight>.",
+        icon: "Film",
+        title: "Sua Potência Audiovisual Dedicada",
+        desc: "A VertexMedia é seu parceiro especialista em pós-produção. Oferecemos <highlight>motion graphics dinâmicos</highlight>, edição de vídeo precisa, <highlight>color grading cinematográfico</highlight>, VFX sutis e design de som imersivo, tudo adaptado para <highlight>máximo impacto</highlight> em todas as plataformas.",
       },
       benefitCard: {
-        icon: "TrendingUp",
-        title: "Desbloqueie Eficiência & Resultados",
-        desc: "Faça parceria conosco para <highlight>escalar com confiança</highlight>, liberar sua equipe principal e entregar trabalhos audiovisuais que <highlight>impulsionam seus resultados</highlight> e fortalecem sua reputação.",
+        icon: "Lightbulb",
+        title: "Desbloqueie Liberdade Criativa & Qualidade Escalável",
+        desc: "Faça parceria conosco para entregar <highlight>audiovisuais polidos e prontos para performance</highlight> de forma consistente. Libere sua equipe para focar na estratégia e criatividade, enquanto cuidamos da <highlight>execução técnica impecável</highlight> e ajudamos você a escalar com confiança.",
       }
     },
     caseStudies: {

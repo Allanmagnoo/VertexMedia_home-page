@@ -3,7 +3,7 @@
 
 import type React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Briefcase, Film, Zap, AlertTriangle, TrendingUp, Lightbulb } from 'lucide-react';
+import { AlertTriangle, Zap, TrendingUp, Briefcase, Film, Lightbulb } from 'lucide-react';
 import type { Locale } from '@/lib/translations';
 import { getLang, type ServicesTranslations, type CardContent as CardContentType } from '@/lib/translations';
 
@@ -24,7 +24,7 @@ const renderHighlightedText = (text: string) => {
   const parts = text.split(/<highlight>(.*?)<\/highlight>/g);
   return parts.map((part, index) => {
     if (index % 2 === 1) { 
-      const highlightClass = (index / 2) % 2 === 0 ? "text-primary" : "text-accent";
+      const highlightClass = (Math.floor(index / 2)) % 2 === 0 ? "text-primary font-semibold" : "text-accent font-semibold";
       return <span key={index} className={highlightClass}>{part}</span>;
     }
     return part;
@@ -64,7 +64,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
                   <CardTitle className="font-headline text-xl text-foreground">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <CardDescription className="text-foreground/70 min-h-[6em]">
+                  <CardDescription className="text-foreground/80 min-h-[10em] md:min-h-[12em]"> {/* Increased min-height for more text */}
                     {renderHighlightedText(service.desc)}
                   </CardDescription>
                 </CardContent>
