@@ -28,7 +28,7 @@ export default function LanguageToggle({ locale, setLocale }: LanguageToggleProp
           px-2 py-1 md:px-3
           text-sm font-medium rounded-md
           transition-colors duration-200
-          ${locale === 'en' ? 'bg-primary/20 text-primary font-semibold' : 'text-foreground/70 hover:bg-accent/10 hover:text-accent-foreground'}
+          ${locale === 'en' ? 'bg-primary/20 text-primary font-semibold' : 'text-foreground/70 hover:text-primary'}
         `}
       >
         EN
@@ -43,7 +43,7 @@ export default function LanguageToggle({ locale, setLocale }: LanguageToggleProp
           px-2 py-1 md:px-3
           text-sm font-medium rounded-md
           transition-colors duration-200
-          ${locale === 'pt' ? 'bg-primary/20 text-primary font-semibold' : 'text-foreground/70 hover:bg-accent/10 hover:text-accent-foreground'}
+          ${locale === 'pt' ? 'bg-primary/20 text-primary font-semibold' : 'text-foreground/70 hover:text-primary'}
         `}
       >
         PT
