@@ -28,7 +28,7 @@
 
     /* Accent: Teal from referencia.html text-teal-400 (#2DD4BF) - kept for other accents if needed */
     --accent: 168 65% 52%;
-    --accent-foreground: 168 50% 15%;
+    --accent-foreground: 168 50% 15%; /* Darker text for accent */
 
     --destructive: 0 70% 65%;
     --destructive-foreground: 0 0% 10%;
@@ -106,7 +106,7 @@
     @apply py-16 md:py-24;
   }
   .container {
-    @apply px-6;
+    @apply mx-auto px-6; /* Added mx-auto here */
   }
   /* Gradient from referencia.html: Azul claro para Roxo claro */
   .gradient-text {
