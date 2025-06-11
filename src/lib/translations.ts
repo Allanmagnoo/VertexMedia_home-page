@@ -1,7 +1,21 @@
+
 export type Locale = 'en' | 'pt';
 
+export type CardContent = {
+  icon: string;
+  title: string;
+  desc: string;
+};
+
+export type ServicesTranslations = {
+  mainTitle: string;
+  problemCard: CardContent;
+  solutionCard: CardContent;
+  benefitCard: CardContent;
+};
+
 export type Translations = {
-  [key: string]: string | { [key:string]: string };
+  [key: string]: string | { [key:string]: string } | ServicesTranslations;
   nav: {
     home: string;
     services: string;
@@ -13,15 +27,7 @@ export type Translations = {
     subtitle: string;
     cta: string;
   };
-  services: {
-    title: string;
-    service1Title: string;
-    service1Desc: string;
-    service2Title: string;
-    service2Desc: string;
-    service3Title: string;
-    service3Desc: string;
-  };
+  services: ServicesTranslations;
   caseStudies: {
     title: string;
     viewCase: string;
@@ -62,13 +68,22 @@ export const translations: Record<Locale, Translations> = {
       cta: 'Discover Our Work',
     },
     services: {
-      title: 'Our Services',
-      service1Title: 'Performance Content Creation',
-      service1Desc: 'Engaging video and graphics optimized for conversion and audience engagement.',
-      service2Title: 'Agency & Production Support',
-      service2Desc: 'Seamless audiovisual production partnership to scale your creative output.',
-      service3Title: 'Audiovisual Strategy',
-      service3Desc: 'Data-driven insights to maximize the impact of your media spend.',
+      mainTitle: "Your Challenges, Our Solutions, Your Growth",
+      problemCard: {
+        icon: "AlertTriangle",
+        title: "Recognizing Your Hurdles",
+        desc: "Scaling quality content, managing fluctuating demand, and resource constraints can <highlight>stall your growth</highlight>. We understand the pressure your agency or production house faces.",
+      },
+      solutionCard: {
+        icon: "Zap",
+        title: "Our Performance-Driven Partnership",
+        desc: "VertexMedia acts as your dedicated audiovisual arm. We combine <highlight>technical expertise</highlight> with creative solutions to seamlessly scale your production and deliver <highlight>impactful content</highlight>.",
+      },
+      benefitCard: {
+        icon: "TrendingUp",
+        title: "Unlock Efficiency & Results",
+        desc: "Partner with us to <highlight>scale confidently</highlight>, free up your core team, and deliver audiovisual work that <highlight>boosts your bottom line</highlight> and enhances your reputation.",
+      }
     },
     caseStudies: {
       title: 'Success Stories',
@@ -108,13 +123,22 @@ export const translations: Record<Locale, Translations> = {
       cta: 'Descubra Nosso Trabalho',
     },
     services: {
-      title: 'Nossos Serviços',
-      service1Title: 'Criação de Conteúdo de Performance',
-      service1Desc: 'Vídeos e gráficos envolventes otimizados para conversão e engajamento do público.',
-      service2Title: 'Suporte para Agências e Produtoras',
-      service2Desc: 'Parceria de produção audiovisual transparente para escalar sua produção criativa.',
-      service3Title: 'Estratégia Audiovisual',
-      service3Desc: 'Insights baseados em dados para maximizar o impacto do seu investimento em mídia.',
+      mainTitle: "Seus Desafios, Nossas Soluções Audiovisuais, Seu Crescimento",
+      problemCard: {
+        icon: "AlertTriangle",
+        title: "Reconhecendo Seus Obstáculos",
+        desc: "Escalar conteúdo de qualidade, gerenciar demandas flutuantes e restrições de recursos podem <highlight>frear seu crescimento</highlight>. Entendemos a pressão que sua agência ou produtora enfrenta.",
+      },
+      solutionCard: {
+        icon: "Zap",
+        title: "Nossa Parceria Focada em Performance",
+        desc: "A VertexMedia atua como seu braço audiovisual dedicado. Combinamos <highlight>expertise técnica</highlight> com soluções criativas para escalar sua produção de forma transparente e entregar <highlight>conteúdo impactante</highlight>.",
+      },
+      benefitCard: {
+        icon: "TrendingUp",
+        title: "Desbloqueie Eficiência & Resultados",
+        desc: "Faça parceria conosco para <highlight>escalar com confiança</highlight>, liberar sua equipe principal e entregar trabalhos audiovisuais que <highlight>impulsionam seus resultados</highlight> e fortalecem sua reputação.",
+      }
     },
     caseStudies: {
       title: 'Histórias de Sucesso',
