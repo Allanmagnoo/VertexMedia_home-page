@@ -40,7 +40,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className="relative w-full h-[80vh] flex flex-col overflow-hidden"
+      className="relative w-full h-[70vh] flex flex-col overflow-hidden" // Altura ajustada para 70vh
     >
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
