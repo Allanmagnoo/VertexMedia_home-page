@@ -31,16 +31,16 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     { src: "https://placehold.co/120x40/transparent/9CA3AF.png?text=Cliente+5", alt: "Logo Cliente 5", hint: "produtora midia" },
   ];
 
-  // Conditional image paths
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
   const backgroundImageAlt = locale === 'pt'
-    ? "Fundo de ambiente de trabalho criativo com equipamentos audiovisuais e luzes neon para VertexMedia"
-    : "VertexMedia fundo abstrato com padronagem azul e roxa de partículas fluidas";
-  const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil neon" : "hero background abstract purple blue particles";
+    ? "Ambiente de trabalho criativo com equipamentos audiovisuais para VertexMedia"
+    : "VertexMedia fundo abstrato de partículas fluidas";
+  const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil" : "hero background abstract";
+
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image Container */}
       <div className="absolute inset-0 -z-20">
         <Image
           src={backgroundImageSrc}
@@ -50,14 +50,14 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           quality={85}
           priority
           data-ai-hint={backgroundImageHint}
-          className="opacity-100"
+          className="opacity-100 w-full h-full"
         />
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
 
-      <div className="container relative z-10 text-center mx-auto px-6 w-full py-16 md:py-20">
+      <div className="container relative z-10 mx-auto px-6 w-full py-16 md:py-20">
         <motion.div
           className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -141,8 +141,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                     alt={logo.alt}
                     data-ai-hint={logo.hint}
                     width={100}
-                    height={34}
-                    className="object-contain h-7 md:h-8 w-auto"
+                    height={34} // Adjusted for typical logo aspect ratios
+                    className="object-contain h-7 md:h-8 w-auto" // Control height, auto width
                   />
                 </div>
               ))}
