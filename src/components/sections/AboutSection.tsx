@@ -37,7 +37,7 @@ export default function AboutSection({ locale }: AboutSectionProps) {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.15 + 0.3, 
+        delay: i * 0.15 + 0.3,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -65,31 +65,29 @@ export default function AboutSection({ locale }: AboutSectionProps) {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {t.imageUrl && (
-            <motion.div
-              className={`relative w-full h-80 md:h-96 lg:h-[450px] rounded-xl shadow-xl overflow-hidden ${locale === 'en' ? 'md:order-2' : ''}`}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={contentVariants}
-            >
-              <Image
-                  src={t.imageUrl}
-                  alt={t.imageHint || "About VertexMedia"}
-                  data-ai-hint={t.imageHint || (locale === 'en' ? "global collaboration video" : "equipe vertexmedia brasil")}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-xl"
-                />
-            </motion.div>
-          )}
+          <motion.div
+            className={`relative w-full h-80 md:h-96 lg:h-[450px] rounded-xl shadow-xl overflow-hidden ${locale === 'en' ? 'md:order-2' : ''}`}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={contentVariants}
+          >
+            <Image
+                src="/images/about-vertexmedia.jpg" // Direct path to project image
+                alt="About VertexMedia - Our Team and Values" // Static alt text
+                data-ai-hint="teamwork office" // Generic hint
+                layout="fill"
+                objectFit="cover"
+                className="rounded-xl"
+              />
+          </motion.div>
 
           <motion.div
             className={`space-y-6 ${locale === 'en' ? 'md:order-1' : ''}`}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: locale === 'en' && t.imageUrl ? 0.4 : 0.2 } } }}
+            variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: locale === 'en' ? 0.4 : 0.2 } } }}
           >
             {locale === 'en' && t.ourEdge ? (
               <>
@@ -98,7 +96,7 @@ export default function AboutSection({ locale }: AboutSectionProps) {
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.ourEdge.title, '', 'gradient-text') }}
                   initial={{ opacity: 0, y:10 }}
                   animate={{ opacity:1, y:0 }}
-                  transition={{ delay: locale === 'en' && t.imageUrl ? 0.3 : 0.1 }}
+                  transition={{ delay: locale === 'en' ? 0.3 : 0.1 }}
                 />
 
                 <motion.div custom={0} variants={cardVariants}>

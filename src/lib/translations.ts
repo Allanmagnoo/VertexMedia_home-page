@@ -36,8 +36,6 @@ export type DetailCardContentPt = {
   listItems?: string[];
   cta?: string;
   ctaLink?: string;
-  imageUrl?: string;
-  imageHint?: string;
 };
 
 export type CaseStudyPt = {
@@ -67,26 +65,24 @@ export type Translations = {
     contactCta: string;
   };
   hero: {
-    // PT specific (current structure)
-    mainImageUrl?: string;
-    mainImageHint?: string;
+    mainImageUrl?: string; // PT specific
+    mainImageHint?: string; // PT specific
     title?: string; // PT main title
     subtitle?: string; // PT subtitle
     description?: string; // PT description
     clientLogosTitle?: string; // For PT client logos
 
-    // EN specific (new structure)
     mainHeadline?: string; // EN H1
     subHeadline?: string; // EN supporting text/H2
 
-    // Common
     ctaPrimary: string;
-    ctaSecondary?: string; // Only for PT currently
+    ctaSecondary?: string;
   };
   solutions: {
     mainTitle: string;
-    introduction?: { // For general problem/context setting
-        title?: string; // Optional title for this intro section
+    description?: string; // EN: general intro; PT: not directly used, problemStatement is
+    problemStatement?: { // PT specific structure for intro
+        title: string;
         description: string;
         cta?: string;
         ctaLink?: string;
@@ -103,8 +99,8 @@ export type Translations = {
   about: {
     mainTitle: string;
     description: string;
-    imageUrl?: string;
-    imageHint?: string;
+    imageUrl?: string; // Made optional
+    imageHint?: string; // Made optional
     ourEdge?: {
       title: string;
       remoteCollaboration: {
@@ -162,7 +158,6 @@ export const translations: Record<Locale, Translations> = {
       home: 'Início',
       solutions: 'Nossas Soluções',
       portfolio: 'Cases',
-      contact: 'Contato',
       contactCta: 'Fale Conosco',
     },
     hero: {
@@ -177,7 +172,7 @@ export const translations: Record<Locale, Translations> = {
     },
     solutions: {
       mainTitle: 'Soluções em Vídeo Sob Medida para Seus <gradient>Objetivos</gradient>',
-      introduction: {
+      problemStatement: {
         title: 'Necessita de um Parceiro Audiovisual que Entenda Seus <highlight class="text-primary">Desafios Criativos e Técnicos</highlight>?',
         description: 'Produzir vídeos de qualidade, em volume e com criatividade, é um desafio. A VertexMedia oferece suporte audiovisual completo, da concepção à entrega, garantindo que suas campanhas atinjam o máximo potencial.',
         cta: 'Descubra Nossas Capacidades',
@@ -259,8 +254,6 @@ export const translations: Record<Locale, Translations> = {
     about: {
       mainTitle: 'VertexMedia: Criatividade e Técnica <highlight class="text-primary">a Serviço da Sua Marca</highlight>',
       description: 'Somos mais que uma produtora: somos parceiros estratégicos que unem paixão por audiovisual com expertise técnica para entregar soluções que realmente fazem a diferença. Nossa equipe dedicada está pronta para transformar suas ideias em realidade visual.',
-      imageUrl: 'https://placehold.co/600x400.png/111827/9CA3AF',
-      imageHint: 'sobre vertexmedia equipe',
       keyPointsPt: [
         { icon: 'Briefcase', title: 'Expertise Completa', text: 'Da concepção à finalização, cobrimos todas as etapas do seu projeto audiovisual com excelência.' },
         { icon: 'Cpu', title: 'Processos Inteligentes', text: 'Fluxos de trabalho otimizados para entregas ágeis, com foco na máxima qualidade e eficiência.' },
@@ -312,9 +305,7 @@ export const translations: Record<Locale, Translations> = {
     },
     solutions: {
       mainTitle: 'Video Solutions That <gradient>Drive Business Growth</gradient>',
-      introduction: {
-        description: "Tired of video that doesn't perform? We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage."
-      },
+      description: "Tired of video that doesn't perform? We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage.",
       servicesEn: [
         {
           icon: 'TrendingUp',
@@ -394,8 +385,6 @@ export const translations: Record<Locale, Translations> = {
     about: {
       mainTitle: 'Your Strategic Partner for <highlight class="text-primary">Global Video Production Excellence</highlight>',
       description: 'VertexMedia: Your agile team of creative strategists and technical wizards in motion graphics, color, and video finalization. We empower US businesses with high-performing video content.',
-      imageUrl: 'https://placehold.co/600x400.png/1A1A2E/FFFFFF',
-      imageHint: 'global collaboration video',
       ourEdge: {
         title: 'Our Edge: <gradient>Seamless Remote Collaboration & Timezone Power</gradient>',
         remoteCollaboration: {

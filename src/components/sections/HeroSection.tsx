@@ -67,7 +67,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               <Image
                 src={t.mainImageUrl}
                 alt={t.mainImageHint || "VertexMedia Hero Image"}
-                data-ai-hint={t.mainImageHint || "vertexmedia audiovisual estrategico"}
+                data-ai-hint={t.mainImageHint || "logo da vertexmedia audiovisual estrategico"}
                 width={500}
                 height={250}
                 className="rounded-lg object-contain shadow-lg"
