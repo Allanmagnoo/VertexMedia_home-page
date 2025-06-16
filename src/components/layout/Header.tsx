@@ -51,19 +51,19 @@ export default function Header({ locale, setLocale }: HeaderProps) {
 
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur-lg supports-[backdrop-filter]:bg-background/75 shadow-lg">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/75 shadow-sm"> {/* Adjusted backdrop-blur and shadow */}
       <div className="container flex h-16 items-center justify-between">
         <Link href="#hero" className="flex items-center gap-2" onClick={(e) => scrollToSection(e, '#hero')}>
           <AppLogo />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+        <nav className="hidden md:flex items-center gap-x-6 lg:gap-x-8 text-sm"> {/* Increased gap slightly */}
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               onClick={(e) => scrollToSection(e, item.href)}
-              className="font-medium text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
             >
               {item.label}
             </Link>
@@ -71,7 +71,7 @@ export default function Header({ locale, setLocale }: HeaderProps) {
            <Button
             asChild
             size="sm"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-md transition duration-300 transform hover:scale-105 py-2 px-4 rounded-lg"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 py-2 px-4 rounded-md" // Matched Neon button style
           >
             <Link href={contactCtaLink} onClick={(e) => scrollToSection(e, contactCtaLink)}>{contactCtaLabel}</Link>
           </Button>
@@ -89,10 +89,10 @@ export default function Header({ locale, setLocale }: HeaderProps) {
                         <span className="sr-only">Toggle navigation menu</span>
                     </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="bg-card w-[280px] sm:w-[320px]">
-                    <div className="grid gap-4 p-4">
+                    <SheetContent side="right" className="bg-card w-[280px] sm:w-[300px] border-l border-border"> {/* Adjusted width and added border */}
+                    <div className="grid gap-4 p-6"> {/* Increased padding */}
                         <SheetClose asChild>
-                        <Link href="#hero" className="flex items-center gap-2 mb-4" onClick={(e) => scrollToSection(e, '#hero')}>
+                        <Link href="#hero" className="flex items-center gap-2 mb-6" onClick={(e) => scrollToSection(e, '#hero')}> {/* Increased margin */}
                             <AppLogo />
                         </Link>
                         </SheetClose>
@@ -101,7 +101,7 @@ export default function Header({ locale, setLocale }: HeaderProps) {
                             <Link
                             href={item.href}
                             onClick={(e) => scrollToSection(e, item.href)}
-                            className="block py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
+                            className="block py-2.5 text-base font-medium text-foreground hover:text-primary transition-colors" /* Adjusted padding and font size */
                             >
                             {item.label}
                             </Link>
@@ -110,12 +110,12 @@ export default function Header({ locale, setLocale }: HeaderProps) {
                         <SheetClose asChild>
                         <Button
                             asChild
-                            className="w-full mt-4 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3"
+                            className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 rounded-md" /* Adjusted margin and padding */
                         >
                             <Link href={contactCtaLink} onClick={(e) => scrollToSection(e, contactCtaLink)}>{contactCtaLabel}</Link>
                         </Button>
                         </SheetClose>
-                         <div className="mt-6 flex justify-center">
+                         <div className="mt-8 flex justify-center"> {/* Increased margin */}
                              <LanguageToggle locale={locale} setLocale={setLocale} />
                         </div>
                     </div>

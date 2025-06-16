@@ -5,10 +5,10 @@
 @layer base {
   :root {
     /* "Violeta Tecnológico" Palette - Dark Theme */
-    --background: 222 39% 11%; /* #111827 - Fundo Principal */
-    --foreground: 220 13% 91%; /* #E5E7EB - Texto Principal */
+    --background: 222 39% 11%; /* #111827 - Fundo Principal (Matches slate-900) */
+    --foreground: 220 13% 91%; /* #E5E7EB - Texto Principal (Matches slate-100/200) */
 
-    --card: 215 28% 17%; /* #1F2937 - Fundo Secundário / Card BG */
+    --card: 215 28% 17%; /* #1F2937 - Fundo Secundário / Card BG (Matches slate-800) */
     --card-foreground: 220 13% 91%; /* #E5E7EB - Texto Principal (para cards) */
 
     --popover: 215 28% 17%; /* #1F2937 */
@@ -23,7 +23,7 @@
     --secondary-foreground: 276 40% 18%; /* Darker text for contrast on secondary */
 
     --muted: 215 20% 25%; /* Similar to bg-gray-700 #374151 - a bit darker than card */
-    --muted-foreground: 215 9% 65%; /* #9CA3AF - Texto Secundário */
+    --muted-foreground: 215 9% 65%; /* #9CA3AF - Texto Secundário (Matches slate-400) */
 
     /* Cor de Ação / CTA (Roxo Forte) */
     --accent: 258 90% 66%; /* #8B5CF6 */
@@ -32,11 +32,11 @@
     --destructive: 0 70% 65%;
     --destructive-foreground: 0 0% 10%;
 
-    --border: 215 14% 34%; /* Similar to border-gray-700 #374151 */
-    --input: 215 20% 25%; /* Corresponds to muted */
+    --border: 215 14% 34%; /* Similar to border-gray-700 / slate-700 #374151 */
+    --input: 215 20% 25%; /* Corresponds to muted, can be bg-slate-700 for inputs */
     --ring: 217 91% 68%; /* Use primary for rings */
 
-    --radius: 0.75rem;
+    --radius: 0.75rem; /* Increased default radius for a more modern feel */
 
     --chart-1: 217 70% 60%;
     --chart-2: 168 60% 50%;
@@ -56,9 +56,9 @@
   }
 
   .light {
-    /* Light Theme derived from "Violeta Tecnológico" */
+    /* Light Theme derived from "Violeta Tecnológico" - Less focus for Neon, but kept */
     --background: 220 20% 97%;
-    --foreground: 222 39% 11%; /* Dark text - from new dark bg */
+    --foreground: 222 39% 11%;
 
     --card: 0 0% 100%;
     --card-foreground: 222 39% 11%;
@@ -66,24 +66,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 39% 11%;
 
-    --primary: 217 80% 55%; /* Derived from #60A5FA */
+    --primary: 217 80% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 276 80% 65%; /* Derived from #C084FC */
+    --secondary: 276 80% 65%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 13% 91%; /* Derived from #E5E7EB */
-    --muted-foreground: 215 28% 35%; /* Darker version of #9CA3AF */
+    --muted: 220 13% 91%;
+    --muted-foreground: 215 28% 35%;
 
-    --accent: 258 80% 60%; /* Derived from #8B5CF6 */
+    --accent: 258 80% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 88%; /* Lighter version of new foreground */
-    --input: 220 13% 94%;  /* Lighter version of new foreground */
-    --ring: 217 80% 55%;   /* Same as light primary */
+    --border: 220 13% 88%;
+    --input: 220 13% 94%;
+    --ring: 217 80% 55%;
 
     --radius: 0.75rem;
   }
@@ -99,15 +99,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold;
+    @apply font-sans font-bold; /* Ensure Inter is used, Tailwind handles weight */
   }
   section {
-    @apply py-16 md:py-24;
+    @apply py-12 md:py-20; /* Adjusted section padding for Neon rhythm */
   }
   .container {
-    @apply mx-auto px-6;
+    @apply mx-auto px-6 max-w-6xl; /* Standard container, Neon often uses max-w-6xl or 7xl */
   }
-  /* Gradient uses primary and secondary, which are updated */
   .gradient-text {
     background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
     -webkit-background-clip: text;

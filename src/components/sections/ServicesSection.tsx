@@ -3,9 +3,9 @@
 
 import type React from 'react';
 import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; // Removed CardDescription as it's not used directly
 import { Button } from '@/components/ui/button';
-import { Sparkles, Settings2, Users, TrendingUp, Video, Lightbulb, AlertTriangle, Film, PackageCheck, Users2, Briefcase, ArrowRight } from 'lucide-react';
+import { Sparkles, Settings2, Users, TrendingUp, Video, Lightbulb, Film, PackageCheck, Users2, Briefcase, ArrowRight, Zap } from 'lucide-react'; // Added Zap
 import type { Locale, ServiceCardEn, DetailCardContentPt } from '@/lib/translations';
 import { getLang, renderHighlightedText } from '@/lib/translations';
 import { motion } from "framer-motion";
@@ -15,84 +15,81 @@ interface ServicesSectionProps {
 }
 
 const iconComponents: { [key: string]: React.ElementType } = {
-  Sparkles,
-  Settings2,
-  Users,
-  TrendingUp,
-  Video,
-  Lightbulb,
-  AlertTriangle,
-  Film,
-  PackageCheck,
-  Users2,
-  Briefcase,
+  Sparkles, Settings2, Users, TrendingUp, Video, Lightbulb, Film, PackageCheck, Users2, Briefcase, Zap,
 };
 
 
 export default function ServicesSection({ locale }: ServicesSectionProps) {
   const t = getLang(locale).solutions;
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
+    visible: (i: number) => ({ // Accept index for staggering
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1, // Stagger delay
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
   };
 
   const renderServiceCardEn = (service: ServiceCardEn, index: number) => {
     const IconComponent = service.icon ? iconComponents[service.icon] : Sparkles;
-
     const cardColorClasses = [
-      { main: 'text-primary', bg: 'bg-primary/10', link: 'text-primary hover:text-primary/80' }, 
-      { main: 'text-secondary', bg: 'bg-secondary/10', link: 'text-secondary hover:text-secondary/80' }, 
-      { main: 'text-accent', bg: 'bg-accent/10', link: 'text-accent hover:text-accent/80' } 
+      { main: 'text-primary', bg: 'bg-primary/10', link: 'text-primary hover:text-primary/80' },
+      { main: 'text-secondary', bg: 'bg-secondary/10', link: 'text-secondary hover:text-secondary/80' },
+      { main: 'text-accent', bg: 'bg-accent/10', link: 'text-accent hover:text-accent/80' }
     ];
     const colorTheme = cardColorClasses[index % cardColorClasses.length];
-
 
     return (
       <motion.div
         key={service.title}
+        custom={index} // Pass index to variants
         variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+        className="w-full max-w-md" // Ensure cards don't stretch too much
       >
         <Card
-          className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center h-full" 
+          className="bg-card p-6 md:p-8 rounded-xl border border-border/70 shadow-lg hover:border-primary/50 transition-all duration-300 ease-in-out flex flex-col group text-center h-full" // Adjusted shadow, border, and hover
         >
-          <CardHeader className="flex flex-col items-center p-0 mb-5 text-center"> 
+          <CardHeader className="flex flex-col items-center p-0 mb-5 text-center">
             {IconComponent && (
-              <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
-                  <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
+              <div className={`flex items-center justify-center h-14 w-14 mb-5 rounded-lg ${colorTheme.bg}`}> {/* Adjusted icon container */}
+                  <IconComponent className={`h-7 w-7 ${colorTheme.main}`} />
               </div>
             )}
-            <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
+            <CardTitle className="text-xl font-semibold text-foreground mb-2 text-center">{service.title}</CardTitle> {/* Reduced margin */}
           </CardHeader>
 
-          <CardContent className="p-0 flex-grow space-y-4 text-center">
+          <CardContent className="p-0 flex-grow space-y-3 text-center"> {/* Reduced space-y */}
             {service.shortDescription && (
-              <p className="text-foreground/80 text-sm leading-relaxed text-center mb-4">
+              <p className="text-foreground/70 text-sm leading-relaxed text-center mb-3"> {/* Adjusted margins */}
                   {service.shortDescription}
               </p>
             )}
             {service.keyFeatures && service.keyFeatures.length > 0 && (
-              <>
-                <ul className="text-foreground/70 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-xs mx-auto">
-                  {service.keyFeatures.map((item, idx) => <li key={idx}>{item}</li>)}
-                </ul>
-              </>
+              <ul className="text-foreground/60 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-xs mx-auto">
+                {service.keyFeatures.map((item, idx) => <li key={idx}>{item}</li>)}
+              </ul>
             )}
           </CardContent>
 
           {service.cta && service.ctaLink && (
-            <div className="mt-auto pt-8 flex justify-center"> 
+            <div className="mt-auto pt-6 flex justify-center"> {/* Adjusted padding */}
                 <Button
                     asChild
                     variant="link"
-                    className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`} 
+                    className={`font-semibold ${colorTheme.link} p-0 text-sm group-hover:underline`} // Adjusted size
                 >
                     <Link href={service.ctaLink}>
-                    {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                    {service.cta} <ArrowRight className="ml-1.5 h-4 w-4" /> {/* Adjusted margin */}
                     </Link>
                 </Button>
             </div>
@@ -114,27 +111,25 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     return (
       <motion.div
         key={service.title}
+        custom={index}
         variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+        className="w-full max-w-md"
       >
         <Card
-          className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center h-full" 
+          className="bg-card p-6 md:p-8 rounded-xl border border-border/70 shadow-lg hover:border-primary/50 transition-all duration-300 ease-in-out flex flex-col group text-center h-full"
         >
           <CardHeader className="flex flex-col items-center p-0 mb-5 text-center">
             {IconComponent && (
-              <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
-                <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
+              <div className={`flex items-center justify-center h-14 w-14 mb-5 rounded-lg ${colorTheme.bg}`}>
+                <IconComponent className={`h-7 w-7 ${colorTheme.main}`} />
               </div>
             )}
-            <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
+            <CardTitle className="text-xl font-semibold text-foreground mb-2 text-center">{service.title}</CardTitle>
           </CardHeader>
           <CardContent className="p-0 flex-grow text-center">
-            {service.description && <CardDescription className="text-foreground/70 mb-4 text-sm leading-relaxed text-center">{service.description}</CardDescription>}
+            {service.description && <p className="text-foreground/70 mb-3 text-sm leading-relaxed text-center">{service.description}</p>}
             {service.listItems && service.listItems.length > 0 && (
-              <ul className="text-foreground/70 text-sm space-y-2 list-disc list-outside pl-5 text-left max-w-xs mx-auto"> 
+              <ul className="text-foreground/60 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-xs mx-auto">
                 {service.listItems.map((item, idx) => (
                   <li key={idx}>{item}</li>
                 ))}
@@ -142,14 +137,14 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
             )}
           </CardContent>
           {service.cta && service.ctaLink && (
-            <div className="mt-auto pt-8 flex justify-center">
+            <div className="mt-auto pt-6 flex justify-center">
                 <Button
                     asChild
                     variant="link"
-                    className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`}
+                    className={`font-semibold ${colorTheme.link} p-0 text-sm group-hover:underline`}
                 >
                     <Link href={service.ctaLink}>
-                    {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                    {service.cta} <ArrowRight className="ml-1.5 h-4 w-4" />
                     </Link>
                 </Button>
             </div>
@@ -160,52 +155,58 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
   };
 
   return (
-    <section id="solutions" className="bg-card">
-      <div className="container px-6"> 
+    <section id="solutions" className="bg-background"> {/* Changed from bg-card for Neon style */}
+      <div className="container px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariants}
           className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-3xl md:text-4xl font-bold text-foreground text-center" 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center" /* Slightly larger title */
             dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle) }}
           />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay:0.1 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{ ...sectionVariants, visible: { ...sectionVariants.visible, transition: { ...sectionVariants.visible.transition, delay: 0.2}}}}
           className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >
            {locale === 'pt' && t.problemStatement ? (
              <>
-                <h3 className="text-2xl md:text-3xl font-semibold text-foreground/90 mt-8 mb-4"
+                <h3 className="text-xl md:text-2xl font-semibold text-foreground/90 mt-8 mb-4"
                     dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.problemStatement.title, 'text-primary')}} />
-                <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
+                <p className="text-md md:text-lg text-foreground/70 mb-8 leading-relaxed">
                 {t.problemStatement.description}
                 </p>
                 {t.problemStatement.cta && (
-                    <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-lg transition duration-300 transform hover:scale-105">
-                        <Link href="#contact">{t.problemStatement.cta}</Link> 
+                    <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 rounded-md">
+                        <Link href="#contact">{t.problemStatement.cta}</Link>
                     </Button>
                 )}
              </>
            ) : locale === 'en' && t.description ? (
-             <p className="text-lg text-foreground/80 leading-relaxed">
+             <p className="text-md md:text-lg text-foreground/70 leading-relaxed">
                {t.description}
              </p>
            ) : null}
         </motion.div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center max-w-screen-xl mx-auto">
+
+        <motion.div
+          initial="hidden" // Initial for the grid container itself
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }} // Lower amount to trigger sooner for the grid
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }} // Stagger children for cards
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-screen-xl mx-auto"
+        >
           {locale === 'en' && t.servicesEn?.map((service, index) => renderServiceCardEn(service, index))}
           {locale === 'pt' && t.servicesPt?.map((service, index) => renderServiceCardPt(service, index))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -16,21 +16,21 @@ export default function Footer({ locale }: FooterProps) {
   const appNameT = t.appName;
 
   const AppLogo = () => (
-     <span className="text-3xl font-bold mb-4 inline-block">
+     <span className="text-2xl font-bold mb-4 inline-block"> {/* Reduced font size from 3xl */}
        <span className="text-primary">{appNameT.split('#')[0]}</span>
        <span className="text-secondary">{appNameT.split('#')[1]}</span>
      </span>
   );
-  
+
   const navLinks = [];
   if (locale === 'pt' && t.footer.navLinks.home) {
     navLinks.push({ href: "#hero", label: t.footer.navLinks.home });
   }
   navLinks.push({ href: "#solutions", label: t.footer.navLinks.solutions });
-  if (t.footer.navLinks.work) { 
+  if (t.footer.navLinks.work) {
     navLinks.push({ href: "#cases", label: t.footer.navLinks.work });
   }
-  if (locale === 'en' && t.footer.navLinks.aboutUs) { // Add About Us for EN footer
+  if (locale === 'en' && t.footer.navLinks.aboutUs) {
      navLinks.push({ href: "#about", label: t.footer.navLinks.aboutUs });
   }
   navLinks.push({ href: "#contact", label: t.footer.navLinks.contact });
@@ -44,41 +44,40 @@ export default function Footer({ locale }: FooterProps) {
     }
   };
 
-  // Styles from referencia.html: bg-gray-800 text-gray-400 py-12
-  // Theme translation: bg-card text-muted-foreground py-12
+  // Neon style: bg-card or slightly darker, with subtle top border.
   return (
-    <footer className="bg-card text-muted-foreground border-t border-border/50">
-      <div className="container py-12 text-center">
+    <footer className="bg-card text-muted-foreground border-t border-border/50"> {/* Current style is good */}
+      <div className="container py-10 text-center"> {/* Reduced py */}
         <Link href="#hero" onClick={(e) => scrollToSection(e, "#hero")}>
           <AppLogo />
         </Link>
-        <nav className="flex justify-center space-x-6 mb-6">
+        <nav className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6 text-sm"> {/* Added flex-wrap and gap-y for smaller screens */}
           {navLinks.map(link => (
-            <Link 
+            <Link
               key={link.label}
-              href={link.href} 
+              href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="hover:text-primary transition-colors"
+              className="hover:text-primary transition-colors duration-200"
             >
               {link.label}
             </Link>
           ))}
         </nav>
-        <div className="flex justify-center space-x-6 mb-6">
+        <div className="flex justify-center space-x-5 mb-6"> {/* Slightly increased space */}
           <a href="#" aria-label={t.footer.socialMedia.facebook} className="text-muted-foreground hover:text-primary transition-colors">
-            <Facebook className="h-6 w-6" />
+            <Facebook className="h-5 w-5" /> {/* Slightly smaller icons */}
           </a>
           <a href="#" aria-label={t.footer.socialMedia.instagram} className="text-muted-foreground hover:text-primary transition-colors">
-            <Instagram className="h-6 w-6" />
+            <Instagram className="h-5 w-5" />
           </a>
           <a href="#" aria-label={t.footer.socialMedia.linkedin} className="text-muted-foreground hover:text-primary transition-colors">
-            <Linkedin className="h-6 w-6" />
+            <Linkedin className="h-5 w-5" />
           </a>
         </div>
-        <p className="text-sm">
+        <p className="text-sm text-foreground/70"> {/* Slightly lighter text for copyright */}
           {t.footer.rights.replace('{year}', currentYear.toString())}
         </p>
-        <p className="text-xs mt-2"> {/* Increased margin a bit */}
+        <p className="text-xs mt-1.5 text-muted-foreground/80"> {/* Adjusted margin and opacity */}
           {t.footer.credits}
         </p>
       </div>

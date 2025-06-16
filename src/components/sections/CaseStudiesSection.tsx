@@ -18,9 +18,22 @@ interface CaseStudiesSectionProps {
 export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) {
   const t = getLang(locale).caseStudies;
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1, // Stagger delay
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
   };
 
   const renderCaseStudyEn = (study: CaseStudyEn, index: number) => {
@@ -32,14 +45,12 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
     return (
     <motion.div
       key={study.title}
+      custom={index}
       variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.15 }}
+      className="w-full" // Ensure cards take full width in their grid cell
     >
       <Card
-        className="bg-card rounded-xl shadow-xl overflow-hidden hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group h-full"
+        className="bg-card rounded-xl border border-border/70 shadow-lg overflow-hidden hover:border-primary/50 transition-all duration-300 ease-in-out flex flex-col group h-full" // Adjusted shadow, border, hover
       >
         <div className="relative h-56 w-full overflow-hidden">
           <Image
@@ -58,25 +69,25 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
         <CardContent className="p-6 pt-0 flex-grow space-y-4">
           <div>
             <h4 className={`flex items-center text-md font-semibold ${challengeColor} mb-1.5`}>
-              <Target className="w-4 h-4 mr-2" /> The Challenge:
+              <Target className="w-4 h-4 mr-2 shrink-0" /> The Challenge:
             </h4>
-            <p className="text-foreground/80 text-sm leading-relaxed">{study.challenge}</p>
+            <p className="text-foreground/70 text-sm leading-relaxed">{study.challenge}</p>
           </div>
           <div>
             <h4 className={`flex items-center text-md font-semibold ${solutionColor} mb-1.5`}>
-              <CheckCircle className="w-4 h-4 mr-2" /> Our Solution:
+              <CheckCircle className="w-4 h-4 mr-2 shrink-0" /> Our Solution:
             </h4>
-            <p className="text-foreground/80 text-sm leading-relaxed">{study.ourSolution}</p>
+            <p className="text-foreground/70 text-sm leading-relaxed">{study.ourSolution}</p>
           </div>
           <div>
             <h4 className={`flex items-center text-md font-semibold ${resultColor} mb-1.5`}>
-              <BarChart2 className="w-4 h-4 mr-2" /> The Result:
+              <BarChart2 className="w-4 h-4 mr-2 shrink-0" /> The Result:
             </h4>
-            <p className="text-foreground/80 text-sm font-medium leading-relaxed">{study.result}</p>
+            <p className="text-foreground/70 text-sm font-medium leading-relaxed">{study.result}</p> {/* Slightly lighter for results */}
           </div>
           {study.tags && study.tags.length > 0 && (
             <div className="pt-3">
-              {study.tags.map(tag => <Badge key={tag} variant="outline" className="mr-1.5 mb-1.5 text-xs border-border/70 text-muted-foreground">{tag}</Badge>)}
+              {study.tags.map(tag => <Badge key={tag} variant="outline" className="mr-1.5 mb-1.5 text-xs border-border/60 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors">{tag}</Badge>)} {/* Subtle hover for tags */}
             </div>
           )}
         </CardContent>
@@ -87,14 +98,12 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
   const renderCaseStudyPt = (study: CaseStudyPt, index: number) => (
     <motion.div
       key={study.title}
+      custom={index}
       variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.15 }}
+      className="w-full"
     >
       <Card
-        className="bg-card rounded-xl shadow-xl overflow-hidden hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group h-full"
+        className="bg-card rounded-xl border border-border/70 shadow-lg overflow-hidden hover:border-primary/50 transition-all duration-300 ease-in-out flex flex-col group h-full"
       >
         <div className="relative h-56 w-full overflow-hidden">
           <Image
@@ -110,10 +119,10 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
           <CardTitle className="text-xl font-semibold text-foreground mb-2">{study.title}</CardTitle>
         </CardHeader>
         <CardContent className="p-6 pt-0 flex-grow">
-          <CardDescription className="text-foreground/80 text-sm leading-relaxed">{study.description}</CardDescription>
+          <CardDescription className="text-foreground/70 text-sm leading-relaxed">{study.description}</CardDescription>
           {study.tags && study.tags.length > 0 && (
             <div className="pt-4">
-              {study.tags.map(tag => <Badge key={tag} variant="outline" className="mr-1.5 mb-1.5 text-xs border-border/70 text-muted-foreground">{tag}</Badge>)}
+              {study.tags.map(tag => <Badge key={tag} variant="outline" className="mr-1.5 mb-1.5 text-xs border-border/60 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors">{tag}</Badge>)}
             </div>
           )}
         </CardContent>
@@ -121,20 +130,20 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
     </motion.div>
   );
 
-  const categoryColorsRefPt = ['text-primary', 'text-secondary', 'text-accent', 'text-yellow-400'];
+  const categoryColorsRefPt = ['text-primary', 'text-secondary', 'text-accent', 'text-yellow-400']; // Keep for PT categories
 
   return (
-    <section id="cases" className="bg-background"> 
-      <div className="container px-6"> 
+    <section id="cases" className="bg-background">
+      <div className="container px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariants}
           className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-3xl md:text-4xl font-bold text-foreground text-center" 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center"
             dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle) }}
           />
         </motion.div>
@@ -143,49 +152,61 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
           <div key={category.categoryTitle || catIndex} className="mb-16">
             {category.categoryTitle && (
               <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{ ...sectionVariants, visible: { ...sectionVariants.visible, transition: { ...sectionVariants.visible.transition, delay: 0.2 }}}}
                 className={`text-2xl md:text-3xl font-semibold ${categoryColorsRefPt[catIndex % categoryColorsRefPt.length]} mb-8 text-center md:text-left`}
               >
                 {category.categoryTitle}
               </motion.h3>
             )}
-            <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              className="grid md:grid-cols-2 gap-8 justify-items-center" // Added justify-items-center
+            >
               {category.cases.map((study, studyIndex) => renderCaseStudyEn(study, studyIndex))}
-            </div>
+            </motion.div>
           </div>
         ))}
 
         {locale === 'pt' && t.categoriesPt?.map((category, catIndex) => (
           <div key={category.categoryTitle} className="mb-16">
              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{ ...sectionVariants, visible: { ...sectionVariants.visible, transition: { ...sectionVariants.visible.transition, delay: 0.2 }}}}
                 className={`text-2xl md:text-3xl font-semibold ${categoryColorsRefPt[catIndex % categoryColorsRefPt.length]} mb-8 text-center md:text-left`}
               >
               {category.categoryTitle}
             </motion.h3>
-            <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              className="grid md:grid-cols-2 gap-8 justify-items-center" // Added justify-items-center
+            >
               {category.cases.map((study, studyIndex) => renderCaseStudyPt(study, studyIndex))}
-            </div>
+            </motion.div>
           </div>
         ))}
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ ...sectionVariants, visible: { ...sectionVariants.visible, transition: { ...sectionVariants.visible.transition, delay: 0.3 }}}}
           className="text-center mt-12"
         >
           <Button
             asChild
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105" // Adjusted style
           >
             <Link href={locale === 'en' ? '#contact' : '#'}>{t.portfolioCta} {locale === 'en' && <ArrowRight className="ml-2 h-5 w-5" />}</Link>
           </Button>

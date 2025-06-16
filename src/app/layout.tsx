@@ -2,10 +2,14 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { Inter } from 'next/font/google';
+
+// Initialize Inter font
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'VertexMedia', 
-  description: 'High-Performance Video That Drives Revenue & Results.', // EN focused
+  title: 'VertexMedia',
+  description: 'High-Performance Video That Drives Revenue & Results.',
 };
 
 export default function RootLayout({
@@ -14,20 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Defaulting to dark theme as per PRD and new brief's "dark mode"
-    <html lang="en" className="dark"> 
+    <html lang="en" className={`${inter.variable} dark`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* PRD Fonts: Playfair Display for headlines, PT Sans for body */}
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+        {/* Removed Playfair Display and PT Sans, Inter is now handled via next/font */}
       </head>
-      <body className="font-body antialiased"> {/* font-body will use PT Sans */}
+      <body className="font-sans antialiased bg-background text-foreground"> {/* Ensure font-sans uses Inter */}
         {children}
         <Toaster />
       </body>
     </html>
   );
 }
-
-    
