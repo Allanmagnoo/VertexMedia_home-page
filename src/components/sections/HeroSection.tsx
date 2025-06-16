@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import type { Locale } from '@/lib/translations';
 import { getLang, renderHighlightedText } from '@/lib/translations';
 import Link from 'next/link';
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   locale: Locale;
@@ -27,7 +28,12 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       <div className="absolute inset-0 bg-card/70 z-0"></div>
 
       <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
-        <div className="bg-background/70 backdrop-blur-sm p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl animate-fade-in animation-delay-200">
+        <motion.div
+          className="bg-background/70 backdrop-blur-sm p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
           {locale === 'pt' && t.mainImageUrl && (
             <div className="mx-auto mb-8 w-full max-w-md">
               <Image
@@ -92,14 +98,14 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               <Button
                 asChild
                 size="lg"
-                variant="default" // Uses primary color by default
+                variant="default" 
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-8 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 inline-block"
               >
                 <Link href="#solutions" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
               </Button>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

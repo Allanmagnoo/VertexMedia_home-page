@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Sparkles, Settings2, Users, TrendingUp, Video, Lightbulb, AlertTriangle, Film, PackageCheck, Users2, Briefcase, ArrowRight } from 'lucide-react';
 import type { Locale, ServiceCardEn, DetailCardContentPt } from '@/lib/translations';
 import { getLang, renderHighlightedText } from '@/lib/translations';
+import { motion } from "framer-motion";
 
 interface ServicesSectionProps {
   locale: Locale;
@@ -31,6 +32,11 @@ const iconComponents: { [key: string]: React.ElementType } = {
 export default function ServicesSection({ locale }: ServicesSectionProps) {
   const t = getLang(locale).solutions;
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   const renderServiceCardEn = (service: ServiceCardEn, index: number) => {
     const IconComponent = service.icon ? iconComponents[service.icon] : Sparkles;
 
@@ -43,48 +49,56 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
 
 
     return (
-      <Card
+      <motion.div
         key={service.title}
-        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center" 
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
       >
-        <CardHeader className="flex flex-col items-center p-0 mb-5 text-center"> 
-          {IconComponent && (
-            <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
-                <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
+        <Card
+          className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center h-full" 
+        >
+          <CardHeader className="flex flex-col items-center p-0 mb-5 text-center"> 
+            {IconComponent && (
+              <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
+                  <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
+              </div>
+            )}
+            <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
+          </CardHeader>
+
+          <CardContent className="p-0 flex-grow space-y-4 text-center">
+            {service.shortDescription && (
+              <p className="text-foreground/80 text-sm leading-relaxed text-center mb-4">
+                  {service.shortDescription}
+              </p>
+            )}
+            {service.keyFeatures && service.keyFeatures.length > 0 && (
+              <>
+                <ul className="text-foreground/70 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-xs mx-auto">
+                  {service.keyFeatures.map((item, idx) => <li key={idx}>{item}</li>)}
+                </ul>
+              </>
+            )}
+          </CardContent>
+
+          {service.cta && service.ctaLink && (
+            <div className="mt-auto pt-8 flex justify-center"> 
+                <Button
+                    asChild
+                    variant="link"
+                    className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`} 
+                >
+                    <Link href={service.ctaLink}>
+                    {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
             </div>
           )}
-          <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
-        </CardHeader>
-
-        <CardContent className="p-0 flex-grow space-y-4 text-center">
-          {service.shortDescription && (
-             <p className="text-foreground/80 text-sm leading-relaxed text-center mb-4">
-                {service.shortDescription}
-            </p>
-          )}
-          {service.keyFeatures && service.keyFeatures.length > 0 && (
-            <>
-              <ul className="text-foreground/70 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-xs mx-auto">
-                {service.keyFeatures.map((item, idx) => <li key={idx}>{item}</li>)}
-              </ul>
-            </>
-          )}
-        </CardContent>
-
-        {service.cta && service.ctaLink && (
-           <div className="mt-auto pt-8 flex justify-center"> 
-              <Button
-                  asChild
-                  variant="link"
-                  className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`} 
-              >
-                  <Link href={service.ctaLink}>
-                  {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-              </Button>
-          </div>
-        )}
-      </Card>
+        </Card>
+      </motion.div>
     );
   };
 
@@ -98,56 +112,76 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     const colorTheme = cardColorClasses[index % cardColorClasses.length];
 
     return (
-      <Card
+      <motion.div
         key={service.title}
-        className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center" 
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
       >
-        <CardHeader className="flex flex-col items-center p-0 mb-5 text-center">
-          {IconComponent && (
-            <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
-              <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
+        <Card
+          className="bg-card p-6 md:p-8 rounded-xl shadow-xl hover:bg-muted hover:shadow-[0_8px_12px_-3px_rgba(0,0,0,0.25),_0_3px_5px_-2px_rgba(0,0,0,0.2)] transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col group w-full max-w-md text-center h-full" 
+        >
+          <CardHeader className="flex flex-col items-center p-0 mb-5 text-center">
+            {IconComponent && (
+              <div className={`flex items-center justify-center h-16 w-16 rounded-full ${colorTheme.bg} mb-6`}>
+                <IconComponent className={`h-8 w-8 ${colorTheme.main}`} />
+              </div>
+            )}
+            <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
+          </CardHeader>
+          <CardContent className="p-0 flex-grow text-center">
+            {service.description && <CardDescription className="text-foreground/70 mb-4 text-sm leading-relaxed text-center">{service.description}</CardDescription>}
+            {service.listItems && service.listItems.length > 0 && (
+              <ul className="text-foreground/70 text-sm space-y-2 list-disc list-outside pl-5 text-left max-w-xs mx-auto"> 
+                {service.listItems.map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
+            )}
+          </CardContent>
+          {service.cta && service.ctaLink && (
+            <div className="mt-auto pt-8 flex justify-center">
+                <Button
+                    asChild
+                    variant="link"
+                    className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`}
+                >
+                    <Link href={service.ctaLink}>
+                    {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
             </div>
           )}
-          <CardTitle className="text-2xl font-semibold text-foreground mb-3 text-center">{service.title}</CardTitle>
-        </CardHeader>
-        <CardContent className="p-0 flex-grow text-center">
-          {service.description && <CardDescription className="text-foreground/70 mb-4 text-sm leading-relaxed text-center">{service.description}</CardDescription>}
-          {service.listItems && service.listItems.length > 0 && (
-            <ul className="text-foreground/70 text-sm space-y-2 list-disc list-outside pl-5 text-left max-w-xs mx-auto"> 
-              {service.listItems.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          )}
-        </CardContent>
-        {service.cta && service.ctaLink && (
-           <div className="mt-auto pt-8 flex justify-center">
-              <Button
-                  asChild
-                  variant="link"
-                  className={`font-semibold ${colorTheme.link} p-0 text-md group-hover:underline`}
-              >
-                  <Link href={service.ctaLink}>
-                  {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-              </Button>
-          </div>
-        )}
-      </Card>
+        </Card>
+      </motion.div>
     );
   };
 
   return (
     <section id="solutions" className="bg-card">
       <div className="container px-6"> 
-        <div className="text-center mb-12 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-12 md:mb-16"
+        >
           <h2
             className="text-3xl md:text-4xl font-bold text-foreground text-center" 
             dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle) }}
           />
-        </div>
+        </motion.div>
 
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay:0.1 }}
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
+        >
            {locale === 'pt' && t.problemStatement ? (
              <>
                 <h3 className="text-2xl md:text-3xl font-semibold text-foreground/90 mt-8 mb-4"
@@ -166,7 +200,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
                {t.description}
              </p>
            ) : null}
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center max-w-screen-xl mx-auto">
           {locale === 'en' && t.servicesEn?.map((service, index) => renderServiceCardEn(service, index))}
