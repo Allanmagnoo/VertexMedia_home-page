@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect } from 'react'; // Explicitly import React if not done by Next
-import { useActionState } from 'react'; // Corrected import
+import { useActionState } from 'react'; 
 import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,7 +21,6 @@ interface ContactSectionProps {
 
 function SubmitButton({ text, locale }: { text: string; locale: Locale }) {
   const { pending } = useFormStatus();
-  // Use Send for PT ('Enviar Mensagem') and PhoneCall for EN ('Book Your Free Discovery Call')
   const Icon = locale === 'pt' ? Send : PhoneCall;
   const sendingText = locale === 'pt' ? "Enviando..." : (pending ? "Booking call..." : "Processing...");
 
@@ -30,9 +29,7 @@ function SubmitButton({ text, locale }: { text: string; locale: Locale }) {
     <Button
       type="submit"
       disabled={pending}
-      // From referencia.html: w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg text-lg
-      // Theme: Using secondary (purple) for submit button as per ref style for form submit
-      className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold py-3.5 px-6 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50"
+      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold py-3.5 px-6 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
       aria-label={text}
     >
       {pending ? sendingText : text}
@@ -67,21 +64,18 @@ export default function ContactSection({ locale }: ContactSectionProps) {
     }
   }, [state, toast, t.successMessage, t.errorMessage]);
 
-  // Section style from referencia.html: py-16 md:py-24 bg-blue-600 text-white
-  // Theme: primary for section bg, primary-foreground for text
+  // Section style will use primary color for its background as per the original structure, with new accent for text highlights if desired
   return (
     <section id="contact" className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-6 text-center"> {/* Ensure container has padding */}
+      <div className="container mx-auto px-6 text-center">
         <h2
-          className="text-3xl md:text-4xl font-bold mb-6" // Consistent with ref (font-bold)
-          dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle, 'text-secondary')}} // Highlight with secondary (purple)
+          className="text-3xl md:text-4xl font-bold mb-6"
+          dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle, 'text-secondary')}} // Highlight with secondary (Roxo Inovador)
         />
         <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
           {t.description}
         </p>
 
-        {/* Form card style from referencia.html: max-w-xl mx-auto bg-gray-800 p-8 md:p-10 rounded-xl shadow-2xl */}
-        {/* Theme: bg-card, text-foreground */}
         <Card className="max-w-xl mx-auto bg-card p-8 md:p-10 rounded-xl shadow-2xl text-foreground">
           <CardContent className="p-0">
             <form action={formAction} className="space-y-6">
@@ -97,7 +91,6 @@ export default function ContactSection({ locale }: ContactSectionProps) {
                        className="mt-1 bg-input border-border text-foreground focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-muted-foreground" />
                 {state.errors?.email && <p className="text-xs text-destructive mt-1 text-left">{state.errors.email.join(', ')}</p>}
               </div>
-              {/* Company field is optional in PT, present in EN */}
               {(locale === 'en' || t.formCompany) && (
                 <div>
                   <Label htmlFor="company" className="block mb-2 text-sm font-medium text-left text-foreground/80">{t.formCompany || 'Company Name'}</Label>
@@ -115,7 +108,6 @@ export default function ContactSection({ locale }: ContactSectionProps) {
               {state.errors?._form && <p className="text-sm text-destructive mt-2 text-center">{state.errors._form.join(', ')}</p>}
               <SubmitButton text={t.formSubmit} locale={locale} />
             </form>
-            {/* Contact details from referencia.html, adapted for locale */}
             {(t.contactDirectly && (t.email || t.phone)) && (
               <p className="text-xs text-muted-foreground mt-6">
                 {t.contactDirectly}

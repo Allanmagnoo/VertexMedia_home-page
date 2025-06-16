@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Settings2, Users, TrendingUp, Video, Lightbulb, AlertTriangle, Film, PackageCheck, Users2, Briefcase, ArrowRight } from 'lucide-react';
-import type { Locale, ServiceCardEn, DetailCardContentPt } from '@/lib/translations'; // Updated ServiceCardEn import
+import type { Locale, ServiceCardEn, DetailCardContentPt } from '@/lib/translations';
 import { getLang, renderHighlightedText } from '@/lib/translations';
 
 interface ServicesSectionProps {
@@ -32,7 +32,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
   const t = getLang(locale).solutions;
 
   const renderServiceCardEn = (service: ServiceCardEn, index: number) => {
-    const IconComponent = service.icon ? iconComponents[service.icon] : Sparkles; // Use service.icon directly
+    const IconComponent = service.icon ? iconComponents[service.icon] : Sparkles;
 
     const cardColorClasses = [
       { main: 'text-primary', bg: 'bg-primary/10', link: 'text-primary hover:text-primary/80' }, 
@@ -64,7 +64,6 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
           )}
           {service.keyFeatures && service.keyFeatures.length > 0 && (
             <>
-              {/* Optional: <h5 className="text-md font-semibold text-foreground/90 mb-2 text-center">Key Features:</h5> */}
               <ul className="text-foreground/70 text-sm space-y-1.5 list-disc list-outside pl-5 text-left max-w-xs mx-auto">
                 {service.keyFeatures.map((item, idx) => <li key={idx}>{item}</li>)}
               </ul>
@@ -148,7 +147,6 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
           />
         </div>
 
-        {/* Introductory problem statement / description (BEFORE the cards) */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
            {locale === 'pt' && t.problemStatement ? (
              <>
@@ -158,7 +156,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
                 {t.problemStatement.description}
                 </p>
                 {t.problemStatement.cta && (
-                    <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold shadow-lg transition duration-300 transform hover:scale-105">
+                    <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-lg transition duration-300 transform hover:scale-105">
                         <Link href="#contact">{t.problemStatement.cta}</Link> 
                     </Button>
                 )}
@@ -178,5 +176,3 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     </section>
   );
 }
-
-    

@@ -30,7 +30,6 @@ export default function Header({ locale, setLocale }: HeaderProps) {
     { href: '#about', label: t.nav.aboutUs! },
   ];
 
-  // Corrected logic: Use t.nav.contactCta directly as 't' is already locale-specific.
   const contactCtaLabel = t.nav.contactCta;
   const contactCtaLink = "#contact";
 
@@ -72,7 +71,7 @@ export default function Header({ locale, setLocale }: HeaderProps) {
            <Button
             asChild
             size="sm"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-md transition duration-300 transform hover:scale-105 py-2 px-4 rounded-lg"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-md transition duration-300 transform hover:scale-105 py-2 px-4 rounded-lg"
           >
             <Link href={contactCtaLink} onClick={(e) => scrollToSection(e, contactCtaLink)}>{contactCtaLabel}</Link>
           </Button>
@@ -111,7 +110,7 @@ export default function Header({ locale, setLocale }: HeaderProps) {
                         <SheetClose asChild>
                         <Button
                             asChild
-                            className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3"
+                            className="w-full mt-4 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3"
                         >
                             <Link href={contactCtaLink} onClick={(e) => scrollToSection(e, contactCtaLink)}>{contactCtaLabel}</Link>
                         </Button>
