@@ -37,13 +37,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
-          src="/images/homepage_bg_abstrato02.jpg" // Ensure this image is in public/images/
+          src="/images/homepage_bg_abstrato02.jpg" 
           alt="VertexMedia abstract background pattern"
           layout="fill"
           objectFit="cover"
           quality={85}
           priority
-          data-ai-hint="abstrato azul roxo"
+          data-ai-hint="hero background abstract purple blue pattern"
         />
       </div>
       {/* Dark Overlay for text legibility */}
@@ -65,8 +65,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             >
               <Image
-                src="/images/hero-main-pt.jpg" // Ensure this image is in public/images/
-                alt="Imagem principal da VertexMedia para o público brasileiro"
+                src="/images/hero-main-pt.jpg" 
+                alt={t.title || "Imagem principal da VertexMedia"}
                 data-ai-hint="audiovisual estrategico brasil"
                 width={500}
                 height={250}
