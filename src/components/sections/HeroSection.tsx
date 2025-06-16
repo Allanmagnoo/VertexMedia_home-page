@@ -33,10 +33,9 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
   const backgroundImageAlt = locale === 'pt'
-    ? "Imagem de fundo VertexMedia para o Brasil com equipe em colaboração"
+    ? "VertexMedia - fundo da seção principal com equipe em colaboração"
     : "VertexMedia abstract fluid particles background";
   const backgroundImageHint = locale === 'pt' ? "audiovisual brasil equipe" : "abstract background";
-
 
   return (
     <section
@@ -44,7 +43,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       className="relative w-full min-h-screen flex flex-col overflow-hidden"
     >
       {/* Background Image Container */}
-      <div className="absolute inset-0 -z-20 border-4 border-red-500"> {/* DEBUG BORDER ADDED HERE */}
+      <div className="absolute inset-0 -z-20">
         <Image
           src={backgroundImageSrc}
           alt={backgroundImageAlt}
@@ -156,3 +155,5 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
+
+    
