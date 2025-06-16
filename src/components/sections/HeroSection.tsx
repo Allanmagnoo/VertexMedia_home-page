@@ -33,9 +33,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
   const backgroundImageAlt = locale === 'pt'
-    ? "Ambiente de trabalho criativo com equipamentos audiovisuais para VertexMedia"
-    : "VertexMedia fundo abstrato de partículas fluidas";
-  const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil" : "hero background abstract";
+    ? "Fundo estratégico VertexMedia para o Brasil"
+    : "VertexMedia abstract fluid particles background";
+  const backgroundImageHint = locale === 'pt' ? "audiovisual brasil" : "abstract background";
+
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex flex-col overflow-hidden">
@@ -46,15 +47,15 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           alt={backgroundImageAlt}
           layout="fill"
           objectFit="cover"
+          className="opacity-100"
           data-ai-hint={backgroundImageHint}
-          priority // Ensure Next.js prioritizes loading this background image
+          priority
         />
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
       {/* Content Container */}
-      {/* Added flex-col and specific padding/margin for PT client logos to be below the main content box */}
       <div className="container relative z-10 mx-auto px-6 w-full flex-grow flex flex-col items-center justify-center">
         <motion.div
           className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
@@ -124,7 +125,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         {/* Client Logos Section for PT - outside the glassmorphism box but within the main section's flex flow */}
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="w-full max-w-4xl mx-auto pt-12 pb-8 md:pt-16 md:pb-10 px-6" // Adjusted padding
+            className="w-full max-w-4xl mx-auto pt-12 pb-8 md:pt-16 md:pb-10 px-6" 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
