@@ -40,7 +40,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen flex flex-col overflow-hidden"
+      className="relative w-full h-[80vh] flex flex-col overflow-hidden" // Altura ajustada aqui
     >
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
@@ -48,23 +48,18 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           src={backgroundImageSrc}
           alt={backgroundImageAlt}
           data-ai-hint={backgroundImageHint}
-          width={1920}
-          height={1080}
+          width={1920} // Explicit width for non-layout="fill" or as hint
+          height={1080} // Explicit height
           priority
           className="absolute top-0 left-0 w-full h-full object-cover opacity-100"
         />
       </div>
 
-      {/* Dark Overlay - TEMPORARILY REMOVED FOR DEBUGGING
-      <div className="absolute inset-0 -z-10 bg-black/60"></div>
-      */}
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 z-10 bg-black/60"></div>
       
-      {/* Fallback solid color if overlay is also removed and image doesn't load - for visibility */}
-      <div className="absolute inset-0 z-[-5] bg-slate-900"></div>
-
-
       {/* Content Container */}
-      <div className="container relative z-10 mx-auto px-6 w-full flex-grow flex flex-col items-center justify-center">
+      <div className="container relative z-20 mx-auto px-6 w-full h-full flex flex-col items-center justify-center">
         <motion.div
           className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -133,15 +128,15 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         {/* Client Logos Section for PT - outside the glassmorphism box but within the main section's flex flow */}
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="w-full max-w-4xl mx-auto pt-12 pb-8 md:pt-16 md:pb-10 px-6"
+            className="w-full max-w-4xl mx-auto pt-10 pb-4 md:pt-12 md:pb-6 px-6" // Ajustado padding para nova altura
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
           >
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6 text-center">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-5 text-center">
               {t.clientLogosTitle}
             </h3>
-            <div className="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-12 gap-y-4 sm:gap-y-6">
+            <div className="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-12 gap-y-4 sm:gap-y-5">
               {clientLogos.map((logo, index) => (
                 <div key={index} className="opacity-75 hover:opacity-100 transition-opacity duration-300">
                   <Image
