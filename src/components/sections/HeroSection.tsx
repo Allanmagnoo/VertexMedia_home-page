@@ -40,7 +40,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className="relative w-full h-[70vh] flex flex-col overflow-hidden" // Altura ajustada para 70vh
+      className="relative w-full h-[70vh] flex flex-col overflow-hidden"
     >
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
@@ -58,8 +58,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       {/* Dark Overlay */}
       <div className="absolute inset-0 z-10 bg-black/60"></div>
       
-      {/* Content Container */}
-      <div className="container relative z-20 mx-auto px-6 w-full h-full flex flex-col items-center justify-center">
+      {/* Main Content Area (Text Box) */}
+      <div className="relative z-20 flex flex-col flex-grow justify-center items-center container mx-auto px-6">
         <motion.div
           className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -81,7 +81,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 />
               )}
             </>
-          ) : ( // PT content structure
+          ) : ( 
             <>
               {t.title && (
                 <h1
@@ -124,11 +124,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             )}
           </div>
         </motion.div>
-
-        {/* Client Logos Section for PT - outside the glassmorphism box but within the main section's flex flow */}
-        {locale === 'pt' && t.clientLogosTitle && (
+      </div>
+      
+      {/* Client Logos Section for PT - now a distinct flex item at the bottom */}
+      {locale === 'pt' && t.clientLogosTitle && (
+        <div className="relative z-20 w-full bg-card"> {/* Full-width dark background for logos */}
           <motion.div
-            className="w-full max-w-4xl mx-auto pt-10 pb-4 md:pt-12 md:pb-6 px-6" 
+            className="container mx-auto py-6 md:py-8" // Content container for logos
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -151,8 +153,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               ))}
             </div>
           </motion.div>
-        )}
-      </div>
+        </div>
+      )}
     </section>
   );
 }
