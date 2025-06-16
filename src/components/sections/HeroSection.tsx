@@ -33,22 +33,25 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
   const backgroundImageAlt = locale === 'pt'
-    ? "Fundo estratégico VertexMedia para o Brasil"
+    ? "Imagem de fundo VertexMedia para o Brasil"
     : "VertexMedia abstract fluid particles background";
   const backgroundImageHint = locale === 'pt' ? "audiovisual brasil" : "abstract background";
 
 
   return (
-    <section id="hero" className="relative w-full min-h-screen flex flex-col overflow-hidden">
+    <section
+      id="hero"
+      className="relative w-full min-h-screen flex flex-col overflow-hidden"
+    >
       {/* Background Image Container */}
       <div className="absolute inset-0 -z-20">
         <Image
           src={backgroundImageSrc}
           alt={backgroundImageAlt}
+          data-ai-hint={backgroundImageHint}
           layout="fill"
           objectFit="cover"
           className="opacity-100"
-          data-ai-hint={backgroundImageHint}
           priority
         />
       </div>
@@ -125,7 +128,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         {/* Client Logos Section for PT - outside the glassmorphism box but within the main section's flex flow */}
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="w-full max-w-4xl mx-auto pt-12 pb-8 md:pt-16 md:pb-10 px-6" 
+            className="w-full max-w-4xl mx-auto pt-12 pb-8 md:pt-16 md:pb-10 px-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
