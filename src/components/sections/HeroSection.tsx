@@ -33,41 +33,41 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
 
   return (
-    <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 md:py-20">
+    <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background py-16 md:py-20">
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
           src="/images/homepage_bg_abstrato02.jpg" 
-          alt="VertexMedia fundo abstrato com padronagem azul e roxa"
+          alt="VertexMedia fundo abstrato com padronagem azul e roxa de partículas fluidas"
           layout="fill"
           objectFit="cover"
           quality={85}
           priority
-          data-ai-hint="hero background abstract purple blue pattern"
+          data-ai-hint="hero background abstract purple blue pattern particles"
         />
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
 
-      <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
+      <div className="container relative z-10 text-center mx-auto px-6 w-full">
         <motion.div
-          className="py-8 md:py-12"
+          className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
           {locale === 'pt' && (
             <motion.div
-              className="mx-auto mb-8 sm:mb-10 w-full max-w-md lg:max-w-lg"
+              className="mx-auto mb-8 sm:mb-10 w-full max-w-xs sm:max-w-sm md:max-w-md" // Adjusted max-width for image
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             >
               <Image
                 src="/images/hero-main-pt.jpg" 
-                alt="Imagem principal da VertexMedia para a seção hero em português"
-                data-ai-hint="audiovisual estrategico brasil"
+                alt="Imagem principal da VertexMedia para a seção hero em português: representação abstrata de ondas de partículas digitais em tons de azul e roxo."
+                data-ai-hint="audiovisual estrategico brasil particulas digitais"
                 width={500}
                 height={250}
                 className="rounded-lg object-contain shadow-lg"
@@ -95,19 +95,19 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <>
               {t.title && (
                 <h1
-                  className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight text-foreground"
+                  className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground" // Adjusted size for PT
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.title) }}
                 />
               )}
               {t.subtitle && (
                 <h2
-                  className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-foreground/90 leading-snug"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-foreground/90 leading-snug" // Adjusted size for PT
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subtitle, 'text-primary', 'gradient-text') }}
                 />
               )}
               {t.description && (
                 <p
-                  className="text-lg sm:text-xl mb-10 text-foreground/80 leading-relaxed max-w-3xl mx-auto"
+                  className="text-base sm:text-lg mb-10 text-foreground/80 leading-relaxed max-w-2xl mx-auto" // Adjusted size for PT
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.description) }}
                 />
               )}
@@ -118,7 +118,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <Button
               asChild
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-lg hover:shadow-neon-glow-accent transition-all duration-300 transform hover:scale-105 inline-block"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 px-7 sm:py-3.5 sm:px-8 rounded-md text-base sm:text-lg shadow-lg hover:shadow-neon-glow-accent transition-all duration-300 transform hover:scale-105 inline-block"
             >
               <Link href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>{t.ctaPrimary}</Link>
             </Button>
@@ -127,7 +127,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-md hover:shadow-neon-glow-primary transition-all duration-300 transform hover:scale-105 inline-block"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold py-3 px-7 sm:py-3.5 sm:px-8 rounded-md text-base sm:text-lg shadow-md hover:shadow-neon-glow-primary transition-all duration-300 transform hover:scale-105 inline-block"
               >
                 <Link href="#solutions" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
               </Button>
@@ -137,7 +137,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="mt-12 md:mt-16"
+            className="mt-12 md:mt-16 w-full max-w-4xl mx-auto" // Ensure logos section uses available width
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -145,23 +145,22 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6 text-center">
               {t.clientLogosTitle}
             </h3>
-            <div className="flex flex-wrap justify-center items-center gap-x-8 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 gap-y-6">
+            <div className="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-12 gap-y-4 sm:gap-y-6">
               {clientLogos.map((logo, index) => (
                 <div key={index} className="opacity-75 hover:opacity-100 transition-opacity duration-300">
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     data-ai-hint={logo.hint}
-                    width={120}
-                    height={40}
-                    className="object-contain h-8 md:h-9 w-auto"
+                    width={100} // Adjusted logo size
+                    height={34} // Adjusted logo size
+                    className="object-contain h-7 md:h-8 w-auto" // Adjusted logo size
                   />
                 </div>
               ))}
             </div>
           </motion.div>
         )}
-
       </div>
     </section>
   );
