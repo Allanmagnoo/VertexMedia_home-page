@@ -42,17 +42,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       id="hero"
       className="relative w-full min-h-screen flex flex-col overflow-hidden"
     >
-      {/* Background Image Container - Using CSS background-image for diagnostics */}
-      <div
-        className="absolute inset-0 -z-20"
-        style={{
-          backgroundImage: `url(${backgroundImageSrc})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 1,
-        }}
-      >
-        {/* 
+      {/* Background Image Container */}
+      <div className="absolute inset-0 -z-20">
         <Image
           src={backgroundImageSrc}
           alt={backgroundImageAlt}
@@ -62,7 +53,6 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           className="opacity-100"
           priority
         />
-        */}
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
