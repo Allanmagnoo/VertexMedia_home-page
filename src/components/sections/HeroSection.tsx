@@ -39,7 +39,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
 
   return (
-    <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section id="hero" className="relative w-full min-h-screen flex flex-col overflow-hidden">
       {/* Background Image Container */}
       <div className="absolute inset-0 -z-20">
         <Image
@@ -47,17 +47,16 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           alt={backgroundImageAlt}
           layout="fill"
           objectFit="cover"
-          quality={85}
-          priority
           data-ai-hint={backgroundImageHint}
-          className="opacity-100 w-full h-full"
+          className="opacity-100" 
         />
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
 
-      <div className="container relative z-10 mx-auto px-6 w-full py-16 md:py-20">
+      {/* Content Container */}
+      <div className="container relative z-10 mx-auto px-6 w-full flex-grow flex items-center justify-center py-16 md:py-20">
         <motion.div
           className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -84,7 +83,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               {t.title && (
                 <h1
                   className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground"
-                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.title) }}
+                  dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.title, 'text-primary', 'gradient-text') }}
                 />
               )}
               {t.subtitle && (
@@ -122,10 +121,11 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             )}
           </div>
         </motion.div>
-
+      </div>
+        {/* Client Logos Section for PT - outside the glassmorphism box but within the main section */}
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="mt-12 md:mt-16 w-full max-w-4xl mx-auto relative z-10"
+            className="relative z-10 w-full max-w-4xl mx-auto pb-12 md:pb-16 px-6" // Added padding bottom and horizontal padding
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -141,15 +141,14 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                     alt={logo.alt}
                     data-ai-hint={logo.hint}
                     width={100}
-                    height={34} // Adjusted for typical logo aspect ratios
-                    className="object-contain h-7 md:h-8 w-auto" // Control height, auto width
+                    height={34}
+                    className="object-contain h-7 md:h-8 w-auto"
                   />
                 </div>
               ))}
             </div>
           </motion.div>
         )}
-      </div>
     </section>
   );
 }
