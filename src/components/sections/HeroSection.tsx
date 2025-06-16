@@ -37,7 +37,6 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     : "VertexMedia fundo abstrato de partículas fluidas";
   const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil" : "hero background abstract";
 
-
   return (
     <section id="hero" className="relative w-full min-h-screen flex flex-col overflow-hidden">
       {/* Background Image Container */}
@@ -48,15 +47,15 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           layout="fill"
           objectFit="cover"
           data-ai-hint={backgroundImageHint}
-          className="opacity-100" 
+          priority // Ensure Next.js prioritizes loading this background image
         />
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
-
       {/* Content Container */}
-      <div className="container relative z-10 mx-auto px-6 w-full flex-grow flex items-center justify-center py-16 md:py-20">
+      {/* Added flex-col and specific padding/margin for PT client logos to be below the main content box */}
+      <div className="container relative z-10 mx-auto px-6 w-full flex-grow flex flex-col items-center justify-center">
         <motion.div
           className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -121,11 +120,11 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             )}
           </div>
         </motion.div>
-      </div>
-        {/* Client Logos Section for PT - outside the glassmorphism box but within the main section */}
+
+        {/* Client Logos Section for PT - outside the glassmorphism box but within the main section's flex flow */}
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="relative z-10 w-full max-w-4xl mx-auto pb-12 md:pb-16 px-6" // Added padding bottom and horizontal padding
+            className="w-full max-w-4xl mx-auto pt-12 pb-8 md:pt-16 md:pb-10 px-6" // Adjusted padding
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -149,6 +148,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             </div>
           </motion.div>
         )}
+      </div>
     </section>
   );
 }
