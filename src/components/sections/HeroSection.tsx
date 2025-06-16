@@ -48,10 +48,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           src={backgroundImageSrc}
           alt={backgroundImageAlt}
           data-ai-hint={backgroundImageHint}
-          width={1920}
+          width={1920} 
           height={1080}
-          className="absolute top-0 left-0 w-full h-full object-cover object-center opacity-100"
           priority
+          className="absolute top-0 left-0 w-full h-full object-cover object-center opacity-100"
         />
       </div>
 
@@ -128,9 +128,9 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       
       {/* Client Logos Section for PT - now a distinct flex item at the bottom */}
       {locale === 'pt' && t.clientLogosTitle && (
-        <div className="relative z-20 w-full bg-card"> {/* Full-width dark background for logos */}
+        <div className="relative z-20 w-full bg-card/20 backdrop-blur-lg border-t border-white/10 shadow-xl">
           <motion.div
-            className="container mx-auto py-6 md:py-8" // Content container for logos
+            className="container mx-auto py-6 md:py-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
