@@ -34,11 +34,24 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 md:py-20">
-      <div className="absolute inset-0 -z-10 bg-gradient-radial from-card via-background to-background opacity-40"></div>
+      <div className="absolute inset-0 -z-20"> {/* Lower z-index for background image */}
+        <Image
+          src="/images/homepage_bg_abstrato.jpg" // Assuming the image is in public/images/
+          alt="Abstract background"
+          layout="fill"
+          objectFit="cover"
+          quality={75}
+          priority
+          data-ai-hint="abstract technology background"
+        />
+      </div>
+      {/* Overlay that was previously a gradient, now a semi-transparent dark layer */}
+      <div className="absolute inset-0 -z-10 bg-background/70"></div>
+
 
       <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
         <motion.div
-          className="py-8 md:py-12" 
+          className="py-8 md:py-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -133,14 +146,14 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             </h3>
             <div className="flex flex-wrap justify-center items-center gap-x-8 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 gap-y-6">
               {clientLogos.map((logo, index) => (
-                <div key={index} className="opacity-60 hover:opacity-100 transition-opacity duration-300">
+                <div key={index} className="opacity-75 hover:opacity-100 transition-opacity duration-300">
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     data-ai-hint={logo.hint}
-                    width={120} 
-                    height={40} 
-                    className="object-contain h-8 md:h-9 w-auto" // Adjust height and let width be auto
+                    width={120}
+                    height={40}
+                    className="object-contain h-8 md:h-9 w-auto"
                   />
                 </div>
               ))}
