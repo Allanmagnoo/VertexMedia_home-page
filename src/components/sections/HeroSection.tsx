@@ -33,10 +33,14 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
   const backgroundImageAlt = locale === 'pt'
-    ? "Imagem de fundo de um ambiente de trabalho criativo com equipamentos audiovisuais e luzes neon para VertexMedia em português"
+    ? "Fundo de ambiente de trabalho criativo com equipamentos audiovisuais e luzes neon para VertexMedia"
     : "VertexMedia fundo abstrato com padronagem azul e roxa de partículas fluidas";
   const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil neon" : "hero background abstract purple blue particles";
 
+  // Log para depuração do caminho da imagem
+  if (typeof window !== 'undefined') { // Executar apenas no cliente
+    console.log(`HeroSection - Locale: ${locale}, Attempting to load background image: ${backgroundImageSrc}`);
+  }
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -50,7 +54,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           quality={85}
           priority
           data-ai-hint={backgroundImageHint}
-          className="opacity-100" 
+          className="opacity-100"
         />
       </div>
       {/* Dark Overlay for text legibility */}
@@ -64,7 +68,6 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
-          {/* Conditional rendering for the smaller image inside the box is REMOVED for PT, as it's now the background */}
 
           {locale === 'en' ? (
             <>
@@ -155,4 +158,3 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
-
