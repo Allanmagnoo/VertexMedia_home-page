@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, Cpu, Waypoints, Zap, Clock, CheckCircle, Users, ShieldCheck, Network, Lightbulb } from 'lucide-react'; // Removed Building, Settings as they weren't used in PT. Added Zap.
+import { Briefcase, Cpu, Waypoints, Zap, Clock, CheckCircle, Users, ShieldCheck, Network, Lightbulb } from 'lucide-react';
 import type { Locale } from '@/lib/translations';
 import { getLang, renderHighlightedText } from '@/lib/translations';
 import type React from 'react';
@@ -37,7 +37,7 @@ export default function AboutSection({ locale }: AboutSectionProps) {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.15 + 0.3, // Add base delay from contentVariants
+        delay: i * 0.15 + 0.3, 
         duration: 0.5,
         ease: "easeOut",
       },
@@ -71,7 +71,7 @@ export default function AboutSection({ locale }: AboutSectionProps) {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              variants={contentVariants} // Use general content variant
+              variants={contentVariants}
             >
               <Image
                   src={t.imageUrl}
@@ -86,25 +86,25 @@ export default function AboutSection({ locale }: AboutSectionProps) {
 
           <motion.div
             className={`space-y-6 ${locale === 'en' ? 'md:order-1' : ''}`}
-            initial="hidden" // For the container of cards/points
+            initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: locale === 'en' && t.imageUrl ? 0.4 : 0.2 } } }} // Stagger children
+            variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: locale === 'en' && t.imageUrl ? 0.4 : 0.2 } } }}
           >
             {locale === 'en' && t.ourEdge ? (
               <>
                 <motion.h3
                   className="text-2xl md:text-3xl font-semibold text-foreground text-center md:text-left mb-6"
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.ourEdge.title, '', 'gradient-text') }}
-                  initial={{ opacity: 0, y:10 }} // Simpler animation for this title
+                  initial={{ opacity: 0, y:10 }}
                   animate={{ opacity:1, y:0 }}
                   transition={{ delay: locale === 'en' && t.imageUrl ? 0.3 : 0.1 }}
                 />
 
-                <motion.div custom={0} variants={cardVariants}> {/* Pass custom index */}
-                  <Card className="bg-card border border-border/70 shadow-lg p-6 rounded-xl"> {/* Adjusted style */}
+                <motion.div custom={0} variants={cardVariants}>
+                  <Card className="bg-card border border-border/50 shadow-lg p-6 rounded-xl hover:border-primary hover:shadow-neon-glow-primary transition-all duration-300 transform hover:-translate-y-1">
                     <CardHeader className="p-0 mb-3">
-                      <CardTitle className="flex items-center text-lg text-primary"> {/* Adjusted size */}
+                      <CardTitle className="flex items-center text-lg text-primary">
                         <Network className="w-5 h-5 mr-2.5 shrink-0" /> {t.ourEdge.remoteCollaboration.title}
                       </CardTitle>
                     </CardHeader>
@@ -116,7 +116,7 @@ export default function AboutSection({ locale }: AboutSectionProps) {
                 </motion.div>
 
                 <motion.div custom={1} variants={cardVariants}>
-                  <Card className="bg-card border border-border/70 shadow-lg p-6 rounded-xl">
+                  <Card className="bg-card border border-border/50 shadow-lg p-6 rounded-xl hover:border-secondary hover:shadow-neon-glow-secondary transition-all duration-300 transform hover:-translate-y-1">
                     <CardHeader className="p-0 mb-3">
                       <CardTitle className="flex items-center text-lg text-secondary">
                         <Clock className="w-5 h-5 mr-2.5 shrink-0" /> {t.ourEdge.timezoneAdvantage.title}
@@ -133,20 +133,20 @@ export default function AboutSection({ locale }: AboutSectionProps) {
                 {t.keyPointsPt.map((point, index) => {
                   const IconComponent = iconMap[point.icon] || Zap;
                   const iconColorClasses = [
-                    { text: 'text-primary', bg: 'bg-primary/15' },
-                    { text: 'text-secondary', bg: 'bg-secondary/15' },
-                    { text: 'text-accent', bg: 'bg-accent/15' }
+                    { text: 'text-primary', bg: 'bg-primary/15', hoverBorder: 'hover:border-primary', hoverShadow: 'hover:shadow-neon-glow-primary' },
+                    { text: 'text-secondary', bg: 'bg-secondary/15', hoverBorder: 'hover:border-secondary', hoverShadow: 'hover:shadow-neon-glow-secondary' },
+                    { text: 'text-accent', bg: 'bg-accent/15', hoverBorder: 'hover:border-accent', hoverShadow: 'hover:shadow-neon-glow-accent' }
                   ];
                   const colorTheme = iconColorClasses[index % iconColorClasses.length];
 
                   return (
                     <motion.div
                       key={point.title}
-                      custom={index} // Pass index to variants
+                      custom={index}
                       variants={cardVariants}
-                      className="flex items-start p-4 bg-card border border-border/50 rounded-xl shadow-md" // Added card-like styling
+                      className={`flex items-start p-4 bg-card border border-border/50 rounded-xl shadow-md ${colorTheme.hoverBorder} ${colorTheme.hoverShadow} transition-all duration-300 transform hover:-translate-y-1`}
                     >
-                      <div className={`flex-shrink-0 h-10 w-10 rounded-lg ${colorTheme.bg} flex items-center justify-center mr-4`}> {/* Rounded-lg for icon bg */}
+                      <div className={`flex-shrink-0 h-10 w-10 rounded-lg ${colorTheme.bg} flex items-center justify-center mr-4`}>
                         <IconComponent className={`h-5 w-5 ${colorTheme.text}`} />
                       </div>
                       <div>

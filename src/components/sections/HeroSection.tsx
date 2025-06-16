@@ -25,23 +25,18 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 md:py-20">
-      {/* Removed the absolute inset-0 bg-card/70 overlay, content directly on bg-background */}
-      {/* Add subtle decorative elements if possible, e.g., faint gradients or shapes if easily done with Tailwind */}
-      {/* Example: <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-primary to-transparent"></div> */}
-
+      <div className="absolute inset-0 -z-10 bg-gradient-radial from-card via-background to-background opacity-40"></div>
 
       <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
         <motion.div
-          // Removed bg-background/70 backdrop-blur-sm p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl
-          // Content now directly on the section background for a cleaner Neon look.
-          className="py-8 md:py-12" // Added some padding to the motion div itself
-          initial={{ opacity: 0, y: 30 }} // Adjusted initial y for a slightly larger slide
+          className="py-8 md:py-12" 
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }} // Slightly adjusted duration
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
           {locale === 'pt' && t.mainImageUrl && (
             <motion.div
-              className="mx-auto mb-8 sm:mb-10 w-full max-w-md lg:max-w-lg" // Responsive max-width
+              className="mx-auto mb-8 sm:mb-10 w-full max-w-md lg:max-w-lg"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
@@ -52,7 +47,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 data-ai-hint={t.mainImageHint || "vertexmedia audiovisual estrategico"}
                 width={500}
                 height={250}
-                className="rounded-lg object-contain shadow-lg" // Added subtle shadow to image
+                className="rounded-lg object-contain shadow-lg"
                 priority
               />
             </motion.div>
@@ -68,7 +63,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               )}
               {t.subHeadline && (
                 <p
-                  className="text-lg sm:text-xl md:text-2xl font-medium mb-10 text-foreground/80 leading-relaxed max-w-3xl mx-auto" // Constrained width of subheadline
+                  className="text-lg sm:text-xl md:text-2xl font-medium mb-10 text-foreground/80 leading-relaxed max-w-3xl mx-auto"
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subHeadline) }}
                 />
               )}
@@ -89,7 +84,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               )}
               {t.description && (
                 <p
-                  className="text-lg sm:text-xl mb-10 text-foreground/80 leading-relaxed max-w-3xl mx-auto" // Constrained width
+                  className="text-lg sm:text-xl mb-10 text-foreground/80 leading-relaxed max-w-3xl mx-auto"
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.description) }}
                 />
               )}
@@ -100,7 +95,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <Button
               asChild
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block" // Consistent styling
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-lg hover:shadow-neon-glow-accent transition-all duration-300 transform hover:scale-105 inline-block"
             >
               <Link href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>{t.ctaPrimary}</Link>
             </Button>
@@ -108,8 +103,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               <Button
                 asChild
                 size="lg"
-                variant="outline" // Changed to outline for secondary, Neon style
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-block"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-md hover:shadow-neon-glow-primary transition-all duration-300 transform hover:scale-105 inline-block"
               >
                 <Link href="#solutions" onClick={(e) => scrollToSection(e, '#solutions')}>{t.ctaSecondary}</Link>
               </Button>

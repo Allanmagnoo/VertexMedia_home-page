@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Added CardHeader, CardTitle
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Send, PhoneCall, Mail } from 'lucide-react';
 import type { Locale } from '@/lib/translations';
 import { getLang, renderHighlightedText } from '@/lib/translations';
@@ -22,7 +22,7 @@ interface ContactSectionProps {
 
 function SubmitButton({ text, locale }: { text: string; locale: Locale }) {
   const { pending } = useFormStatus();
-  const Icon = locale === 'pt' ? Send : (locale === 'en' ? PhoneCall : Send) ; // Default to Send if EN icon changes
+  const Icon = locale === 'pt' ? Send : (locale === 'en' ? PhoneCall : Send) ; 
   const sendingText = locale === 'pt' ? "Enviando..." : (pending ? (locale === 'en' ? "Booking call..." : "Processing...") : text);
 
 
@@ -30,7 +30,7 @@ function SubmitButton({ text, locale }: { text: string; locale: Locale }) {
     <Button
       type="submit"
       disabled={pending}
-      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold py-3.5 px-6 rounded-md text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent/80 focus:ring-offset-2 focus:ring-offset-background" // Adjusted focus ring and shadow
+      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold py-3.5 px-6 rounded-md text-lg shadow-md hover:shadow-neon-glow-accent transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent/80 focus:ring-offset-2 focus:ring-offset-background"
       aria-label={text}
     >
       {pending ? sendingText : text}
@@ -52,7 +52,7 @@ export default function ContactSection({ locale }: ContactSectionProps) {
         toast({
           title: t.successMessage,
           description: "",
-          variant: "default", // Consider a "success" variant if available/needed
+          variant: "default",
         });
       } else {
         toast({
@@ -74,7 +74,7 @@ export default function ContactSection({ locale }: ContactSectionProps) {
   };
 
   return (
-    <section id="contact" className="bg-background text-foreground"> {/* Changed from bg-primary to bg-background */}
+    <section id="contact" className="bg-background text-foreground">
       <div className="container mx-auto px-6 text-center">
         <motion.div
           initial="hidden"
@@ -83,10 +83,10 @@ export default function ContactSection({ locale }: ContactSectionProps) {
           variants={sectionVariants}
         >
           <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground" // Text color to foreground
-            dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle, 'text-primary')}} // Highlight remains primary
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground"
+            dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.mainTitle, 'text-primary')}}
           />
-          <p className="text-lg text-foreground/70 max-w-3xl mx-auto mb-10 leading-relaxed"> {/* Text color to foreground/70 */}
+          <p className="text-lg text-foreground/70 max-w-3xl mx-auto mb-10 leading-relaxed">
             {t.description}
           </p>
         </motion.div>
@@ -97,13 +97,13 @@ export default function ContactSection({ locale }: ContactSectionProps) {
           viewport={{ once: true, amount: 0.2 }}
           variants={cardMotionVariants}
         >
-          <Card className="max-w-xl mx-auto bg-card p-8 md:p-10 rounded-xl shadow-xl border border-border/70 text-card-foreground"> {/* Added border */}
+          <Card className="max-w-xl mx-auto bg-card p-8 md:p-10 rounded-xl shadow-xl border border-border/70 text-card-foreground">
             <CardContent className="p-0">
               <form action={formAction} className="space-y-6">
                 <div>
-                  <Label htmlFor="name" className="block mb-1.5 text-sm font-medium text-left text-foreground/80">{t.formName}</Label> {/* Adjusted margin */}
+                  <Label htmlFor="name" className="block mb-1.5 text-sm font-medium text-left text-foreground/80">{t.formName}</Label>
                   <Input type="text" id="name" name="name" placeholder={locale === 'pt' ? 'Seu Nome' : 'e.g., Jane Doe'} required
-                        className="mt-1 bg-input border-border/70 text-foreground focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-muted-foreground rounded-md" /> {/* Rounded-md */}
+                        className="mt-1 bg-input border-border/70 text-foreground focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-muted-foreground rounded-md" />
                   {state.errors?.name && <p className="text-xs text-destructive mt-1 text-left">{state.errors.name.join(', ')}</p>}
                 </div>
                 <div>
@@ -123,14 +123,14 @@ export default function ContactSection({ locale }: ContactSectionProps) {
                 <div>
                   <Label htmlFor="message" className="block mb-1.5 text-sm font-medium text-left text-foreground/80">{t.formMessage}</Label>
                   <Textarea id="message" name="message" rows={4} placeholder={locale === 'pt' ? 'Descreva seu projeto ou necessidade...' : 'What are your video goals?'} required
-                            className="mt-1 bg-input border-border/70 text-foreground focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-muted-foreground rounded-md resize-none" /> {/* Added resize-none */}
+                            className="mt-1 bg-input border-border/70 text-foreground focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-muted-foreground rounded-md resize-none" />
                   {state.errors?.message && <p className="text-xs text-destructive mt-1 text-left">{state.errors.message.join(', ')}</p>}
                 </div>
                 {state.errors?._form && <p className="text-sm text-destructive mt-2 text-center">{state.errors._form.join(', ')}</p>}
                 <SubmitButton text={t.formSubmit} locale={locale} />
               </form>
               {(t.contactDirectly && (t.email || t.phone)) && (
-                <div className="mt-8 text-center"> {/* Wrapped in div for centering */}
+                <div className="mt-8 text-center">
                   <p className="text-xs text-muted-foreground">
                     {t.contactDirectly}
                     {t.phone && <><a href={`tel:${t.phone.replace(/\s|-|\(|\)/g, '')}`} className="text-primary hover:underline ml-1">{t.phone}</a></>}

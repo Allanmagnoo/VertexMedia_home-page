@@ -99,17 +99,18 @@
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold; /* Ensure Inter is used, Tailwind handles weight */
+    @apply font-sans font-bold;
   }
   section {
-    @apply py-12 md:py-20; /* Adjusted section padding for Neon rhythm */
+    @apply py-12 md:py-20;
   }
   .container {
-    @apply mx-auto px-6 max-w-6xl; /* Standard container, Neon often uses max-w-6xl or 7xl */
+    @apply mx-auto px-6 max-w-6xl; 
   }
   .gradient-text {
     background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px hsla(var(--primary), 0.3), 0 0 10px hsla(var(--secondary), 0.2);
   }
 }

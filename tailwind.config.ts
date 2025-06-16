@@ -10,8 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'], // Use the CSS variable from next/font
-        code: ['monospace'],
+        sans: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -56,13 +55,11 @@ export default {
       },
       boxShadow: {
         'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', // Standard large shadow
-        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)', // Kept for potential use
-        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)', // Kept for potential use
-        // Neon specific subtle shadow for cards, if needed. Can be applied selectively.
-        'neon-sm': '0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06)',
-        'neon-glow-primary': '0 0 15px 5px hsla(var(--primary), 0.3)',
-        'neon-glow-accent': '0 0 15px 5px hsla(var(--accent), 0.3)',
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'xl': '0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)',
+        'neon-glow-primary': '0 0 12px 1px hsla(var(--primary), 0.35)',
+        'neon-glow-secondary': '0 0 12px 1px hsla(var(--secondary), 0.35)',
+        'neon-glow-accent': '0 0 12px 1px hsla(var(--accent), 0.35)',
       },
       keyframes: {
         'accordion-down': {

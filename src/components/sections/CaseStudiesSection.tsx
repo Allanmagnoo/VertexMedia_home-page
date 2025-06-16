@@ -29,28 +29,36 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1, // Stagger delay
+        delay: i * 0.1, 
         duration: 0.5,
         ease: "easeOut",
       },
     }),
   };
+  
+  const cardColorClasses = [ // Define outside to be accessible by both render functions if needed for consistency
+    { hoverBorder: 'hover:border-primary', hoverShadow: 'hover:shadow-neon-glow-primary' },
+    { hoverBorder: 'hover:border-secondary', hoverShadow: 'hover:shadow-neon-glow-secondary' },
+    { hoverBorder: 'hover:border-accent', hoverShadow: 'hover:shadow-neon-glow-accent' }
+  ];
 
   const renderCaseStudyEn = (study: CaseStudyEn, index: number) => {
     const detailTitleColors = ['text-primary', 'text-secondary', 'text-accent'];
     const challengeColor = detailTitleColors[0];
     const solutionColor = detailTitleColors[1];
     const resultColor = detailTitleColors[2];
+    const colorTheme = cardColorClasses[index % cardColorClasses.length];
+
 
     return (
     <motion.div
       key={study.title}
       custom={index}
       variants={cardVariants}
-      className="w-full" // Ensure cards take full width in their grid cell
+      className="w-full"
     >
       <Card
-        className="bg-card rounded-xl border border-border/70 shadow-lg overflow-hidden hover:border-primary/50 transition-all duration-300 ease-in-out flex flex-col group h-full" // Adjusted shadow, border, hover
+        className={`bg-card rounded-xl border border-border/50 shadow-lg overflow-hidden ${colorTheme.hoverBorder} ${colorTheme.hoverShadow} transition-all duration-300 ease-in-out flex flex-col group h-full transform hover:-translate-y-1`}
       >
         <div className="relative h-56 w-full overflow-hidden">
           <Image
@@ -83,11 +91,11 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
             <h4 className={`flex items-center text-md font-semibold ${resultColor} mb-1.5`}>
               <BarChart2 className="w-4 h-4 mr-2 shrink-0" /> The Result:
             </h4>
-            <p className="text-foreground/70 text-sm font-medium leading-relaxed">{study.result}</p> {/* Slightly lighter for results */}
+            <p className="text-foreground/70 text-sm font-medium leading-relaxed">{study.result}</p>
           </div>
           {study.tags && study.tags.length > 0 && (
             <div className="pt-3">
-              {study.tags.map(tag => <Badge key={tag} variant="outline" className="mr-1.5 mb-1.5 text-xs border-border/60 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors">{tag}</Badge>)} {/* Subtle hover for tags */}
+              {study.tags.map(tag => <Badge key={tag} variant="outline" className="mr-1.5 mb-1.5 text-xs border-border/60 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors">{tag}</Badge>)}
             </div>
           )}
         </CardContent>
@@ -95,7 +103,9 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
     </motion.div>
   )};
 
-  const renderCaseStudyPt = (study: CaseStudyPt, index: number) => (
+  const renderCaseStudyPt = (study: CaseStudyPt, index: number) => {
+    const colorTheme = cardColorClasses[index % cardColorClasses.length];
+    return (
     <motion.div
       key={study.title}
       custom={index}
@@ -103,7 +113,7 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
       className="w-full"
     >
       <Card
-        className="bg-card rounded-xl border border-border/70 shadow-lg overflow-hidden hover:border-primary/50 transition-all duration-300 ease-in-out flex flex-col group h-full"
+        className={`bg-card rounded-xl border border-border/50 shadow-lg overflow-hidden ${colorTheme.hoverBorder} ${colorTheme.hoverShadow} transition-all duration-300 ease-in-out flex flex-col group h-full transform hover:-translate-y-1`}
       >
         <div className="relative h-56 w-full overflow-hidden">
           <Image
@@ -128,9 +138,9 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
         </CardContent>
       </Card>
     </motion.div>
-  );
+  )};
 
-  const categoryColorsRefPt = ['text-primary', 'text-secondary', 'text-accent', 'text-yellow-400']; // Keep for PT categories
+  const categoryColorsRefPt = ['text-primary', 'text-secondary', 'text-accent', 'text-yellow-400'];
 
   return (
     <section id="cases" className="bg-background">
@@ -166,7 +176,7 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
               variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-              className="grid md:grid-cols-2 gap-8 justify-items-center" // Added justify-items-center
+              className="grid md:grid-cols-2 gap-8 justify-items-center"
             >
               {category.cases.map((study, studyIndex) => renderCaseStudyEn(study, studyIndex))}
             </motion.div>
@@ -189,7 +199,7 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
               variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-              className="grid md:grid-cols-2 gap-8 justify-items-center" // Added justify-items-center
+              className="grid md:grid-cols-2 gap-8 justify-items-center"
             >
               {category.cases.map((study, studyIndex) => renderCaseStudyPt(study, studyIndex))}
             </motion.div>
@@ -206,7 +216,7 @@ export default function CaseStudiesSection({ locale }: CaseStudiesSectionProps) 
           <Button
             asChild
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105" // Adjusted style
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 px-8 rounded-md text-lg shadow-md hover:shadow-neon-glow-accent transition-all duration-300 transform hover:scale-105"
           >
             <Link href={locale === 'en' ? '#contact' : '#'}>{t.portfolioCta} {locale === 'en' && <ArrowRight className="ml-2 h-5 w-5" />}</Link>
           </Button>
