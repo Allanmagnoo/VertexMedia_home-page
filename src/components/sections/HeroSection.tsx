@@ -34,19 +34,20 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 md:py-20">
-      <div className="absolute inset-0 -z-20"> {/* Lower z-index for background image */}
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-20">
         <Image
-          src="/images/homepage_bg_abstrato.jpg" // Assuming the image is in public/images/
-          alt="Abstract background"
+          src="/images/homepage_bg_hero_services.jpg" // Updated image path
+          alt="VertexMedia services background"
           layout="fill"
           objectFit="cover"
-          quality={75}
+          quality={85} // Slightly higher quality for prominent hero bg
           priority
-          data-ai-hint="abstract technology background"
+          data-ai-hint="dynamic tech services" // Updated hint
         />
       </div>
-      {/* Overlay that was previously a gradient, now a semi-transparent dark layer */}
-      <div className="absolute inset-0 -z-10 bg-background/70"></div>
+      {/* Dark Overlay for text legibility */}
+      <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
 
       <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -165,3 +166,4 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
+
