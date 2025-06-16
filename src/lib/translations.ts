@@ -65,8 +65,8 @@ export type Translations = {
     contactCta: string;
   };
   hero: {
-    mainImageUrl?: string; // PT specific
-    mainImageHint?: string; // PT specific
+    mainImageUrl?: string; // PT specific - now optional/removed as handled by component
+    mainImageHint?: string; // PT specific - now optional/removed
     title?: string; // PT main title
     subtitle?: string; // PT subtitle
     description?: string; // PT description
@@ -99,8 +99,7 @@ export type Translations = {
   about: {
     mainTitle: string;
     description: string;
-    imageUrl?: string; // Made optional
-    imageHint?: string; // Made optional
+    // imageUrl and imageHint removed here, handled by component directly
     ourEdge?: {
       title: string;
       remoteCollaboration: {
@@ -161,8 +160,8 @@ export const translations: Record<Locale, Translations> = {
       contactCta: 'Fale Conosco',
     },
     hero: {
-      mainImageUrl: "https://placehold.co/500x250.png/1F2937/E5E7EB",
-      mainImageHint: "vertexmedia audiovisual estrategico",
+      // mainImageUrl and mainImageHint are no longer needed here for PT
+      // as the image is now hardcoded in HeroSection.tsx for PT.
       title: 'VertexMedia: Seu <gradient>Braço Audiovisual</gradient> Estratégico',
       subtitle: 'Vídeos de Alta Performance que <gradient>Elevam sua Marca</gradient>.',
       description: 'Parceiros de confiança para agências, produtoras e empresas que buscam transformar <gradient>ideias em vídeos</gradient> de alto impacto, com criatividade, excelência técnica e foco em resultados.',

@@ -37,13 +37,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
-          src="/images/homepage_bg_abstrato02.jpg" // Updated image path
+          src="/images/homepage_bg_abstrato02.jpg" // Ensure this image is in public/images/
           alt="VertexMedia abstract background pattern"
           layout="fill"
           objectFit="cover"
           quality={85}
           priority
-          data-ai-hint="abstrato azul roxo" // Updated hint
+          data-ai-hint="abstrato azul roxo"
         />
       </div>
       {/* Dark Overlay for text legibility */}
@@ -57,7 +57,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
-          {locale === 'pt' && t.mainImageUrl && (
+          {locale === 'pt' && (
             <motion.div
               className="mx-auto mb-8 sm:mb-10 w-full max-w-md lg:max-w-lg"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -65,9 +65,9 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             >
               <Image
-                src={t.mainImageUrl}
-                alt={t.mainImageHint || "VertexMedia Hero Image"}
-                data-ai-hint={t.mainImageHint || "logo da vertexmedia audiovisual estrategico"}
+                src="/images/hero-main-pt.jpg" // Ensure this image is in public/images/
+                alt="Imagem principal da VertexMedia para o público brasileiro"
+                data-ai-hint="audiovisual estrategico brasil"
                 width={500}
                 height={250}
                 className="rounded-lg object-contain shadow-lg"
@@ -166,4 +166,3 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
-
