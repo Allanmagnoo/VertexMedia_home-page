@@ -37,13 +37,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
-          src="/images/homepage_bg_hero_services.jpg" // Updated image path
-          alt="VertexMedia services background"
+          src="/images/homepage_bg_abstrato.jpg" // Updated image path
+          alt="VertexMedia abstract background"
           layout="fill"
           objectFit="cover"
-          quality={85} // Slightly higher quality for prominent hero bg
+          quality={85}
           priority
-          data-ai-hint="dynamic tech services" // Updated hint
+          data-ai-hint="abstrato tecnologia fundo" // Updated hint
         />
       </div>
       {/* Dark Overlay for text legibility */}
