@@ -1,12 +1,12 @@
 
 "use client";
 
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import type { Locale } from '@/lib/translations';
 import { getLang, renderHighlightedText } from '@/lib/translations';
 import Link from 'next/link';
 import { motion } from "framer-motion";
+import Image from 'next/image'; // Still needed for client logos
 
 interface HeroSectionProps {
   locale: Locale;
@@ -32,28 +32,32 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   ];
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
-  const backgroundImageAlt = locale === 'pt'
-    ? "VertexMedia fundo hero colaboração equipe audiovisual estratégica Brasil"
-    : "VertexMedia abstract fluid particles background for strategic audiovisual services";
-  const backgroundImageHint = locale === 'pt' ? "audiovisual brasil equipe" : "abstract background";
+  // const backgroundImageAlt = locale === 'pt'
+  //   ? "VertexMedia fundo hero colaboração equipe audiovisual estratégica Brasil"
+  //   : "VertexMedia abstract fluid particles background for strategic audiovisual services";
+  // const backgroundImageHint = locale === 'pt' ? "audiovisual brasil equipe" : "abstract background";
 
   return (
     <section
       id="hero"
       className="relative w-full min-h-screen flex flex-col overflow-hidden"
     >
-      {/* Background Image Container */}
-      <div className="absolute inset-0 -z-20">
-        <Image
-          src={backgroundImageSrc}
-          alt={backgroundImageAlt}
-          data-ai-hint={backgroundImageHint}
-          layout="fill"
-          objectFit="cover"
-          className="opacity-100"
-          priority
-        />
+      {/* Background Image Container - Using CSS background-image */}
+      <div
+        className="absolute inset-0 -z-20"
+        style={{
+          backgroundImage: `url(${backgroundImageSrc})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          width: '100%',
+          height: '100%',
+          opacity: 1, // Ensure opacity is full
+        }}
+        data-ai-hint={locale === 'pt' ? "audiovisual brasil equipe" : "abstract background"} // Keep hint for reference
+      >
+        {/* next/image component for background removed, using CSS background-image instead */}
       </div>
+
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
@@ -138,13 +142,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <div className="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-12 gap-y-4 sm:gap-y-6">
               {clientLogos.map((logo, index) => (
                 <div key={index} className="opacity-75 hover:opacity-100 transition-opacity duration-300">
-                  <Image
+                  <Image // next/image is fine here for these smaller, less critical logos
                     src={logo.src}
                     alt={logo.alt}
                     data-ai-hint={logo.hint}
                     width={100}
-                    height={34}
-                    className="object-contain h-7 md:h-8 w-auto"
+                    height={34} // Adjusted height based on original client logos section
+                    className="object-contain h-7 md:h-8 w-auto" // Classes from original client logos
                   />
                 </div>
               ))}
