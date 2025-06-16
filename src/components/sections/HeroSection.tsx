@@ -38,7 +38,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       <div className="absolute inset-0 -z-20">
         <Image
           src="/images/homepage_bg_abstrato02.jpg" 
-          alt="VertexMedia abstract background pattern"
+          alt="VertexMedia fundo abstrato com padronagem azul e roxa"
           layout="fill"
           objectFit="cover"
           quality={85}
@@ -66,7 +66,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             >
               <Image
                 src="/images/hero-main-pt.jpg" 
-                alt={t.title || "Imagem principal da VertexMedia"}
+                alt="Imagem principal da VertexMedia para a seção hero em português"
                 data-ai-hint="audiovisual estrategico brasil"
                 width={500}
                 height={250}
@@ -166,3 +166,4 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
+
