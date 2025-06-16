@@ -24,11 +24,11 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   };
 
   const clientLogos = [
-    { src: "https://placehold.co/120x40/transparent/9CA3AF.png?text=Cliente+1", alt: "Logo Cliente 1", hint: "empresa tecnologia" },
-    { src: "https://placehold.co/110x45/transparent/9CA3AF.png?text=Cliente+2", alt: "Logo Cliente 2", hint: "marca varejista" },
-    { src: "https://placehold.co/130x35/transparent/9CA3AF.png?text=Cliente+3", alt: "Logo Cliente 3", hint: "startup global" },
-    { src: "https://placehold.co/100x50/transparent/9CA3AF.png?text=Cliente+4", alt: "Logo Cliente 4", hint: "consultoria negocios" },
-    { src: "https://placehold.co/120x40/transparent/9CA3AF.png?text=Cliente+5", alt: "Logo Cliente 5", hint: "produtora midia" },
+    { src: "https://placehold.co/120x40.png/transparent/9CA3AF?text=Cliente+1", alt: "Logo Cliente 1", hint: "empresa tecnologia" },
+    { src: "https://placehold.co/110x45.png/transparent/9CA3AF?text=Cliente+2", alt: "Logo Cliente 2", hint: "marca varejista" },
+    { src: "https://placehold.co/130x35.png/transparent/9CA3AF?text=Cliente+3", alt: "Logo Cliente 3", hint: "startup global" },
+    { src: "https://placehold.co/100x50.png/transparent/9CA3AF?text=Cliente+4", alt: "Logo Cliente 4", hint: "consultoria negocios" },
+    { src: "https://placehold.co/120x40.png/transparent/9CA3AF?text=Cliente+5", alt: "Logo Cliente 5", hint: "produtora midia" },
   ];
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
@@ -40,7 +40,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className="relative w-full h-[80vh] flex flex-col overflow-hidden" // Altura ajustada aqui
+      className="relative w-full h-[80vh] flex flex-col overflow-hidden"
     >
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
@@ -48,10 +48,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           src={backgroundImageSrc}
           alt={backgroundImageAlt}
           data-ai-hint={backgroundImageHint}
-          width={1920} // Explicit width for non-layout="fill" or as hint
-          height={1080} // Explicit height
+          width={1920}
+          height={1080}
+          className="absolute top-0 left-0 w-full h-full object-cover object-center opacity-100"
           priority
-          className="absolute top-0 left-0 w-full h-full object-cover opacity-100"
         />
       </div>
 
@@ -128,7 +128,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         {/* Client Logos Section for PT - outside the glassmorphism box but within the main section's flex flow */}
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="w-full max-w-4xl mx-auto pt-10 pb-4 md:pt-12 md:pb-6 px-6" // Ajustado padding para nova altura
+            className="w-full max-w-4xl mx-auto pt-10 pb-4 md:pt-12 md:pb-6 px-6" 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
