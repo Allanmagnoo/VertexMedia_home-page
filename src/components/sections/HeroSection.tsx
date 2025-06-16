@@ -33,8 +33,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
   const backgroundImageAlt = locale === 'pt'
-    ? "VertexMedia - fundo da seção principal com equipe em colaboração"
-    : "VertexMedia abstract fluid particles background";
+    ? "VertexMedia fundo hero colaboração equipe audiovisual estratégica Brasil"
+    : "VertexMedia abstract fluid particles background for strategic audiovisual services";
   const backgroundImageHint = locale === 'pt' ? "audiovisual brasil equipe" : "abstract background";
 
   return (
@@ -42,8 +42,17 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       id="hero"
       className="relative w-full min-h-screen flex flex-col overflow-hidden"
     >
-      {/* Background Image Container */}
-      <div className="absolute inset-0 -z-20">
+      {/* Background Image Container - Using CSS background-image for diagnostics */}
+      <div
+        className="absolute inset-0 -z-20"
+        style={{
+          backgroundImage: `url(${backgroundImageSrc})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 1,
+        }}
+      >
+        {/* 
         <Image
           src={backgroundImageSrc}
           alt={backgroundImageAlt}
@@ -53,6 +62,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           className="opacity-100"
           priority
         />
+        */}
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
@@ -155,5 +165,3 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
-
-    
