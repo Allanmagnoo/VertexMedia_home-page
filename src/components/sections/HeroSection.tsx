@@ -23,6 +23,15 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     }
   };
 
+  const clientLogos = [
+    { src: "https://placehold.co/120x40/transparent/9CA3AF.png?text=Cliente+1", alt: "Logo Cliente 1", hint: "empresa tecnologia" },
+    { src: "https://placehold.co/110x45/transparent/9CA3AF.png?text=Cliente+2", alt: "Logo Cliente 2", hint: "marca varejista" },
+    { src: "https://placehold.co/130x35/transparent/9CA3AF.png?text=Cliente+3", alt: "Logo Cliente 3", hint: "startup global" },
+    { src: "https://placehold.co/100x50/transparent/9CA3AF.png?text=Cliente+4", alt: "Logo Cliente 4", hint: "consultoria negocios" },
+    { src: "https://placehold.co/120x40/transparent/9CA3AF.png?text=Cliente+5", alt: "Logo Cliente 5", hint: "produtora midia" },
+  ];
+
+
   return (
     <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 md:py-20">
       <div className="absolute inset-0 -z-10 bg-gradient-radial from-card via-background to-background opacity-40"></div>
@@ -111,6 +120,34 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             )}
           </div>
         </motion.div>
+
+        {locale === 'pt' && t.clientLogosTitle && (
+          <motion.div
+            className="mt-12 md:mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
+          >
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6 text-center">
+              {t.clientLogosTitle}
+            </h3>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 gap-y-6">
+              {clientLogos.map((logo, index) => (
+                <div key={index} className="opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    data-ai-hint={logo.hint}
+                    width={120} 
+                    height={40} 
+                    className="object-contain h-8 md:h-9 w-auto" // Adjust height and let width be auto
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
       </div>
     </section>
   );

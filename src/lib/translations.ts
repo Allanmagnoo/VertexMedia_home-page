@@ -73,6 +73,7 @@ export type Translations = {
     title?: string; // PT main title
     subtitle?: string; // PT subtitle
     description?: string; // PT description
+    clientLogosTitle?: string; // For PT client logos
 
     // EN specific (new structure)
     mainHeadline?: string; // EN H1
@@ -84,14 +85,14 @@ export type Translations = {
   };
   solutions: {
     mainTitle: string;
-    description?: string;
+    introduction?: { // For general problem/context setting
+        title?: string; // Optional title for this intro section
+        description: string;
+        cta?: string;
+        ctaLink?: string;
+    };
     servicesEn?: ServiceCardEn[];
     servicesPt?: DetailCardContentPt[];
-    problemStatement?: {
-        title: string;
-        description: string;
-        cta: string;
-    };
   };
   caseStudies: {
     mainTitle: string;
@@ -165,20 +166,22 @@ export const translations: Record<Locale, Translations> = {
       contactCta: 'Fale Conosco',
     },
     hero: {
-      mainImageUrl: "https://placehold.co/500x250.png/1F2937/9CA3AF",
+      mainImageUrl: "https://placehold.co/500x250.png/1F2937/E5E7EB",
       mainImageHint: "vertexmedia audiovisual estrategico",
       title: 'VertexMedia: Seu <gradient>Braço Audiovisual</gradient> Estratégico',
       subtitle: 'Vídeos de Alta Performance que <gradient>Elevam sua Marca</gradient>.',
       description: 'Parceiros de confiança para agências, produtoras e empresas que buscam transformar <gradient>ideias em vídeos</gradient> de alto impacto, com criatividade, excelência técnica e foco em resultados.',
       ctaPrimary: 'Fale com um Especialista',
       ctaSecondary: 'Nossas Soluções',
+      clientLogosTitle: "Confiado por:"
     },
     solutions: {
       mainTitle: 'Soluções em Vídeo Sob Medida para Seus <gradient>Objetivos</gradient>',
-      problemStatement: {
+      introduction: {
         title: 'Necessita de um Parceiro Audiovisual que Entenda Seus <highlight class="text-primary">Desafios Criativos e Técnicos</highlight>?',
         description: 'Produzir vídeos de qualidade, em volume e com criatividade, é um desafio. A VertexMedia oferece suporte audiovisual completo, da concepção à entrega, garantindo que suas campanhas atinjam o máximo potencial.',
-        cta: 'Descubra Nossas Capacidades'
+        cta: 'Descubra Nossas Capacidades',
+        ctaLink: '#contact'
       },
       servicesPt: [
         {
@@ -228,26 +231,26 @@ export const translations: Record<Locale, Translations> = {
         {
           categoryTitle: 'Cases de Varejo',
           cases: [
-            { title: 'Campanha de Lançamento - E-commerce Fashion', description: 'Produção de série de vídeos curtos e dinâmicos para redes sociais, destacando nova coleção e impulsionando tráfego para o site.', imageUrl: 'https://placehold.co/600x338.png/111827/60A5FA', imageHint: 'varejo moda video', tags: ["E-commerce", "Social Media"] },
-            { title: 'Vídeos de Produto - Loja de Eletrônicos', description: 'Criação de vídeos demonstrativos para os principais produtos, melhorando a experiência do cliente e aumentando a conversão na página de produto.', imageUrl: 'https://placehold.co/600x338.png/111827/60A5FA', imageHint: 'eletronicos produto video', tags: ["Produto", "Conversão"] },
+            { title: 'Campanha de Lançamento - E-commerce Fashion', description: 'Série de vídeos curtos para redes sociais, destacando nova coleção e impulsionando tráfego.', imageUrl: 'https://placehold.co/600x338.png/111827/60A5FA', imageHint: 'varejo moda video', tags: ["E-commerce", "Social Media"] },
+            { title: 'Vídeos de Produto - Loja de Eletrônicos', description: 'Vídeos demonstrativos para produtos, melhorando experiência do cliente e conversão.', imageUrl: 'https://placehold.co/600x338.png/111827/60A5FA', imageHint: 'eletronicos produto video', tags: ["Produto", "Conversão"] },
           ],
         },
         {
           categoryTitle: 'Cases Institucionais',
           cases: [
-            { title: 'Vídeo Manifesto - Startup de Tecnologia', description: 'Desenvolvimento de vídeo conceitual para apresentar a missão e os valores da empresa, fortalecendo a marca empregadora.', imageUrl: 'https://placehold.co/600x338.png/111827/C084FC', imageHint: 'startup tech video', tags: ["Branding", "Corporativo"] },
+            { title: 'Vídeo Manifesto - Startup de Tecnologia', description: 'Vídeo conceitual para apresentar missão e valores da empresa, fortalecendo marca empregadora.', imageUrl: 'https://placehold.co/600x338.png/111827/C084FC', imageHint: 'startup tech video', tags: ["Branding", "Corporativo"] },
           ],
         },
          {
           categoryTitle: 'Cases de Performance',
           cases: [
-            { title: 'Criativos para Anúncios - SaaS', description: 'Produção de um grande volume de variações de vídeos curtos para testes A/B em campanhas de Google Ads e Facebook Ads, otimizando o CPA.', imageUrl: 'https://placehold.co/600x338.png/111827/2DD4BF', imageHint: 'saas performance video', tags: ["Performance", "SaaS", "Ads"] },
+            { title: 'Criativos para Anúncios - SaaS', description: 'Grande volume de variações de vídeos curtos para testes A/B em campanhas de Ads, otimizando CPA.', imageUrl: 'https://placehold.co/600x338.png/111827/2DD4BF', imageHint: 'saas performance video', tags: ["Performance", "SaaS", "Ads"] },
           ],
         },
         {
           categoryTitle: 'Cases Imobiliários',
           cases: [
-            { title: 'Tour Virtual - Lançamento de Condomínio', description: 'Criação de vídeo imersivo apresentando o empreendimento, com tomadas aéreas e destaque para os diferenciais, acelerando as vendas na planta.', imageUrl: 'https://placehold.co/600x338.png/111827/FBBF24', imageHint: 'imobiliario tour video', tags: ["Imobiliário", "Tour Virtual"] },
+            { title: 'Tour Virtual - Lançamento de Condomínio', description: 'Vídeo imersivo do empreendimento, com tomadas aéreas, acelerando vendas na planta.', imageUrl: 'https://placehold.co/600x338.png/111827/FBBF24', imageHint: 'imobiliario tour video', tags: ["Imobiliário", "Tour Virtual"] },
           ],
         }
       ],
@@ -309,7 +312,9 @@ export const translations: Record<Locale, Translations> = {
     },
     solutions: {
       mainTitle: 'Video Solutions That <gradient>Drive Business Growth</gradient>',
-      description: "Tired of video that doesn't perform? We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage.",
+      introduction: {
+        description: "Tired of video that doesn't perform? We deliver specialized video post-production services designed to tackle your biggest marketing challenges and achieve tangible business outcomes. From boosting ad performance to clarifying complex products, our expertise is your advantage."
+      },
       servicesEn: [
         {
           icon: 'TrendingUp',
@@ -345,7 +350,7 @@ export const translations: Record<Locale, Translations> = {
             "Full-service video editing & assembly",
             "Advanced motion graphics, VFX & 2D/3D animation",
             "Professional color grading & sound design",
-            "Version control & asset management for campaigns",
+            "Version control & asset management for social campaigns",
           ],
           cta: 'Scale Your Agency with Us',
           ctaLink: '#contact',
@@ -360,25 +365,25 @@ export const translations: Record<Locale, Translations> = {
             {
               title: 'SaaS Co. Onboarding Video Series',
               client: 'B2B SaaS Platform',
-              challenge: "High user drop-off (40%) in the first trial week due to product complexity during onboarding.",
-              ourSolution: "Produced 7 short, engaging tutorial videos (avg. 90s) integrated into the onboarding flow, guiding users through key features with clear visuals.",
-              result: "+30% user retention (Wk1); -25% onboarding support tickets; +15% trial-to-paid conversion.",
+              challenge: "High user drop-off (40%) in 1st week due to product complexity.",
+              ourSolution: "7 short, engaging tutorial videos integrated into onboarding, guiding users through key features.",
+              result: "+30% user retention (Wk1); -25% support tickets; +15% trial-to-paid conversion.",
               imageUrl: 'https://placehold.co/600x338.png/3F51B5/FFFFFF', imageHint: 'saas onboarding video', tags: ["SaaS", "Explainer Video", "User Retention"]
             },
             {
               title: 'D2C Ad Creative Overhaul',
               client: 'E-commerce Brand (via Agency)',
-              challenge: "Client's CPA increased 15% MoM due to creative fatigue on Meta & TikTok.",
-              ourSolution: "Delivered 20+ unique video ad variations (UGC-style, animated, direct response) in a 2-week sprint for A/B testing, focusing on new hooks and benefit-driven messaging.",
-              result: "Average CPA -18%; ROAS +1.2x; Ad spend scaled by 40% while maintaining profitability.",
+              challenge: "Client's CPA increased 15% MoM due to creative fatigue.",
+              ourSolution: "20+ unique video ad variations (UGC, animated, direct response) in 2 weeks for A/B testing.",
+              result: "Average CPA -18%; ROAS +1.2x; Ad spend scaled by 40% profitably.",
               imageUrl: 'https://placehold.co/600x338.png/FFB300/333333', imageHint: 'ad creative performance', tags: ["Performance Marketing", "A/B Testing", "Social Ads"]
             },
              {
               title: 'Tech Startup Employer Branding Film',
               client: 'Fast-Growing Tech Innovator',
-              challenge: "Needed to attract senior engineering talent in a competitive market but struggled to convey its unique culture.",
-              ourSolution: "Created a compelling 3-min brand film showcasing employee stories, company's innovative work, and vision. Used on careers page & LinkedIn. Featured quality cinematography & color correction.",
-              result: "+200% qualified applications (sr. roles); Positive feedback on culture; Used as a sales tool for B2B deals.",
+              challenge: "Needed to attract senior engineering talent in a competitive market.",
+              ourSolution: "Compelling 3-min brand film showcasing employee stories, innovation, and vision.",
+              result: "+200% qualified sr. applications; Positive feedback on culture; Used as sales tool.",
               imageUrl: 'https://placehold.co/600x338.png/1A1A2E/EEEEEE', imageHint: 'employer branding film', tags: ["Brand Storytelling", "Recruitment", "Tech"]
             }
           ],
@@ -388,31 +393,31 @@ export const translations: Record<Locale, Translations> = {
     },
     about: {
       mainTitle: 'Your Strategic Partner for <highlight class="text-primary">Global Video Production Excellence</highlight>',
-      description: 'VertexMedia is your agile team of creative strategists and technical wizards in motion graphics, color correction, and video finalization. We empower US businesses to achieve ambitious marketing goals with high-performing video content, understanding the speed and precision your market demands.',
+      description: 'VertexMedia: Your agile team of creative strategists and technical wizards in motion graphics, color, and video finalization. We empower US businesses with high-performing video content.',
       imageUrl: 'https://placehold.co/600x400.png/1A1A2E/FFFFFF',
-      imageHint: 'global collaboration video production',
+      imageHint: 'global collaboration video',
       ourEdge: {
         title: 'Our Edge: <gradient>Seamless Remote Collaboration & Timezone Power</gradient>',
         remoteCollaboration: {
           title: 'Expert Remote Workflows',
-          description: 'Built for flawless remote collaboration. Our streamlined processes (Frame.io, Slack, Asana/Notion) ensure smooth communication, efficient feedback cycles, and punctual delivery, every time.',
+          description: 'Flawless remote collaboration. Streamlined processes (Frame.io, Slack, Asana) ensure smooth communication, efficient feedback, and punctual delivery.',
           tools: ["Frame.io Reviews", "Slack Comms", "Asana/Notion PM"],
         },
         timezoneAdvantage: {
           title: 'The "Overnight" Advantage',
-          description: "Leverage our Brazilian timezone. Send briefs EOD (US time), and wake up to significant progress or completed drafts. We accelerate your production cycle, keeping projects moving while you sleep.",
+          description: "Leverage our Brazilian timezone. Send briefs EOD (US), wake up to progress or completed drafts. We accelerate your production, keeping projects moving while you sleep.",
         },
       },
     },
     contact: {
       mainTitle: 'Ready to <gradient>Elevate Your Video Strategy</gradient>?',
-      description: 'Let\'s discuss how VertexMedia can become your trusted partner for video content that drives revenue and results. Schedule a free, no-obligation discovery call today to explore the possibilities.',
+      description: 'Let\'s discuss how VertexMedia can become your trusted partner for video content that drives revenue and results. Schedule a free, no-obligation discovery call today.',
       formName: 'Full Name',
       formEmail: 'Work Email',
       formCompany: 'Company Name (Optional)',
       formMessage: 'Tell us about your video needs or project goals',
       formSubmit: 'Book Your Free Discovery Call',
-      successMessage: 'Thanks! Your call request is confirmed. We\'ll be in touch shortly with details.',
+      successMessage: 'Thanks! Your call request is confirmed. We\'ll be in touch shortly.',
       errorMessage: 'Booking failed. Please try again or email us directly.',
       contactDirectly: 'Or email us at:',
       email: 'hello@vertexmedia.io',
