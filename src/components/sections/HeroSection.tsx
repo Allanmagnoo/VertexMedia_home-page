@@ -32,11 +32,14 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   ];
 
   const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
-  const backgroundImageAlt = locale === 'pt' ? (t.title ? `Fundo da seção hero: ${t.title}` : "Imagem de fundo da VertexMedia para a seção hero em português") : "VertexMedia fundo abstrato com padronagem azul e roxa de partículas fluidas";
-  const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil particulas digitais" : "hero background abstract purple blue pattern particles";
+  const backgroundImageAlt = locale === 'pt'
+    ? "Imagem de fundo de um ambiente de trabalho criativo com equipamentos audiovisuais e luzes neon para VertexMedia em português"
+    : "VertexMedia fundo abstrato com padronagem azul e roxa de partículas fluidas";
+  const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil neon" : "hero background abstract purple blue particles";
+
 
   return (
-    <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background py-16 md:py-20">
+    <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
@@ -47,20 +50,21 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           quality={85}
           priority
           data-ai-hint={backgroundImageHint}
+          className="opacity-100" 
         />
       </div>
       {/* Dark Overlay for text legibility */}
       <div className="absolute inset-0 -z-10 bg-black/60"></div>
 
 
-      <div className="container relative z-10 text-center mx-auto px-6 w-full">
+      <div className="container relative z-10 text-center mx-auto px-6 w-full py-16 md:py-20">
         <motion.div
           className="bg-card/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 mx-auto max-w-3xl lg:max-w-4xl text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
-          {/* Conditional rendering for the smaller image inside the box is removed for PT, as it's now the background */}
+          {/* Conditional rendering for the smaller image inside the box is REMOVED for PT, as it's now the background */}
 
           {locale === 'en' ? (
             <>
@@ -81,7 +85,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <>
               {t.title && (
                 <h1
-                  className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground" 
+                  className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground"
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.title) }}
                 />
               )}
@@ -123,7 +127,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="mt-12 md:mt-16 w-full max-w-4xl mx-auto"
+            className="mt-12 md:mt-16 w-full max-w-4xl mx-auto relative z-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -138,9 +142,9 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                     src={logo.src}
                     alt={logo.alt}
                     data-ai-hint={logo.hint}
-                    width={100} 
-                    height={34} 
-                    className="object-contain h-7 md:h-8 w-auto" 
+                    width={100}
+                    height={34}
+                    className="object-contain h-7 md:h-8 w-auto"
                   />
                 </div>
               ))}
@@ -151,3 +155,4 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
+
