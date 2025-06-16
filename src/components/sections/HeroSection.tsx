@@ -31,19 +31,22 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     { src: "https://placehold.co/120x40/transparent/9CA3AF.png?text=Cliente+5", alt: "Logo Cliente 5", hint: "produtora midia" },
   ];
 
+  const backgroundImageSrc = locale === 'pt' ? "/images/hero-main-pt.jpg" : "/images/homepage_bg_abstrato02.jpg";
+  const backgroundImageAlt = locale === 'pt' ? (t.title ? `Fundo da seção hero: ${t.title}` : "Imagem de fundo da VertexMedia para a seção hero em português") : "VertexMedia fundo abstrato com padronagem azul e roxa de partículas fluidas";
+  const backgroundImageHint = locale === 'pt' ? "audiovisual estrategico brasil particulas digitais" : "hero background abstract purple blue pattern particles";
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background py-16 md:py-20">
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
-          src="/images/homepage_bg_abstrato02.jpg" 
-          alt="VertexMedia fundo abstrato com padronagem azul e roxa de partículas fluidas"
+          src={backgroundImageSrc}
+          alt={backgroundImageAlt}
           layout="fill"
           objectFit="cover"
           quality={85}
           priority
-          data-ai-hint="hero background abstract purple blue pattern particles"
+          data-ai-hint={backgroundImageHint}
         />
       </div>
       {/* Dark Overlay for text legibility */}
@@ -57,24 +60,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
-          {locale === 'pt' && (
-            <motion.div
-              className="mx-auto mb-8 sm:mb-10 w-full max-w-xs sm:max-w-sm md:max-w-md" // Adjusted max-width for image
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-            >
-              <Image
-                src="/images/hero-main-pt.jpg" 
-                alt="Imagem principal da VertexMedia para a seção hero em português: representação abstrata de ondas de partículas digitais em tons de azul e roxo."
-                data-ai-hint="audiovisual estrategico brasil particulas digitais"
-                width={500}
-                height={250}
-                className="rounded-lg object-contain shadow-lg"
-                priority
-              />
-            </motion.div>
-          )}
+          {/* Conditional rendering for the smaller image inside the box is removed for PT, as it's now the background */}
 
           {locale === 'en' ? (
             <>
@@ -91,23 +77,23 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 />
               )}
             </>
-          ) : (
+          ) : ( // PT content structure
             <>
               {t.title && (
                 <h1
-                  className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground" // Adjusted size for PT
+                  className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-foreground" 
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.title) }}
                 />
               )}
               {t.subtitle && (
                 <h2
-                  className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-foreground/90 leading-snug" // Adjusted size for PT
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-foreground/90 leading-snug"
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.subtitle, 'text-primary', 'gradient-text') }}
                 />
               )}
               {t.description && (
                 <p
-                  className="text-base sm:text-lg mb-10 text-foreground/80 leading-relaxed max-w-2xl mx-auto" // Adjusted size for PT
+                  className="text-base sm:text-lg mb-10 text-foreground/80 leading-relaxed max-w-2xl mx-auto"
                   dangerouslySetInnerHTML={{ __html: renderHighlightedText(t.description) }}
                 />
               )}
@@ -137,7 +123,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
         {locale === 'pt' && t.clientLogosTitle && (
           <motion.div
-            className="mt-12 md:mt-16 w-full max-w-4xl mx-auto" // Ensure logos section uses available width
+            className="mt-12 md:mt-16 w-full max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -152,9 +138,9 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                     src={logo.src}
                     alt={logo.alt}
                     data-ai-hint={logo.hint}
-                    width={100} // Adjusted logo size
-                    height={34} // Adjusted logo size
-                    className="object-contain h-7 md:h-8 w-auto" // Adjusted logo size
+                    width={100} 
+                    height={34} 
+                    className="object-contain h-7 md:h-8 w-auto" 
                   />
                 </div>
               ))}
@@ -165,4 +151,3 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     </section>
   );
 }
-
